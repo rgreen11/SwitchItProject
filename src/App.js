@@ -1,64 +1,46 @@
-import React, { Component } from 'react';
-import { HashRouter, Route } from 'react-router-dom';
-import firebase from './firebase';
-
-// ---- Contexts
-import AuthContext from './contexts/auth';
-
-
-// ---- Pages
-
-import Picturepost from './containers/createpost';
-import PicturesRender from './containers/testingpage';
+import React from 'react';
+import { Route, Switch } from "react-router-dom";
 
 
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      user: null,
-    }
-  }
+//pages
 
-  //api data retrieving for authentication portion
-  //here we are assignin unsubscribe-->given a function
-  componentDidMount() {
-    this.unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      console.log(user, this.state)
-      
-      if (user) {
-        this.setState({ user: user.email }); //user shows user is logged in--->passed to auth context
-      } 
-      else {
-        this.setState({ user: null })
-      }
-    })
-  }
+// import Closet from './containers/Closet';
+// import Opening from './containers/Opening';
+import AddItem from './containers/addItem';
+// import MixNMatch from './containers/MixNMatch';
+// import Calendar from './containers/Calendar';
 
-  //invoking it to take it off memory
-  componentWillUnmount() {
-    this.unsubscribe()
-  }
+// //components
+// import {StateProvider} from './context';
+// import Navbar from './components/Navbar';
 
 
+class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <HashRouter>
-        <AuthContext.Provider value={this.state.user}>
-      
-            <div className='links-container' >
-              <Route path='/createpost' component={Picturepost} />     
-              <Route path='/showpics' component={PicturesRender} />          
-              {/* <Route path='/pics' component={Showimages} />  */}
-            </div>
-          </AuthContext.Provider>
-        </HashRouter>
-      </div>
+      <>
+        {/* <Route path='/' component={Navbar} /> */}
+        <Switch>
+          {/* <Route path="/" exact strict component={Closet} />
+            <Route path="/Opening" exact strict component={Opening} /> */}
+          <Route path="/Additem" exact strict component={AddItem} />
+          {/* <Route path="/Mix-N-Match" exact strict component={MixNMatch} />
+            <Route path="/Calendar" exact strict component={Calendar} /> */}
+        </Switch>
+
+      </>
     );
   }
 }
 
+// <div className='links-container' >
+//   <Route path='/createpost' component={Picturepost} />     
+//   <Route path='/showpics' component={PicturesRender} />          
+//   {/* <Route path='/pics' component={Showimages} />  */}
+// </div>
+
 export default App;
+
+

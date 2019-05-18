@@ -21,6 +21,8 @@ export default class Picturepost extends Component {
         }
     }
 
+    //----------------------
+  
     componentDidMount() {
 
         axios.get(`http://localhost:8080/uploadpics/category`)
@@ -74,96 +76,74 @@ export default class Picturepost extends Component {
     }
 
 
-
-
-//     postPosted = async (e) => {
-//         const uploadedImage = e.target.files[0];
-//         console.log('picssequel',uploadedImage)
-//         const root = firebase.storage().ref()
-//         const newImage = root.child(uploadedImage.name);
-//         // console.log('images',newImage)
-
-// //----------------heree and async above
-//        //snapshot
-       
-//        try {
-//            const snapshot =  await newImage.put(uploadedImage);
-//            const url = await snapshot.ref.getDownloadURL();
-//         console.log('thisisnew',url)
-//     } catch (err) {
-//         console.log(err);
-//     }
-
-// }
-
-
-
-//function outside 
-       axiosFunction=()=>{ 
-           axios({
-            
-            method: 'POST',
-            url: `http://localhost:8080/uploadpics/newpic`,
-            data: {
-                category: this.state.chosencategory,
-                style: this.state.chosenstyle,
-                color: this.state.chosencolor,
-                season:this.state.chosenseason,
-                user_id:1,
-                img_url: 'https://shirtspacev4productimages.s3.amazonaws.com/uploads/variant/front_image/105303/large_88192_438_H.jpg'
-            }
-        })
-            .then(function (res) {
-                console.log('data', res)
-                console.log("success")
-                
-
-                // this.saveImage(url);---------------and here 
-            }).then(() => alert('Picture was added successfully'))
-
-            .catch(function (error) {
-                console.log('err', error)
-            })}
-
+    saveImage = (url) => {
+        const date = Date();
     
+        ImageService.saveImage(url, date);
+      }
+    
+      handleFileInput = async (e) => {
+          console.log('string stored in FB:',e)
+        const firstFile = e.target.files[0];
+        const root = firebase.storage().ref()
+        const newImage = root.child(firstFile.name);
 
+       
+        try {
+            const snapshot = await newImage.put(firstFile);
+            const url = await snapshot.ref.getDownloadURL();
+            this.saveImage(url);
+            // console.log('thisisurl',url)
+            this.setState({fileUploadURL:url})
+          }
+          catch(err) {
+            console.log(err);
+          }
+          
+        }
+    
+//function to post
+postPosted=(e)=>{
+    console.log('thisisstate',this.state.url)
+e.preventDefault();
+    axios({
+     
+     method: 'POST',
+     url: `http://localhost:8080/uploadpics/newpic`,
+     data: {
+         category: this.state.chosencategory,
+         style: this.state.chosenstyle,
+         color: this.state.chosencolor,
+         season:this.state.chosenseason,
+         user_id:1,
+         img_url: this.state.fileUploadURL
+     }
+ })
+     .then(function (res) {
+         console.log('data', res)
+         console.log("success")
+         
+         // this.saveImage(url);---------------and here 
+     }).then(() => alert('Picture was added successfully'))
 
-    //     try {
-    //         const snapshot = await newImage.put(fileUpload);
-    //         const url = await snapshot.ref.getDownloadURL();
+     .catch(function (error) {
+         console.log('err', error)
+     })}
 
-
-    //             const  category= this.state.chosencategory
-    //             const style= this.state.chosenstyle
-    //             const  color= this.state.chosencolor
-    //             const  season=this.state.chosenseason
-    //             const  user_id=1
-    //             const  img_url= fileUpload
-
-    //         const response = await axios.post("http://localhost:8080/uploadpics/newpic", { category,style,color,season,user_id,img_url: url, })
-
-    //         console.log(response)
-
-    //         this.saveImage(category,style,color,season,user_id,img_url);
-    //     }
-    //     catch (err) {
-    //         console.log(err);
-    //     }
-
-    // }
+     
 
 
 
     //-------------------------------------------
     render() {
-        console.log(this.state)
+        console.log('thisisstate',this.state.url)
         // console.log('thispic',this.state.fileUpload.name)
         const { category, style, color, season } = this.state
         return (
             <div className='container'>
                 <div className="input-group mb-3">
                     <div className="custom-file">
-                        <input type="file" className="custom-file-input" onChange={this.postPosted} />
+                        <input type="file" className="custom-file-input" onChange={this.handleFileInput} />
 
                     </div>
                     <div className="col-sm-8">
@@ -212,7 +192,7 @@ export default class Picturepost extends Component {
 
                             <div className="form-group">
 
-                                <button type="button" onClick={this.postPosted} className="button">Upload</button>
+                                <button type="button" onClick={this.postPosted}  className="button">Upload</button>
                             </div>
                         </form>
                     </div>

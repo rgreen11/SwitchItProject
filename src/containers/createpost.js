@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import firebase from '../firebase';
 import ImageService from '../services/images';
-import axios from 'axios'
+import axios from 'axios';
 
 
 
@@ -132,9 +132,6 @@ e.preventDefault();
      })}
 
      
-
-
-
     //-------------------------------------------
     render() {
         console.log('thisisstate',this.state.url)
@@ -202,4 +199,3 @@ e.preventDefault();
         );
     }
 }
-
