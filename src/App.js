@@ -4,15 +4,15 @@ import { HashRouter, Route,  Switch} from "react-router-dom";
 
 //pages
 
-import Closet from './containers/Closet';
-import Opening from './containers/Opening';
-import AddItem from './containers/AddItem';
-import MixNMatch from './containers/MixNMatch';
-import Calendar from './containers/Calendar';
+// import Closet from './containers/Closet';
+// import Opening from './containers/Opening';
+// import AddItem from './containers/AddItem';
+// import MixNMatch from './containers/MixNMatch';
+// import Calendar from './containers/Calendar';
 
-//components
-import {StateProvider} from './context';
-import Navbar from './components/Navbar';
+// //components
+// import {StateProvider} from './context';
+// import Navbar from './components/Navbar';
 
 
 class App extends React.Component {
