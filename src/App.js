@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter, Route,  Switch} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+//pages
+
+import Closet from './containers/Closet';
+import Opening from './containers/Opening';
+import AddItem from './containers/AddItem';
+import MixNMatch from './containers/MixNMatch';
+import Calendar from './containers/Calendar';
+
+//components
+import {StateProvider} from './context';
+import Navbar from './components/Navbar';
+
+
+class App extends React.Component {
+
+  render(){
+    return (
+      <div>Hello App.js Page</div>
+      /*
+      <StateProvider>
+        <HashRouter>
+        <Route path='/' component={Navbar} />
+          <Switch>
+            <Route path="/" exact strict component={Closet} />
+            <Route path="/Opening" exact strict component={Opening} />
+            <Route path="/Additem" exact strict component={AddItem} />
+            <Route path="/Mix-N-Match" exact strict component={MixNMatch} />
+            <Route path="/Calendar" exact strict component={Calendar} />
+          </Switch>
+      </HashRouter>
+      </StateProvider>
+      */
+      );
+    }
+  }
+      
+    
+    
+    export default App;
+    
+
