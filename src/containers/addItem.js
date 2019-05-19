@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-export default() =>{
-    return <></>
-}
-=======
 import React, { Component } from 'react'
 import firebase from '../firebase';
 import ImageService from '../services/images';
@@ -208,4 +201,3 @@ e.preventDefault();
         );
     }
 }
->>>>>>> master
