@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import firebase from '../firebase';
 import ImageService from '../services/images';
-import axios from 'axios'
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'animate.css';
+import './AddItem.css';
 import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 
 
@@ -18,37 +21,10 @@ export default class AddItem extends Component {
             colors: clothingColor,
             chosencolor: '',
             seasons: clothingSeason,
-            chosenseason: ''
+            chosenseason: '',
+            isOpen: false,
         }
     }
-
-    //----------------------
-  
-    // componentDidMount() {
-
-    //     axios.get(`http://localhost:8080/uploadpics/category`)
-    //         .then(res => res.data)
-    //         .then(category => {
-    //             console.log('category list', category)
-    //             this.setState({ category: category })
-    //         })
-
-    
-
-    //     axios.get(`http://localhost:8080/uploadpics/color`)
-    //         .then(res => res.data)
-    //         .then(color => {
-    //             console.log('color list', color)
-    //             this.setState({ color: color })
-    //         })
-
-    //     axios.get(`http://localhost:8080/uploadpics/season`)
-    //         .then(res => res.data)
-    //         .then(season => {
-    //             console.log('season list', season)
-    //             this.setState({ season: season })
-    //         })
-    // }
 
     //---------HANDLES SELECTIONS 
     handleCategory = (e) => {
@@ -57,16 +33,7 @@ export default class AddItem extends Component {
           styles: stylesByCategory[e.target.value]
         })
       
-    // else {
-    //    const categoryClick = e.target.value
-    //         axios.get(`http://localhost:8080/uploadpics/style/${categoryClick}`)
-    //         .then(style => {
-    //             console.log(style.data)
-    //             this.setState({ style: style.data },()=>{
-    //                 console.log('updated style:',this.state.style)
-    //             })
-    //         })
-    // }
+   
 }
 
     handleStyle = (e) => {
@@ -94,17 +61,13 @@ export default class AddItem extends Component {
       }
     
       handleFileInput = async (e) => {
-          console.log('string stored in firebase:',e)
         const firstFile = e.target.files[0];
         const root = firebase.storage().ref()
         const newImage = root.child(firstFile.name);
-
-       
         try {
             const snapshot = await newImage.put(firstFile);
             const url = await snapshot.ref.getDownloadURL();
             this.saveImage(url);
-            // console.log('thisisurl',url)
             this.setState({fileUploadURL:url})
           }
           catch(err) {
@@ -124,9 +87,8 @@ else {
     console.log('thisisstate',this.state.url)
 e.preventDefault();
     axios({
-     
      method: 'POST',
-     url: `http://localhost:8080/uploadpics/newpic`,
+     url: `http://localhost:8080/`,
      data: {
          category: this.state.chosencategory,
          style: this.state.chosenstyle,
@@ -138,33 +100,58 @@ e.preventDefault();
  })
      .then(function (res) {
          console.log('data', res)
-         console.log("success")
-         
-         // this.saveImage(url);---------------and here 
+
      }).then(() => alert('Picture was added successfully'))
 
      .catch(function (error) {
          console.log('err', error)
      })}
     }
+
+    //--------------- toggle isOpen
+
+handleSlider=(isOpen)=>{
+    console.log('inside state:',isOpen)
+        if(isOpen === true){
+          this.setState({isOpen: false})
+        } else{
+            this.setState({isOpen: true})
+        }
+      }
     
     //-------------------------------------------
     render() {
-        console.log('category list', this.state.category)
-        console.log('style list', this.state.style)
-        console.log('season list', this.state.seasons)
+        console.log('state:', this.state)
         // console.log('thispic',this.state.fileUpload.name)
-        const { categories, styles } = this.state
+        let { categories, styles, isOpen } = this.state
+        console.log('isOpen', isOpen)
         return (
-            <div className='container'>
-                <div className="input-group mb-3">
-                    <div className="custom-file">
-                        <input type="file" className="custom-file-input" onChange={this.handleFileInput} />
+            <>
+            <div className={isOpen ?  "shadow": "noshadow" }></div>
 
-                    </div>
+            <div className='container'>
+                <div className ="upload-box">
+                    <label className ="upload-button">
+                    <h1 className='text'>Select</h1> 
+                    <h1 className='text'>Image</h1>
+                        <input type="file" onChange={this.handleFileInput} className='hidden_input_file' capture="camera"/>
+                    </label>
+                </div>
+
+                <div className="button_holder">
+                    <button type="button" onClick={this.postPosted}  className="submit-button">Submit</button>
+                </div>
+                <div className='containertext'>
+                    <h6 className="slidertext">Click to Show menu</h6>
+                </div>
+                <button className="rightarrow arrow-right" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
+
+
+
+                <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in"}`} >
                     <div className="col-sm-8">
                         <form>
-                            <select id="inputState" onChange={this.handleCategory} className="form-control" defaultValue="CATEGORY">
+                            <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
                                 <option value="CATEGORY" disabled>CATEGORY</option>
 
                                 {
@@ -174,8 +161,7 @@ e.preventDefault();
                                 }
                             </select>
 
-
-                            <select id="inputState"  className="form-control" onChange={this.handleStyle} defaultValue="STYLE">
+                            <select id="inputState"  className="form-control tab-color" onChange={this.handleStyle} defaultValue="STYLE">
                                 <option value="STYLE" disabled>STYLE</option>
                                 {
                                     styles.map((style, i) => {
@@ -184,10 +170,7 @@ e.preventDefault();
                                 }
                             </select>
 
-
-
-
-                            <select id="inputState" onChange={this.handleColor} className="form-control" defaultValue="COLOR">
+                            <select id="inputState" onChange={this.handleColor} className="form-control tab-color" defaultValue="COLOR">
                                 <option value="COLOR" disabled>COLOR</option>
                                 {
                                     clothingColor.colors.map((color, i) => {
@@ -196,8 +179,7 @@ e.preventDefault();
                                 }
                             </select>
 
-
-                            <select id="inputState" onChange={this.handleSeason} className="form-control" defaultValue="SEASON">
+                            <select id="inputState" onChange={this.handleSeason} className="form-control tab-color" defaultValue="SEASON">
                                 <option value="SEASON" disabled>SEASON</option>
                                 {
                                     clothingSeason.seasons.map((season, i) => {
@@ -206,15 +188,22 @@ e.preventDefault();
                                 }
                             </select>
 
+                            <div className="form-group upload-button-category">
+                                <button type="button " onClick={this.postPosted}  className="button">Upload</button>
+                            </div>
 
-                            <div className="form-group">
-                             
-                                <button type="button" onClick={this.postPosted}  className="button">Upload</button>
+                            <div className='containertext'>
+                                <h6 className="slidertext">Return to upload page</h6>
+                                <button className="rightarrow arrow-left" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
                             </div>
                         </form>
-                    </div>
+                    </div> 
                 </div>
+                
             </div>
+            
+            
+            </>
         );
     }
 }

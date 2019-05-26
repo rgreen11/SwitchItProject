@@ -9,7 +9,7 @@ import axios from 'axios';
 // import Closet from './containers/closet';
 // import Opening from './containers/opening';
 import AddItem from './containers/addItem';
-import Filter from './components/filterslider';
+// import Filter from './components/filterslider';
 // import MixNMatch from './containers/mixNmatch';
 // import Calendar from './containers/calendar';
 import Signup from "./containers/signup";
@@ -20,10 +20,10 @@ import Logout from "./containers/logout";
 
 //components
 import AuthContext from "./contexts/auth";
-import Navbar from './components/navbar';
+// import Navbar from './components/navbar';
 
 //styles
-import './styles/filterslider.css';
+// import './styles/filterslider.css';
 
 class App extends Component {
   state = {
@@ -67,12 +67,12 @@ class App extends Component {
       <>
       <AuthContext.Provider value={this.state.user}>
         <HashRouter>
-        <Route path='/' component={Navbar} />
+        {/* <Route path='/' component={Navbar} /> */}
           <Switch>
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
             {/* <Route path="/opening" exact strict component={Opening} /> */}
             <Route path="/additem" exact strict component={AddItem} /> 
-            <Route path="/filterslider" exact strict component={Filter} /> 
+            {/* <Route path="/filterslider" exact strict component={Filter} />  */}
             {/* <Route path="/mix-Nmatch" exact strict component={MixNMatch} />
             <Route path="/calendar" exact strict component={Calendar} /> */}
             <Route path="/signup" exact component={Signup} />
