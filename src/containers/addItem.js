@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import firebase from '../firebase';
 import ImageService from '../services/images';
-import axios from 'axios'
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'animate.css';
+import './AddItem.css';
 
 
 
@@ -141,15 +144,34 @@ e.preventDefault();
         const { category, style, color, season } = this.state
         return (
             <div className='container'>
-                <div className="input-group mb-3">
-                    <div className="custom-file">
-                        <input type="file" className="custom-file-input" onChange={this.handleFileInput} />
+                <div className ="upload-box">
+                    <label className ="upload-button">
+                    <h1 className='text'>Select</h1> 
+                    <h1 className='text'>Image</h1>
+                        <input type="file" onChange={this.handleFileInput} className='hidden_input_file' capture="camera"/>
+                    </label>
+                </div>
 
-                    </div>
-                    <div className="col-sm-8">
-                        <form>
+                <div className="button_holder">
+                    <button type="button" onClick={this.postPosted}  className="submit-button">Submit</button>
+                </div>
+
+                <p className="rightarrow"><i></i></p> 
+
+                
+
+                    {/* <div>
+                        <label className="custom-upload">
+                        Take a Photo
+                        <input type="file" accept="image/*" capture="camera" onChange={this.capture} className="button_control"/>
+                        </label>
+                    </div> */}
+                
+
+                     <div className="selections">
+                        <form className = "inputs">
                             <select id="inputState" onChange={this.handleCategory} className="form-control" defaultValue="Choose...">
-                                <option >CATEGORY</option>
+                                <option>CATEGORY</option>
                                 {
                                     category.map((e, i) => {
                                         return <option key={i} >{e.category}</option>
@@ -159,10 +181,10 @@ e.preventDefault();
 
 
                             <select id="inputState" onChange={this.handleStyle} className="form-control" defaultValue="Choose...">
-                                <option >STYLE</option>
+                                <option>STYLE</option>
                                 {
                                     style.map((e, i) => {
-                                        return <option key={i} >{e.style}</option>
+                                        return <option key={i}>{e.style}</option>
                                     })
                                 }
                             </select>
@@ -181,22 +203,15 @@ e.preventDefault();
 
 
                             <select id="inputState" onChange={this.handleSeason} className="form-control" defaultValue="Choose...">
-                                <option >SEASON</option>
+                                <option>SEASON</option>
                                 {
                                     season.map((e, i) => {
                                         return <option key={i} >{e.season}</option>
                                     })
                                 }
                             </select>
-
-
-                            <div className="form-group">
-
-                                <button type="button" onClick={this.postPosted}  className="button">Upload</button>
-                            </div>
                         </form>
-                    </div>
-                </div>
+                    </div> 
             </div>
         );
     }

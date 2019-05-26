@@ -20,7 +20,7 @@ class PicturesRender extends React.Component {
     axios.get(`http://localhost:8080/uploadpics/pics`)
       .then(response => response.data)
       .then(pics => {
-        this.setState({picArray:pics,})
+        this.setState({picArray:pics})
       })
 }
 

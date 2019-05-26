@@ -8,7 +8,7 @@ import axios from 'axios';
 
 // import Closet from './containers/closet';
 // import Opening from './containers/opening';
-import AddItem from './containers/addItem';
+import AddItem from './containers/AddItem';
 // import MixNMatch from './containers/mixNmatch';
 // import Calendar from './containers/calendar';
 import Signup from "./containers/signup";
@@ -19,7 +19,7 @@ import Logout from "./containers/logout";
 
 //components
 import AuthContext from "./contexts/auth";
-import Navbar from './components/navbar';
+// import Navbar from './components/navbar';
 
 
 class App extends Component {
@@ -64,7 +64,7 @@ class App extends Component {
       <>
       <AuthContext.Provider value={this.state.user}>
         <HashRouter>
-        <Route path='/' component={Navbar} />
+        {/* <Route path='/' component={Navbar} /> */}
           <Switch>
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
             {/* <Route path="/opening" exact strict component={Opening} /> */}
