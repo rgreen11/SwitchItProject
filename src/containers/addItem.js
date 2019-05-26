@@ -2,67 +2,78 @@ import React, { Component } from 'react'
 import firebase from '../firebase';
 import ImageService from '../services/images';
 import axios from 'axios'
+import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 
 
 
-export default class Picturepost extends Component {
+export default class AddItem extends Component {
     constructor(props) {
         super(props)
         this.state = {
             fileUploadURL: '',//firebase uploadnamapic
-            category: [],
+            categories: clothingCategory,
             chosencategory: '',
-            style: [],
+            styles: [],
             chosenstyle: '',
-            color: [],
+            colors: clothingColor,
             chosencolor: '',
-            season: [],
+            seasons: clothingSeason,
             chosenseason: ''
         }
     }
 
     //----------------------
   
-    componentDidMount() {
+    // componentDidMount() {
 
-        axios.get(`http://localhost:8080/uploadpics/category`)
-            .then(res => res.data)
-            .then(category => {
-                console.log('category list', category)
-                this.setState({ category: category })
-            })
+    //     axios.get(`http://localhost:8080/uploadpics/category`)
+    //         .then(res => res.data)
+    //         .then(category => {
+    //             console.log('category list', category)
+    //             this.setState({ category: category })
+    //         })
 
-        axios.get(`http://localhost:8080/uploadpics/style`)
-            .then(res => res.data)
-            .then(style => {
-                console.log('style list', style)
-                this.setState({ style: style })
-            })
+    
 
-        axios.get(`http://localhost:8080/uploadpics/color`)
-            .then(res => res.data)
-            .then(color => {
-                console.log('color list', color)
-                this.setState({ color: color })
-            })
+    //     axios.get(`http://localhost:8080/uploadpics/color`)
+    //         .then(res => res.data)
+    //         .then(color => {
+    //             console.log('color list', color)
+    //             this.setState({ color: color })
+    //         })
 
-        axios.get(`http://localhost:8080/uploadpics/season`)
-            .then(res => res.data)
-            .then(season => {
-                console.log('season list', season)
-                this.setState({ season: season })
-            })
-    }
+    //     axios.get(`http://localhost:8080/uploadpics/season`)
+    //         .then(res => res.data)
+    //         .then(season => {
+    //             console.log('season list', season)
+    //             this.setState({ season: season })
+    //         })
+    // }
 
     //---------HANDLES SELECTIONS 
     handleCategory = (e) => {
-        console.log('CATEGORY selected', e.target.value);
-        this.setState({ chosencategory: e.target.value })
-    }
+      this.setState({
+          chosencategory: e.target.value,
+          styles: stylesByCategory[e.target.value]
+        })
+      
+    // else {
+    //    const categoryClick = e.target.value
+    //         axios.get(`http://localhost:8080/uploadpics/style/${categoryClick}`)
+    //         .then(style => {
+    //             console.log(style.data)
+    //             this.setState({ style: style.data },()=>{
+    //                 console.log('updated style:',this.state.style)
+    //             })
+    //         })
+    // }
+}
 
     handleStyle = (e) => {
         console.log('STYLE selected', e.target.value);
         this.setState({ chosenstyle: e.target.value })
+
+        
     }
 
     handleColor = (e) => {
@@ -83,7 +94,7 @@ export default class Picturepost extends Component {
       }
     
       handleFileInput = async (e) => {
-          console.log('string stored in FB:',e)
+          console.log('string stored in firebase:',e)
         const firstFile = e.target.files[0];
         const root = firebase.storage().ref()
         const newImage = root.child(firstFile.name);
@@ -104,6 +115,12 @@ export default class Picturepost extends Component {
     
 //function to post
 postPosted=(e)=>{
+    
+    if(this.state.chosencategory==='' || this.state.chosencolor==='' || this.state.chosenseason==='' || this.state.chosenstyle===''){
+        return alert('You must select from all fields')
+    }
+
+else {
     console.log('thisisstate',this.state.url)
 e.preventDefault();
     axios({
@@ -129,16 +146,15 @@ e.preventDefault();
      .catch(function (error) {
          console.log('err', error)
      })}
-
-     
-
-
-
+    }
+    
     //-------------------------------------------
     render() {
-        console.log('thisisstate',this.state.url)
+        console.log('category list', this.state.category)
+        console.log('style list', this.state.style)
+        console.log('season list', this.state.seasons)
         // console.log('thispic',this.state.fileUpload.name)
-        const { category, style, color, season } = this.state
+        const { categories, styles } = this.state
         return (
             <div className='container'>
                 <div className="input-group mb-3">
@@ -148,21 +164,22 @@ e.preventDefault();
                     </div>
                     <div className="col-sm-8">
                         <form>
-                            <select id="inputState" onChange={this.handleCategory} className="form-control" defaultValue="Choose...">
-                                <option >CATEGORY</option>
+                            <select id="inputState" onChange={this.handleCategory} className="form-control" defaultValue="CATEGORY">
+                                <option value="CATEGORY" disabled>CATEGORY</option>
+
                                 {
-                                    category.map((e, i) => {
-                                        return <option key={i} >{e.category}</option>
+                                    categories.map((category, i) => {
+                                        return <option key={i} >{category}</option>
                                     })
                                 }
                             </select>
 
 
-                            <select id="inputState" onChange={this.handleStyle} className="form-control" defaultValue="Choose...">
-                                <option >STYLE</option>
+                            <select id="inputState"  className="form-control" onChange={this.handleStyle} defaultValue="STYLE">
+                                <option value="STYLE" disabled>STYLE</option>
                                 {
-                                    style.map((e, i) => {
-                                        return <option key={i} >{e.style}</option>
+                                    styles.map((style, i) => {
+                                        return <option key={i} >{style}</option>
                                     })
                                 }
                             </select>
@@ -170,28 +187,28 @@ e.preventDefault();
 
 
 
-                            <select id="inputState" onChange={this.handleColor} className="form-control" defaultValue="Choose...">
-                                <option >COLOR</option>
+                            <select id="inputState" onChange={this.handleColor} className="form-control" defaultValue="COLOR">
+                                <option value="COLOR" disabled>COLOR</option>
                                 {
-                                    color.map((e, i) => {
-                                        return <option key={i} >{e.color}</option>
+                                    clothingColor.colors.map((color, i) => {
+                                        return <option key={i} >{color}</option>
                                     })
                                 }
                             </select>
 
 
-                            <select id="inputState" onChange={this.handleSeason} className="form-control" defaultValue="Choose...">
-                                <option >SEASON</option>
+                            <select id="inputState" onChange={this.handleSeason} className="form-control" defaultValue="SEASON">
+                                <option value="SEASON" disabled>SEASON</option>
                                 {
-                                    season.map((e, i) => {
-                                        return <option key={i} >{e.season}</option>
+                                    clothingSeason.seasons.map((season, i) => {
+                                        return <option key={i} >{season}</option>
                                     })
                                 }
                             </select>
 
 
                             <div className="form-group">
-
+                             
                                 <button type="button" onClick={this.postPosted}  className="button">Upload</button>
                             </div>
                         </form>

@@ -24,4 +24,4 @@ yarn-error.log*
 
 
 # Key
-src/contexts/apikey.js
+src/contexts/ApiKey.js
