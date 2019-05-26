@@ -1,0 +1,9 @@
+.allSelections{
+  background-color: aqua;
+  display: grid;
+  grid-template-columns: 0fr
+}
+
+.form-control{
+  padding:10px;
+}
