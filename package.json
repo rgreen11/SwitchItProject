@@ -8,6 +8,7 @@
     "bootstrap": "^4.3.1",
     "firebase": "^6.0.2",
     "jslib-html5-camera-photo": "^3.0.2-beta.0",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",

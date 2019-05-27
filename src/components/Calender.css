@@ -1,0 +1,23 @@
+.calender{
+    border: 5px solid black;
+
+}
+
+.namesofweekday{
+    display: flex;
+    border: 3px solid red;
+    justify-content: space-around;
+}
+
+.dayname{
+    display: flex;
+    border: 2px solid purple;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* .week-day{
+    justify-content: center;
+    align-items: center;
+} */

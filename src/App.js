@@ -10,7 +10,7 @@ import axios from 'axios';
 // import Opening from './containers/opening';
 import AddItem from './containers/addItem';
 // import Filter from './components/filterslider';
-// import MixNMatch from './containers/mixNmatch';
+import MixNMatch from './containers/mixNmatch';
 // import Calendar from './containers/calendar';
 import Signup from "./containers/signup";
 import Login from "./containers/login";
@@ -73,8 +73,8 @@ class App extends Component {
             {/* <Route path="/opening" exact strict component={Opening} /> */}
             <Route path="/additem" exact strict component={AddItem} /> 
             {/* <Route path="/filterslider" exact strict component={Filter} />  */}
-            {/* <Route path="/mix-Nmatch" exact strict component={MixNMatch} />
-            <Route path="/calendar" exact strict component={Calendar} /> */}
+             <Route path="/mix-Nmatch" exact strict component={MixNMatch} /> 
+            {/* <Route path="/calendar" exact strict component={Calendar} /> */} 
             <Route path="/signup" exact component={Signup} />
             <Route path="/login" exact component={Login} />
             <Route path="/logout" exact component={Logout} />
