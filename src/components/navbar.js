@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../components/image/SwitchIt-icon-logo-01.jpg';
 import { Link } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Navbar extends React.Component {
     render() {
@@ -18,7 +19,7 @@ class Navbar extends React.Component {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li className="nav-item active">
-                <Link to="/additem">
+                <Link to="/Additem">
                   <a className="nav-link" href="#">Add Item <span className="sr-only">(current)</span></a>
                 </Link>
                 </li>
