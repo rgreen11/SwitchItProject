@@ -129,7 +129,7 @@ handleSlider=(isOpen)=>{
             <>
             <div className={isOpen ?  "shadow": "noshadow" }></div>
 
-            <div className='container'>
+            <div className='bigbox'>
                 <div className ="upload-box">
                     <label className ="upload-button">
                     <h1 className='text'>Select</h1> 
