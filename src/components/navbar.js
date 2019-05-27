@@ -14,17 +14,23 @@ class Navbar extends React.Component {
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-          
+           
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                <Link to="/AddItem" 
-                className="nav-link" href="#">Add Item<span className="sr-only">(current)</span>
+                <li className="nav-item active">
+                <Link to="/additem">
+                  <a className="nav-link" href="#">Add Item <span className="sr-only">(current)</span></a>
                 </Link>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Mix-N-Match</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Calendar</a>
+                <Link to="/mix-N-match">
+                  <a className="nav-link" href="#">Mix-N-Match</a>
+                </Link>
+                </li>
+                <li className="nav-item">
+                <Link to="/mix-N-match">
+                  <a className="nav-link" href="#">Outfit of the Day</a>
+                </Link>
                 </li>
               </ul>
 
