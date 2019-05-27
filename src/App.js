@@ -3,9 +3,6 @@ import {Route,  Switch} from "react-router-dom";
 import firebase from './firebase';
 import axios from 'axios';
 
-
-//pages
-
 // import Closet from './containers/closet';
 // import Opening from './containers/opening';
 import AddItem from './containers/addItem';
