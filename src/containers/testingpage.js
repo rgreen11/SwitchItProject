@@ -24,8 +24,6 @@ class PicturesRender extends React.Component {
       })
 }
 
-
-
   render() {
     
     // const{input,comments}=this.state
@@ -38,7 +36,6 @@ class PicturesRender extends React.Component {
               <img src ={this.state.picArray.img_url}/>
             </>
         }
-
 
 {
                     this.state.picArray.map((e, i) => {

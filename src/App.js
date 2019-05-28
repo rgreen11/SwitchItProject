@@ -6,7 +6,7 @@ import axios from 'axios';
 
 //pages
 
-// import Closet from './containers/closet';
+import Closet from './containers/Closet';
 // import Opening from './containers/opening';
 import AddItem from './containers/addItem';
 // import MixNMatch from './containers/mixNmatch';
@@ -66,7 +66,7 @@ class App extends Component {
         <HashRouter>
         <Route path='/' component={Navbar} />
           <Switch>
-            {/* {/* <Route path="/" exact strict component={Closet} /> */}
+            <Route path="/" exact strict component={Closet} />
             {/* <Route path="/opening" exact strict component={Opening} /> */}
             <Route path="/additem" exact strict component={AddItem} /> */}
             {/* <Route path="/mix-Nmatch" exact strict component={MixNMatch} />

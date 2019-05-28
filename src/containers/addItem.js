@@ -9,7 +9,7 @@ export default class Picturepost extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            fileUploadURL: '',//firebase uploadnamapic
+            fileUploadURL: '', //firebase uploadnamapic
             category: [],
             chosencategory: '',
             style: [],
