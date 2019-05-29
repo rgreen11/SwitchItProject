@@ -21,7 +21,6 @@ Make sure you've saved and commited all work
 ```
 git checkout master
 git pull main master
-git npm install
 git checkout 'task_branch'
 git merge master
 ```
