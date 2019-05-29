@@ -4,7 +4,7 @@ import ImageService from '../services/images';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'animate.css';
-import '..styles/AddItem.css';
+import '../styles/AddItem.css';
 import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 
 
