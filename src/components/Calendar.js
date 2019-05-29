@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./Calendar.css";
+import "../styles/Calendar.css";
 
 
 let weekdayshort = moment.weekdaysShort();
