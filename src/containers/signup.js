@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from '../firebase';
 import AuthContext from '../contexts/auth';
-import { Redirect } from 'react-router-dom';
+import { Redirect,Link } from 'react-router-dom';
 import Axios from 'axios';
 import '../styles/signup.css';
 
@@ -60,10 +60,16 @@ export default class Signup extends React.Component {
     const { firstname, lastname, email, username, password, error } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
     const displayForm = <>
-    <div className="backgroundcolor"></div>
-        <div className='title text-center'>
+    <div className="container-fluid">
+        <div className="title">
           <h1>Sign Up</h1>
         </div>
+        <div className='buttons text-center mb-5'>
+        <button className="loginBtn loginBtn--google">
+        Login with Google
+        </button>
+        </div>
+       
       {displayError}
       <form>
         <div className="form-group">
@@ -81,12 +87,16 @@ export default class Signup extends React.Component {
         <div className="form-group">
           <input type="password" className="form-control" placeholder="Password" value={password} name="PASSWORD" onChange={this.handleChange} />
         </div>
-        <br />
-        <br />
         <div className='buttons text-center mb-5'>
         <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>CREATE CLOSET</button>
         </div>
+        <div className="title text-center">
+          <Link to="/login">
+            <a className="nav-link" href="#">Already have an account? LOGIN</a>
+          </Link>
+        </div>
       </form>
+      </div>
     </>;
 
     return (

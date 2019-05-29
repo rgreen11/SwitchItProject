@@ -1,4 +1,4 @@
-.displayForm{
+ /* .displayForm{
 position: absolute;
 width: 2182px;
 height: 3661px;
@@ -7,31 +7,102 @@ top: 0px;
 
 background: #69c8c9;
 
+}  */
+
+.container-fluid{
+    background:  #69c8c9;
+    
 } 
 
-.backgroundcolor{
-    background:  #69c8c9;
-    height: 100vh;
-    width: 100%;
+.nav-link{
+    color: antiquewhite;
 }
 
 /* SIGN -UP */
-/* .title{
-    position: absolute;
-    width: 885px;
-    height: 268px;
-    
-    font-family: Quantico;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 200px;
-    line-height: 286px;
-    
+.title{
+    text-align: center;
     color: #FFFFFF;
 }
 
+/* Shared */
+.loginBtn {
+    box-sizing: border-box;
+    position: relative;
+    /* width: 13em;  - apply for fixed size */
+    margin: 0.2em;
+    padding: 0 15px 0 46px;
+    border: none;
+    text-align: left;
+    line-height: 34px;
+    white-space: nowrap;
+    border-radius: 0.2em;
+    font-size: 16px;
+    color: #FFF;
+  }
+  .loginBtn:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 34px;
+    height: 100%;
+  }
+  .loginBtn:focus {
+    outline: none;
+  }
+  .loginBtn:active {
+    box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+  }
+
+/* Google */
+.loginBtn--google {
+    /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+    background: #DD4B39;
+  }
+  .loginBtn--google:before {
+    border-right: #BB3F30 1px solid;
+    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+  }
+  .loginBtn--google:hover,
+  .loginBtn--google:focus {
+    background: #E74B37;
+  }
+ 
+  
+  
+  
+  
 
 
-.form-group{
+
+/* .form-group{
     align-content: center;
-} */ 
+}  */
+
+/* CREATE CLOSET */
+
+/* .buttons{
+position: absolute;
+width: 723px;
+height: 228px;
+left: 729px;
+top: 2516px;
+
+background: #E2F6F6;
+border-radius: 3px;
+position: absolute;
+width: 554px;
+height: 136px;
+left: 832px;
+top: 2575px;
+
+font-family: Quantico;
+font-style: normal;
+font-weight: normal;
+font-size: 72px;
+line-height: 103px;
+
+color: #000000;
+} */
+
