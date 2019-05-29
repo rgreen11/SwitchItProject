@@ -1,0 +1,37 @@
+.displayForm{
+position: absolute;
+width: 2182px;
+height: 3661px;
+left: 0px;
+top: 0px;
+
+background: #69c8c9;
+
+} 
+
+.backgroundcolor{
+    background:  #69c8c9;
+    height: 100vh;
+    width: 100%;
+}
+
+/* SIGN -UP */
+/* .title{
+    position: absolute;
+    width: 885px;
+    height: 268px;
+    
+    font-family: Quantico;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 200px;
+    line-height: 286px;
+    
+    color: #FFFFFF;
+}
+
+
+
+.form-group{
+    align-content: center;
+} */ 
