@@ -1,10 +1,10 @@
 import React from 'react';
-import Calender from '../components/Calender';
+import Calendar from '../components/Calendar';
 
 
 
 export default class MixNMatch extends React.Component{
     render(){
-        return <Calender/>
+        return <Calendar/>
     }
 }
