@@ -4,7 +4,7 @@ import ImageService from '../services/images';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'animate.css';
-import './AddItem.css';
+import '../styles/AddItem.css';
 import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 
 
@@ -142,24 +142,24 @@ handleSlider=(isOpen)=>{
                 </div>
 
                 <div className="button_holder">
-                    <button type="button" onClick={this.postPosted}  className="submit-button">Submit</button>
+                    <button type="button" onClick={this.postPosted}  className="submit-button"><h1 className='button-text'>Submit</h1> </button>
                 </div>
                 <div className='containertext'>
-                    <h6 className="slidertext">Click to Show menu</h6>
+                    <h6 className="slidertext">Click</h6>
                 </div>
                 <button className="rightarrow arrow-right" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
 
 
 
                 <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in"}`} >
-                    <div className="col-sm-8">
+                    <div className="sliderbox">
                         <form>
                             <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
                                 <option value="CATEGORY" disabled>CATEGORY</option>
 
                                 {
                                     categories.map((category, i) => {
-                                        return <option key={i} >{category}</option>
+                                        return <option key={i}>{category}</option>
                                     })
                                 }
                             </select>
@@ -168,7 +168,7 @@ handleSlider=(isOpen)=>{
                                 <option value="STYLE" disabled>STYLE</option>
                                 {
                                     styles.map((style, i) => {
-                                        return <option key={i} >{style}</option>
+                                        return <option key={i}>{style}</option>
                                     })
                                 }
                             </select>
@@ -177,7 +177,7 @@ handleSlider=(isOpen)=>{
                                 <option value="COLOR" disabled>COLOR</option>
                                 {
                                     clothingColor.colors.map((color, i) => {
-                                        return <option key={i} >{color}</option>
+                                        return <option key={i}>{color}</option>
                                     })
                                 }
                             </select>
@@ -186,7 +186,7 @@ handleSlider=(isOpen)=>{
                                 <option value="SEASON" disabled>SEASON</option>
                                 {
                                     clothingSeason.seasons.map((season, i) => {
-                                        return <option key={i} >{season}</option>
+                                        return <option key={i}>{season}</option>
                                     })
                                 }
                             </select>
@@ -196,7 +196,7 @@ handleSlider=(isOpen)=>{
                             </div>
 
                             <div className='containertext'>
-                                <h6 className="slidertext">Return to upload page</h6>
+                                <h6 className="slidertext">Return</h6>
                                 <button className="rightarrow arrow-left" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
                             </div>
                         </form>
