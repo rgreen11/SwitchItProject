@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import { HashRouter, Route,  Switch} from "react-router-dom";
+import {Route,  Switch} from "react-router-dom";
 import firebase from './firebase';
 import axios from 'axios';
-
-
-//pages
 
 // import Closet from './containers/closet';
 // import Opening from './containers/opening';
@@ -18,7 +15,8 @@ import Logout from "./containers/logout";
 
 //components
 import AuthContext from "./contexts/auth";
-// import Navbar from './components/navbar';
+import Navbar from './components/navbar';
+
 
 
 
@@ -64,8 +62,8 @@ class App extends Component {
     return (
       <>
       <AuthContext.Provider value={this.state.user}>
-        <HashRouter>
-        {/* <Route path='/' component={Navbar} /> */}
+
+      <Navbar/>
           <Switch>
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
             {/* <Route path="/opening" exact strict component={Opening} /> */}
@@ -76,7 +74,8 @@ class App extends Component {
             <Route path="/logout" exact component={Logout} />
             <Route component={Error404} />
           </Switch>
-      </HashRouter>
+          
+
       </AuthContext.Provider>
       </>
       );
