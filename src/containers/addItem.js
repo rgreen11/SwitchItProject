@@ -9,6 +9,7 @@ import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '..
 
 
 
+
 export default class AddItem extends Component {
     constructor(props) {
         super(props)
@@ -121,12 +122,14 @@ handleSlider=(isOpen)=>{
     
     //-------------------------------------------
     render() {
+        
         console.log('state:', this.state)
         // console.log('thispic',this.state.fileUpload.name)
         let { categories, styles, isOpen } = this.state
         console.log('isOpen', isOpen)
         return (
             <>
+            
             <div className={isOpen ?  "shadow": "noshadow" }></div>
 
             <div className='bigbox'>
@@ -199,10 +202,9 @@ handleSlider=(isOpen)=>{
                         </form>
                     </div> 
                 </div>
-                
             </div>
             
-            
+           
             </>
         );
     }
