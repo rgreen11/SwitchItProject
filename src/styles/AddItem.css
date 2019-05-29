@@ -156,7 +156,7 @@ select {
     }
 
     .submit-button {
-        width: 70%;
+        width: 100%;
         background: #40CCCF;
         font-family: Roboto;
         font-style: normal;
