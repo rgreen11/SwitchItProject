@@ -124,7 +124,6 @@ handleSlider=(isOpen)=>{
     render() {
         
         console.log('state:', this.state)
-        // console.log('thispic',this.state.fileUpload.name)
         let { categories, styles, isOpen } = this.state
         console.log('isOpen', isOpen)
         return (
