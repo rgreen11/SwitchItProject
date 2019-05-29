@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Navbar extends React.Component {
+  
     render() {
         return (
         <>
-            <div className="container">
+        
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/">
             <img src={Logo} className="img-thumbnail float-right" style={{width:'100px'}} alt=""/>
@@ -29,7 +30,7 @@ class Navbar extends React.Component {
                 </Link>
                 </li>
                 <li className="nav-item">
-                <Link to="/mix-N-match">
+                <Link to="/dayOutfit">
                   <a className="nav-link" href="#">Outfit of the Day</a>
                 </Link>
                 </li>
@@ -37,7 +38,6 @@ class Navbar extends React.Component {
 
             </div>
           </nav>
-          </div>
 
         </>
          
