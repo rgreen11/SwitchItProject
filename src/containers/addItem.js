@@ -4,11 +4,10 @@ import ImageService from '../services/images';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'animate.css';
-import './AddItem.css';
+import '../styles/AddItem.css';
 import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
-
-
-
+import {Animated} from "react-animated-css";
+import Media from "react-media";
 
 export default class AddItem extends Component {
     constructor(props) {
@@ -122,16 +121,126 @@ handleSlider=(isOpen)=>{
     
     //-------------------------------------------
     render() {
-        
-        console.log('state:', this.state)
-        // console.log('thispic',this.state.fileUpload.name)
         let { categories, styles, isOpen } = this.state
-        console.log('isOpen', isOpen)
-        return (
-            <>
-            
-            <div className={isOpen ?  "shadow": "noshadow" }></div>
+        //-----------------------------------------------------------------------------------------------
+        const selectionToggle = () =>{
+            return(
+                <Media query="(min-width: 800px)">
+          {matches =>
+            matches ? (
+                <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in"}`} >
+                <div className="sliderbox">
+                    <form>
+                        <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
+                            <option value="CATEGORY" disabled>CATEGORY</option>
 
+                            {
+                                categories.map((category, i) => {
+                                    return <option key={i}>{category}</option>
+                                })
+                            }
+                        </select>
+
+                        <select id="inputState"  className="form-control tab-color" onChange={this.handleStyle} defaultValue="STYLE">
+                            <option value="STYLE" disabled>STYLE</option>
+                            {
+                                styles.map((style, i) => {
+                                    return <option key={i}>{style}</option>
+                                })
+                            }
+                        </select>
+
+                        <select id="inputState" onChange={this.handleColor} className="form-control tab-color" defaultValue="COLOR">
+                            <option value="COLOR" disabled>COLOR</option>
+                            {
+                                clothingColor.colors.map((color, i) => {
+                                    return <option key={i}>{color}</option>
+                                })
+                            }
+                        </select>
+
+                        <select id="inputState" onChange={this.handleSeason} className="form-control tab-color" defaultValue="SEASON">
+                            <option value="SEASON" disabled>SEASON</option>
+                            {
+                                clothingSeason.seasons.map((season, i) => {
+                                    return <option key={i}>{season}</option>
+                                })
+                            }
+                        </select>
+
+                        <div className="form-group upload-button-category">
+                            <button type="button " onClick={this.postPosted}  className="button">Upload</button>
+                        </div>
+
+                        <div className='containertext'>
+                            <h6 className="slidertext">Return</h6>
+                            <button className="rightarrow arrow-left" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
+                        </div>
+                    </form>
+                </div> 
+            </div>
+        
+            ) : (
+                <Animated animationIn="fadeInLeftBig" animationOut="fadeOutLeftBig" animationInDuration={1000} animationOutDuration={1000} isVisible={isOpen} className={"slider category-position-left fade-inShow"}>
+                <div className="sliderbox">
+                    <form>
+                        <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
+                            <option value="CATEGORY" disabled>CATEGORY</option>
+
+                            {
+                                categories.map((category, i) => {
+                                    return <option key={i}>{category}</option>
+                                })
+                            }
+                        </select>
+
+                        <select id="inputState"  className="form-control tab-color" onChange={this.handleStyle} defaultValue="STYLE">
+                            <option value="STYLE" disabled>STYLE</option>
+                            {
+                                styles.map((style, i) => {
+                                    return <option key={i}>{style}</option>
+                                })
+                            }
+                        </select>
+
+                        <select id="inputState" onChange={this.handleColor} className="form-control tab-color" defaultValue="COLOR">
+                            <option value="COLOR" disabled>COLOR</option>
+                            {
+                                clothingColor.colors.map((color, i) => {
+                                    return <option key={i}>{color}</option>
+                                })
+                            }
+                        </select>
+
+                        <select id="inputState" onChange={this.handleSeason} className="form-control tab-color" defaultValue="SEASON">
+                            <option value="SEASON" disabled>SEASON</option>
+                            {
+                                clothingSeason.seasons.map((season, i) => {
+                                    return <option key={i}>{season}</option>
+                                })
+                            }
+                        </select>
+
+                        <div className="form-group upload-button-category">
+                            <button type="button " onClick={this.postPosted}  className="button">Upload</button>
+                        </div>
+
+                        <div className='containertext'>
+                            <h6 className="slidertext">Return</h6>
+                            <button className="rightarrow arrow-left" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
+                        </div>
+                    </form>
+                </div> 
+                </Animated>
+            )
+          }
+        </Media>
+            )
+        }
+        //-----------------------------------------------------------------------------------------------
+        return (
+        <>
+            <div className={isOpen ?  "shadow": "noshadow" }></div>
             <div className='bigbox'>
                 <div className ="upload-box">
                     <label className ="upload-button">
@@ -142,70 +251,17 @@ handleSlider=(isOpen)=>{
                 </div>
 
                 <div className="button_holder">
-                    <button type="button" onClick={this.postPosted}  className="submit-button">Submit</button>
+                    <button type="button" onClick={this.postPosted}  className="submit-button"><h1 className='button-text'>Submit</h1> </button>
                 </div>
                 <div className='containertext'>
-                    <h6 className="slidertext">Click to Show menu</h6>
+                    <h6 className="slidertext">Click</h6>
                 </div>
                 <button className="rightarrow arrow-right" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
-
-
-
-                <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in"}`} >
-                    <div className="col-sm-8">
-                        <form>
-                            <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
-                                <option value="CATEGORY" disabled>CATEGORY</option>
-
-                                {
-                                    categories.map((category, i) => {
-                                        return <option key={i} >{category}</option>
-                                    })
-                                }
-                            </select>
-
-                            <select id="inputState"  className="form-control tab-color" onChange={this.handleStyle} defaultValue="STYLE">
-                                <option value="STYLE" disabled>STYLE</option>
-                                {
-                                    styles.map((style, i) => {
-                                        return <option key={i} >{style}</option>
-                                    })
-                                }
-                            </select>
-
-                            <select id="inputState" onChange={this.handleColor} className="form-control tab-color" defaultValue="COLOR">
-                                <option value="COLOR" disabled>COLOR</option>
-                                {
-                                    clothingColor.colors.map((color, i) => {
-                                        return <option key={i} >{color}</option>
-                                    })
-                                }
-                            </select>
-
-                            <select id="inputState" onChange={this.handleSeason} className="form-control tab-color" defaultValue="SEASON">
-                                <option value="SEASON" disabled>SEASON</option>
-                                {
-                                    clothingSeason.seasons.map((season, i) => {
-                                        return <option key={i} >{season}</option>
-                                    })
-                                }
-                            </select>
-
-                            <div className="form-group upload-button-category">
-                                <button type="button " onClick={this.postPosted}  className="button">Upload</button>
-                            </div>
-
-                            <div className='containertext'>
-                                <h6 className="slidertext">Return to upload page</h6>
-                                <button className="rightarrow arrow-left" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
-                            </div>
-                        </form>
-                    </div> 
-                </div>
+                {
+                    selectionToggle()
+                }
             </div>
-            
-           
-            </>
+        </>
         );
     }
 }
