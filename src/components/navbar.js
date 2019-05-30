@@ -3,6 +3,7 @@ import Logo from '../components/image/SwitchIt-icon-logo-01.jpg';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 class Navbar extends React.Component {
   
     render() {
