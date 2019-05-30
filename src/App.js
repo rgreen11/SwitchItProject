@@ -7,7 +7,7 @@ import axios from 'axios';
 //pages
 
 // import Closet from './containers/closet';
-// import Opening from './containers/opening';
+import Opening from './containers/opening';
 import AddItem from './containers/addItem';
 // import Filter from './components/filterslider';
 // import MixNMatch from './containers/mixNmatch';
@@ -71,7 +71,7 @@ class App extends Component {
       <Navbar/>
           <Switch>
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
-            {/* <Route path="/opening" exact strict component={Opening} /> */}
+            <Route path="/opening" exact strict component={Opening} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
             {/* <Route path="/filterslider" exact strict component={Filter} />  */}
             {/* <Route path="/mix-Nmatch" exact strict component={MixNMatch} />
