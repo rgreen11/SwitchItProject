@@ -3,15 +3,12 @@ import {Route,  Switch} from "react-router-dom";
 import firebase from './firebase';
 import axios from 'axios';
 
-
-//pages
-
 // import Closet from './containers/closet';
-// import Opening from './containers/opening';
+import Opening from './containers/opening';
 import AddItem from './containers/addItem';
 // import Filter from './components/filterslider';
-import MixNMatch from './containers/mixNmatch';
 // import Calendar from './containers/calendar';
+import MixNMatch from './containers/mixNmatch';
 import Signup from "./containers/signup";
 import Login from "./containers/login";
 import Error404 from "./components/error404";
@@ -23,7 +20,6 @@ import Logout from "./containers/logout";
 //components
 import AuthContext from "./contexts/auth";
 import Navbar from './components/navbar';
-
 
 
 class App extends Component {
@@ -71,7 +67,7 @@ class App extends Component {
       <Navbar/>
           <Switch>
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
-            {/* <Route path="/opening" exact strict component={Opening} /> */}
+            <Route path="/opening" exact strict component={Opening} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
             <Route path="/mix-N-match" exact strict component={MixNMatch} />
              {/*<Route path="/calendar" exact strict component={Calendar} /> */}
