@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './hidemix.css';
 import axios from 'axios';
-// import  './outfits.css'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import './hidemix.css';
 import { Carousel } from 'react-responsive-carousel';
 
 
-export default class DemoCarousel extends Component {
+export default class CarouselClass extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -16,7 +15,8 @@ export default class DemoCarousel extends Component {
 
     }
 
-    componentDidMount() {
+//--------Axios
+componentDidMount() {
         //top
         axios.get(`http://localhost:8080/clothes/style/top`)
 
@@ -33,13 +33,34 @@ export default class DemoCarousel extends Component {
             })
     }
 
+//-----Mix-Match Function
+    //------tops
+mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pictureBottoms) => {
+    for (let i = pictureTops.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pictureTops[i], pictureTops[j]] = [pictureTops[j], pictureTops[i]];
+    }
+    console.log('this',pictureTops)
+    this.setState({pictureTops})
+
+    //-------bottoms
+    for (let i = pictureBottoms.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pictureBottoms[i], pictureBottoms[j]] = [pictureBottoms[j], pictureBottoms[i]];
+    }
+    console.log('this',pictureBottoms)
+    this.setState({pictureBottoms})
+
+}
 
     render() {
         const { pictureTops, pictureBottoms } = this.state
-
+        console.log('this is state',this.state.pictureTops)
         return (
             <>
-            <div >
+            <div className="center">
+            <button className='mixClothes' onClick={this.mixClothes} type="button" class="btn btn-info">Mix-N-Match</button>
+            <div className="top">
                 <Carousel showArrows={true} 
                           showThumbs={false}
                           width={"500px"}>
@@ -48,25 +69,28 @@ export default class DemoCarousel extends Component {
                             return (
                                 <>
                                     <div id='imageOutfit'>
-                                        <img key={i} src={e.img_url} alt='tops' />
+                                        <img key={i} src={e.img_url} alt='tops'className='images' />
                                     </div>
                                 </>)
                         })
                     }
                 </Carousel>
+                    </div>
 
+                    <div className="bottom">
                 <Carousel showArrows={true}  width={"500px"} showThumbs={false}>
                     {
                         pictureBottoms.map((e, i) => {
                             return (
                                 <>
                                     <div id='imageOutfit'>
-                                        <img key={i} src={e.img_url} alt='bottoms' />
+                                        <img key={i} src={e.img_url} alt='bottoms' className='images'/>
                                     </div>
                                 </>)
                         })
                     }
                 </Carousel>
+                </div>
             </div>
             </>
 

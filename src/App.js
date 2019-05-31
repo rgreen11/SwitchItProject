@@ -73,7 +73,7 @@ class App extends Component {
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
             {/* <Route path="/opening" exact strict component={Opening} /> */}
             <Route path="/additem" exact strict component={AddItem} /> 
-            <Route path="/mix-Nmatch" exact strict component={MixNMatch} />
+            <Route path="/mix-N-match" exact strict component={MixNMatch} />
              {/*<Route path="/calendar" exact strict component={Calendar} /> */}
             <Route path="/signup" exact component={Signup} />
             <Route path="/login" exact component={Login} />

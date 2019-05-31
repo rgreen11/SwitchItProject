@@ -5,3 +5,18 @@
 /* img {
   height: 550px;
 } */
+
+
+.top{
+  display: flex;
+  justify-content: center;
+}
+
+.bottom{
+  display: flex;
+  justify-content: center;
+}
+
+.images{
+  width: 250px !important;
+}
