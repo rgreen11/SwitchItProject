@@ -4,7 +4,7 @@ import firebase from './firebase';
 import axios from 'axios';
 
 // import Closet from './containers/closet';
-// import Opening from './containers/opening';
+import Opening from './containers/opening';
 import AddItem from './containers/addItem';
 import MixNMatch from './containers/mixNmatch';
 import Signup from "./containers/signup";
@@ -66,7 +66,7 @@ class App extends Component {
       <Navbar/>
           <Switch>
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
-            {/* <Route path="/opening" exact strict component={Opening} /> */}
+            <Route path="/opening" exact strict component={Opening} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
             <Route path="/mix-Nmatch" exact strict component={MixNMatch} /> 
             <Route path="/signup" exact component={Signup} />
