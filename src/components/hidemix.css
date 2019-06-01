@@ -20,3 +20,11 @@
 .images{
   width: 250px !important;
 }
+
+.carousel .slide{
+  background: white;
+}
+
+/* .carousel .control-arrow {
+  color:blue;
+} */
