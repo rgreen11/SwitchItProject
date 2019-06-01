@@ -227,10 +227,10 @@ select {
 
     .fade-in {
         height: 150px;
-        width: 1px;
+        width: 0px;
         opacity: 0;
         height: 100vh;
-        transition: all .75s ease;
+        transition: all .5s ease;
     }
 
     .fade-inShow {
@@ -241,7 +241,7 @@ select {
         margin-left: 0px;
         font-size: 10px;
         background-color: rgb(207, 203, 85);
-        transition: all .75s ease;
+        transition: all .5s ease;
     }
 
     .arrow-right {
