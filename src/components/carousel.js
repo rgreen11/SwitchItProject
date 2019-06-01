@@ -55,7 +55,7 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
 
     render() {
         const { pictureTops, pictureBottoms } = this.state
-        console.log('this is state',this.state.pictureTops)
+        // console.log('this is state',this.state.pictureTops)
         return (
             <>
             <div className="center">
