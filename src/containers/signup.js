@@ -60,7 +60,7 @@ export default class Signup extends React.Component {
     const { firstname, lastname, email, username, password, error } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
     const displayForm = <>
-    <div className="container-fluid">
+    <div className="container-fluid" style={{height:'calc(100vh - 96.53px)'}}>
         <div className="title">
           <h1>Sign Up</h1>
         </div>
@@ -71,7 +71,7 @@ export default class Signup extends React.Component {
         </div>
        
       {displayError}
-      <form>
+      <form style={{maxWidth:'500px', margin:'0 auto'}}>
         <div className="form-group">
           <input type="text" className="form-control" placeholder="FIRST NAME" value={firstname} name="firstname" onChange={this.handleChange} />
         </div>
@@ -92,7 +92,7 @@ export default class Signup extends React.Component {
         </div>
         <div className="title text-center">
           <Link to="/login">
-            <a className="nav-link" href="#">Already have an account? LOGIN</a>
+            Already have an account? LOGIN
           </Link>
         </div>
       </form>

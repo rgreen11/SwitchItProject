@@ -33,11 +33,12 @@ export default class Login extends React.Component {
     const { email, password, error } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
     const displayForm = <>
-    <div className="container-fluid"> 
-      <h1>Login</h1>
-      {displayError}
-      <form>
-        <div className="form-group">
+    <div className="container-fluid" style={{height:'calc(100vh - 96.53px)'}}> 
+    <div className="title">
+          <h1>Login</h1>
+    </div>      
+    {displayError}
+      <form style={{maxWidth:'500px', margin:'0 auto'}}>        <div className="form-group">
           <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="ENTER EMAIL" name="email" value={email} onChange={this.handleChange} />
         </div>
         <div className="form-group">
