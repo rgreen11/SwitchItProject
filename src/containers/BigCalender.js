@@ -44,7 +44,7 @@ import axios from 'axios';
 
 
 onEventDrop=({ event, start, end }) =>{
-    const { events, img, style, stamp } = this.state;
+    const { events, img, stamp } = this.state;
     const idx = events.indexOf(event);
     const updatedEvent = { ...event, start, end };
     const nextEvents = [...events];
