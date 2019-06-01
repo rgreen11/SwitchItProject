@@ -6,6 +6,7 @@ import '../styles/Navbar.css';
 import AuthContext from "../contexts/auth";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 class Navbar extends React.Component {
   
@@ -48,6 +49,9 @@ class Navbar extends React.Component {
                 );
             }
 =======
+=======
+
+>>>>>>> e5540d2bd199e0157977b794f47a1fd53af75a40
 const Navbar = () => {
   return (
     <AuthContext.Consumer>
