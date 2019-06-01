@@ -28,3 +28,17 @@
 /* .carousel .control-arrow {
   color:blue;
 } */
+
+.carousel{
+  display: flex;
+  justify-content: center;
+}
+#imageOutfit{
+  background-color:lightgrey;
+  /* height:300px; */
+}
+
+img{
+  height:300px;
+  
+}

@@ -63,7 +63,8 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
             <div className="top">
                 <Carousel showArrows={true} 
                           showThumbs={false}
-                          width={"500px"}>
+                          width={"500px"} 
+                          className="carousel">
                     {
                         pictureTops.map((e, i) => {
                             return (
@@ -84,7 +85,7 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
                             return (
                                 <>
                                     <div id='imageOutfit'>
-                                        <img key={i} src={e.img_url} alt='bottoms' className='images'/>
+                                        <img key={i} src={e.img_url} alt='bottoms' className='images' />
                                     </div>
                                 </>)
                         })
