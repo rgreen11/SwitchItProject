@@ -7,13 +7,13 @@ export default class Filter extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            categories: clothingCategory,
+            categories: clothingCategory,//
             chosencategory: '',
-            styles: [],
+            styles: [],//
             chosenstyle: '',
-            colors: clothingColor,
+            colors: clothingColor,//
             chosencolor: '',
-            seasons: clothingSeason,
+            seasons: clothingSeason,//
             chosenseason: ''
         }
     }
@@ -47,14 +47,8 @@ export default class Filter extends Component {
     
     //-------------------------------------------
     render() {
-        console.log('category list', this.state.category)
-        console.log('style list', this.state.style)
-        console.log('season list', this.state.seasons)
         const { categories, styles } = this.state
-        return (
-           
-                
-                  
+        return (            
                     <div className="allSelections">
                         <form>
                             <select id="inputState" className="form-control" onChange={this.handleCategory} defaultValue="CATEGORY">
