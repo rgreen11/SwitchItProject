@@ -1,0 +1,43 @@
+.control-dots {
+  display: none;
+}
+
+/* img {
+  height: 550px;
+} */
+
+
+.top{
+  display: flex;
+  justify-content: center;
+}
+
+.bottom{
+  display: flex;
+  justify-content: center;
+}
+
+.images{
+  width: 250px !important;
+}
+
+.carousel .slide{
+  background: white;
+}
+
+/* .carousel .control-arrow {
+  color:blue;
+} */
+
+.carousel{
+  display: flex;
+  justify-content: center;
+}
+
+#imageOutfit{
+  background-color:lightgrey;
+}
+
+img{
+  height:300px;
+}
