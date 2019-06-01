@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { HashRouter, Route,  Switch} from "react-router-dom";
+import {Route,  Switch} from "react-router-dom";
 import firebase from './firebase';
 import axios from 'axios';
 
@@ -9,6 +9,7 @@ import axios from 'axios';
 import Closet from './containers/Closet';
 // import Opening from './containers/opening';
 import AddItem from './containers/addItem';
+// import Filter from './components/filterslider';
 // import MixNMatch from './containers/mixNmatch';
 // import Calendar from './containers/calendar';
 import Signup from "./containers/signup";
@@ -20,6 +21,9 @@ import Logout from "./containers/logout";
 //components
 import AuthContext from "./contexts/auth";
 import Navbar from './components/navbar';
+
+//styles
+// import './styles/filterslider.css';
 
 
 class App extends Component {
@@ -63,12 +67,13 @@ class App extends Component {
     return (
       <>
       <AuthContext.Provider value={this.state.user}>
-        <HashRouter>
-        <Route path='/' component={Navbar} />
+
+      <Navbar/>
           <Switch>
             <Route path="/" exact strict component={Closet} />
             {/* <Route path="/opening" exact strict component={Opening} /> */}
-            <Route path="/additem" exact strict component={AddItem} /> */}
+            <Route path="/additem" exact strict component={AddItem} /> 
+            {/* <Route path="/filterslider" exact strict component={Filter} />  */}
             {/* <Route path="/mix-Nmatch" exact strict component={MixNMatch} />
             <Route path="/calendar" exact strict component={Calendar} /> */}
             <Route path="/signup" exact component={Signup} />
@@ -76,7 +81,8 @@ class App extends Component {
             <Route path="/logout" exact component={Logout} />
             <Route component={Error404} />
           </Switch>
-      </HashRouter>
+          
+
       </AuthContext.Provider>
       </>
       );

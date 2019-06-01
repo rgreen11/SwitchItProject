@@ -1,40 +1,54 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import ItemsList from '../components/closetitems';
+import Axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class Closet extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            usernames:[],
-            items:[
-               {img: 'https://www4.assets-gap.com/webcontent/0017/004/841/cn17004841.jpg'},
-               {img: 'https://www2.assets-gap.com/webcontent/0016/940/632/cn16940632.jpg'},
-               {img: 'https://www1.assets-gap.com/webcontent/0016/516/720/cn16516720.jpg'},
-               {img: 'https://www2.assets-gap.com/webcontent/0016/781/185/cn16781185.jpg'},
-               {img: 'https://www3.assets-gap.com/webcontent/0016/697/362/cn16697362.jpg'},
-            ],
-        }
+        id:[],
+        img_url:[],
+        }  
     }
-    render(){
-        const {items}=this.state
-        return(
-            <>
-            <div className='nav'>
-            <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">Navbar</span>
-            </nav>
-            </div>
-            
-            <div className="container row col-md">
-                    {
-                        items.map((e,i)=>{ 
-                        return(<ItemsList img={e.img} /> )
-                        })
-                    }
-                </div>
-            </>
-        )
-    }
+     componentDidMount() {
+    const{img_url}=this.state
+    const { id } = this.props.match.params; //
+    Axios.get(`http://localhost:8080/clothes`)
+      .then(response => response.data)
+      .then(pics => {
+        this.setState({img_url:pics})
+      })
 }
-export default Closet;
+    // componentWillMount(){
+    //   const{id}=this.id;
+    //   Axios.get(`http://localhost:8080/clothes`)
+    //   .then(response => response.data)
+    //   .then(username => {
+    //     this.setState({username})
+    //   })
+    // }
+    render(){
+        const {img_url}=this.state;
+        if(img_url.length) {
+            return (
+            <div className="container row col-md">
+              {
+                img_url.map((e, i) => {
+                  return (<ItemsList img={e.img_url} />)
+                })
+              }
+            </div>
+            )
+          }
+          else {
+            return (
+              <Link to ="addItlem.js">UPLOAD IMAGES</Link>
+            )
+           }
+          
+          
+    }
+  }     
+export default Closet

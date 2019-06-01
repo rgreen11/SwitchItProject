@@ -1,0 +1,301 @@
+.bigbox{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 15% 15% 15% 15% 15% 15% 15% 15%;
+    grid-template-columns: 15% 15% 15% 15% 15% 15% 15% 15%;
+    grid-template-areas: 
+    "header header header header . . . ."
+    ". upload-box upload-box upload-box  . category-position-left category-position-left category-position-left"
+    ". upload-box upload-box upload-box  . category-position-left category-position-left category-position-left"
+    "display upload-box upload-box upload-box  . category-position-left category-position-left category-position-left"
+    "display . . . .category-position-left category-position-left category-position-left"
+    ". submitbutton submitbutton submitbutton . . . ."
+    ". . . . . slidertext . ."
+    ". . . . . . . .";
+}
+
+.upload-box {
+    grid-area: upload-box;
+    display: grid;
+    grid-template-rows: 35% 35% 35% 35%;
+    grid-template-columns: 35% 35% 35% 35%;
+    grid-template-areas: 
+    ". . . ."
+    ". upload-button . ."
+    ". . . ."
+    ". . . .";
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: #C4C4C4;
+
+}
+
+.hidden_input_file{
+    display: none;
+}
+
+.upload-button{
+    grid-area: upload-button;
+}
+
+.text{
+    bottom: 100px;
+    font-size: 72px;
+    font-family: Roboto;
+    color: white;
+}
+
+.button_holder{
+    grid-area: submitbutton;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.submit-button{
+    width: 70%;
+    background: #40CCCF;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: #FFF738;
+    border-radius: 5px;
+    box-shadow: 2px 1px grey;
+}
+
+.submit-button:hover {
+    border: 0.5px solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 1px #427388; 
+}
+
+
+.selections{
+    display: none;
+}
+
+ 
+
+  .slidertext{
+    opacity: 0;
+    align-items: center;
+    justify-content: center;
+    color: #FFF738;
+  }
+
+  .category-position-left{
+    grid-area: category-position-left;
+
+    /* position: fixed;
+    float: right; */
+    /* display: flex; */
+    /* margin-left: 100px; */
+    /* padding-bottom: 1000px; */
+  }
+
+  select{
+    margin-bottom: 20px;
+  }
+
+  .upload-button-category{
+    display: none;
+  }
+
+  .arrow-right {
+    opacity: 0;
+    }
+
+    .arrow-left {
+      opacity: 0;
+      }
+ 
+
+/* ---------------------max-width: 800px ---------------------------*/
+
+ @media only screen and (max-width: 800px) { 
+  .container{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 15% 15% 15% 15% 15% 15% 15% 15%;
+    grid-template-columns: 15% 15% 15% 15% 15% 15% 15% 15%;
+    grid-template-areas: 
+    "header header header header . . . ."
+    ". upload-box upload-box upload-box  . . . ."
+    ". upload-box upload-box upload-box  . . . ."
+    "display upload-box upload-box upload-box  . . . ."
+    "display . . . . . . ."
+    ". submitbutton submitbutton submitbutton . . . ."
+    ". . . . . slidertext arrow ."
+    ". . . . . . . .";
+}
+
+.upload-box {
+    grid-area: upload-box;
+    display: grid;
+    grid-template-rows: 35% 35% 35% 35%;
+    grid-template-columns: 35% 35% 35% 35%;
+    grid-template-areas: 
+    ". . . ."
+    ". upload-button . ."
+    ". . . ."
+    ". . . .";
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background-color: #C4C4C4;
+
+}
+
+.hidden_input_file{
+    display: none;
+}
+
+.upload-button{
+    grid-area: upload-button;
+}
+
+.text{
+    bottom: 100px;
+    font-size: 72px;
+    font-family: Roboto;
+    color: white;
+}
+
+.button_holder{
+    grid-area: submitbutton;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.submit-button{
+    width: 70%;
+    background: #40CCCF;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    color: #FFF738;
+    border-radius: 5px;
+    box-shadow: 2px 1px grey;
+}
+
+.submit-button:hover {
+    border: 0.5px solid;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    text-shadow: 1px 1px 1px #427388; 
+}
+
+
+.selections{
+    display: none;
+}
+ 
+  .slidertext{
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  color: #FFF738;
+  }
+ .selections::after {
+  grid-area: display;
+animation-name: selections;
+}
+
+
+.shadow{
+opacity: 0.5;
+position:fixed;
+padding:0;
+margin:0;
+top:0;
+left:0;
+width: 100%;
+height: 100%;
+background: black;
+transition: all .75s ease;
+}
+.noshadow{
+opacity: 0;
+}
+
+.slider{
+border: 1px solid black;
+position:fixed;
+padding:72px;
+margin:0;
+top:0;
+left:0;
+display: flex-row;
+}
+
+.fade-in {
+height: 150px;
+width: 1px;
+opacity: 0;
+height: 100vh;
+transition: all .75s ease;
+}
+
+.fade-inShow {
+opacity: 1;
+height: 150px;
+width: 35%;
+height: 100vh;
+margin-left: 0px;
+font-size: 10px;
+background-color: rgb(207, 203, 85);
+transition: all .75s ease;
+}
+
+.arrow-right {
+opacity: 1;
+grid-area: arrow;
+width: 0; 
+height: 0; 
+border-top: 10px solid white;
+border-bottom: 10px solid white;
+border-left: 10px solid #40CCCF;
+}
+
+.arrow-left {
+opacity: 1;
+width: 0; 
+height: 0; 
+border-top: 10px solid rgb(207, 203, 85);
+border-bottom: 10px solid rgb(207, 203, 85); 
+border-right:10px solid #40CCCF; 
+background-color: rgb(207, 203, 85); 
+}
+
+.slidertext{
+opacity: 1;
+align-items: center;
+justify-content: center;
+color: #FFF738;
+}
+
+.containertext{
+  grid-area: slidertext;
+  display: flex;
+
+}
+
+
+  .tab-color{
+  background-color: rgb(195, 191, 79);
+  width: 10px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  border-color: rgb(207, 203, 85);
+  }
+
+ }
