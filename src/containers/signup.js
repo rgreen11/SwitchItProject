@@ -1,8 +1,9 @@
 import React from 'react';
 import firebase from '../firebase';
 import AuthContext from '../contexts/auth';
-import { Redirect } from 'react-router-dom';
+import { Redirect,Link } from 'react-router-dom';
 import Axios from 'axios';
+import '../styles/signup.css';
 
 export default class Signup extends React.Component {
 
@@ -59,31 +60,43 @@ export default class Signup extends React.Component {
     const { firstname, lastname, email, username, password, error } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
     const displayForm = <>
-      <h1>Sign Up</h1>
+    <div className="container-fluid">
+        <div className="title">
+          <h1>Sign Up</h1>
+        </div>
+        <div className='buttons text-center mb-5'>
+        <button className="loginBtn loginBtn--google">
+        Login with Google
+        </button>
+        </div>
+       
       {displayError}
       <form>
         <div className="form-group">
-          <label htmlFor="exampleName">First name</label>
-          <input type="text" className="form-control" placeholder="first name" value={firstname} name="firstname" onChange={this.handleChange} />
+          <input type="text" className="form-control" placeholder="FIRST NAME" value={firstname} name="firstname" onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleName">Last name</label>
-          <input type="text" className="form-control" placeholder="first name" value={lastname} name="lastname" onChange={this.handleChange} />
+          <input type="text" className="form-control" placeholder="LAST NAME" value={lastname} name="lastname" onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleName">Username</label>
-          <input type="text" className="form-control" placeholder="username" value={username} name="username" onChange={this.handleChange} />
+          <input type="text" className="form-control" placeholder="USERNAME" value={username} name="username" onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email</label>
-          <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email" value={email} onChange={this.handleChange} />
+          <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="ENTER EMAIL" name="email" value={email} onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
-          <input type="password" className="form-control" placeholder="Password" value={password} name="password" onChange={this.handleChange} />
+          <input type="password" className="form-control" placeholder="Password" value={password} name="PASSWORD" onChange={this.handleChange} />
         </div>
-        <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Sign Up</button>
+        <div className='buttons text-center mb-5'>
+        <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>CREATE CLOSET</button>
+        </div>
+        <div className="title text-center">
+          <Link to="/login">
+            <a className="nav-link" href="#">Already have an account? LOGIN</a>
+          </Link>
+        </div>
       </form>
+      </div>
     </>;
 
     return (
