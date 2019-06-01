@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/Navbar.css';
 import AuthContext from "../contexts/auth";
 
+
 const Navbar = () => {
   return (
     <AuthContext.Consumer>
