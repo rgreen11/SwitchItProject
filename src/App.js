@@ -6,6 +6,8 @@ import axios from 'axios';
 // import Closet from './containers/closet';
 import Opening from './containers/opening';
 import AddItem from './containers/addItem';
+// import Filter from './components/filterslider';
+// import Calendar from './containers/calendar';
 import MixNMatch from './containers/mixNmatch';
 import Signup from "./containers/signup";
 import Login from "./containers/login";
@@ -13,12 +15,11 @@ import Error404 from "./components/error404";
 import Logout from "./containers/logout";
 
 
+
+
 //components
 import AuthContext from "./contexts/auth";
 import Navbar from './components/navbar';
-
-
-
 
 
 class App extends Component {
@@ -68,11 +69,14 @@ class App extends Component {
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
             <Route path="/opening" exact strict component={Opening} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
-            <Route path="/mix-Nmatch" exact strict component={MixNMatch} /> 
+            <Route path="/mix-N-match" exact strict component={MixNMatch} />
+             {/*<Route path="/calendar" exact strict component={Calendar} /> */}
             <Route path="/signup" exact component={Signup} />
             <Route path="/login" exact component={Login} />
             <Route path="/logout" exact component={Logout} />
             <Route component={Error404} />
+
+ 
           </Switch>
           
 

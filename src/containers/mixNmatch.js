@@ -1,10 +1,17 @@
-import React from 'react';
+import React from 'react'
+import CarouselClass from '../components/carousel'
 import Calendar from '../components/Calendar';
 
 
+const mixNmatch = () => {
+  return (
 
-export default class MixNMatch extends React.Component{
-    render(){
-        return <Calendar/>
-    }
+    <>
+      <CarouselClass />
+      <Calendar/>
+    </>
+
+  )
 }
+export default mixNmatch;
+
