@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../components/image/SwitchIt-icon-logo-tee-02.jpg';
-//import '../Container/Style/home.css';
+import '../styles/opening.css';
 
 
 
 const Opening = (props) => {
   return (
     <>
+    
     <div className='tiledBackground'>
    
     <div>

@@ -125,6 +125,7 @@ handleSlider=(isOpen)=>{
         //-----------------------------------------------------------------------------------------------
         const selectionToggle = () =>{
             return(
+                
                 <Media query="(min-width: 800px)">
           {matches =>
             matches ? (

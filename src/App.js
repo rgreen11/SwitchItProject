@@ -63,8 +63,8 @@ class App extends Component {
     return (
       <>
       <AuthContext.Provider value={this.state.user}>
-
       <Navbar/>
+      
           <Switch>
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
             <Route path="/opening" exact strict component={Opening} /> 

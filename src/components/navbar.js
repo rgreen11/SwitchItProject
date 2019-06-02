@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from '../components/image/SwitchIt-icon-logo-01.jpg';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdbootstrap/css/mdb.min.css';
 import '../styles/Navbar.css';
 import AuthContext from "../contexts/auth";
 
@@ -13,10 +14,11 @@ const Navbar = () => {
         user => {
           // console.log(state);
           if (user) {
+            console.log('logged in')
             return (
               <>
-
-                <nav className="navbar navbar-expand-lg navbar-light bk-love">
+            
+                <nav className="navbar navbar-expand-lg navbar-light aqua-gradient">
                   <Link to="/">
                     <img src={Logo} className="img-thumbnail float-right" style={{ width: '100px' }} alt="" />
                   </Link>
@@ -50,17 +52,13 @@ const Navbar = () => {
             )
           }
           else {
+            console.log('logged out')
             return (
               <>
-                <div>The Ends</div>
-                <Link to='/'>Home</Link>
+                <Link to='/opening'>{Logo}</Link>
                 <br />
-                <Link to='/marketplace'>Marketplace</Link>
+                <Link to="/login">Login</Link>
                 <br />
-                <Link to="/signup">Sign Up</Link>
-                <br />
-                <Link to="/ootd">Outfit of the Day</Link>
-                <hr />
               </>
 
 
