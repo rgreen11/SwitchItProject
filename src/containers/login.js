@@ -33,7 +33,6 @@ export default class Login extends React.Component {
     const { email, password, error } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
     const displayForm = <>
-<<<<<<< HEAD
       {displayError}
       <div className="modal-dialog">
         <div className="modal-content">
@@ -75,30 +74,6 @@ export default class Login extends React.Component {
 
 
     </>;
-=======
-    <div className="container-fluid" style={{height:'calc(100vh - 96.53px)'}}> 
-    <div className="title">
-          <h1>Login</h1>
-    </div>      
-    {displayError}
-      <form style={{maxWidth:'500px', margin:'0 auto'}}>        <div className="form-group">
-          <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="ENTER EMAIL" name="email" value={email} onChange={this.handleChange} />
-        </div>
-        <div className="form-group">
-          <input type="password" className="form-control" placeholder="PASSWORD" value={password} name="password" onChange={this.handleChange} />
-        </div>
-        <div className='buttons text-center mb-5'>
-        <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
-        </div>
-        <div className="title text-center">
-          <Link to="/signup">
-            Don't have an account? SIGNUP HERE.
-          </Link>
-        </div>
-        </form>
-        </div>
-      </>;
->>>>>>> master
 
     return (
       <AuthContext.Consumer>
@@ -114,4 +89,4 @@ export default class Login extends React.Component {
       </AuthContext.Consumer>
     )
   }
-}
+};
