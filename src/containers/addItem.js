@@ -243,9 +243,6 @@ handleSlider=(isOpen)=>{
             <AuthContext.Consumer>
                 
                 {(user)=>{
-                    /*
-                    These functions only return JSX
-                    */
                    console.log(user , "is user rn")
                     if (user.user || user.user_id){
                         return(

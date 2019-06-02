@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from '../firebase';
 import AuthContext from '../contexts/auth';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 export default class Login extends React.Component {
 
@@ -47,9 +47,14 @@ export default class Login extends React.Component {
         <div className='buttons text-center mb-5'>
         <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
         </div>
-      </form>
-      </div>
-    </>;
+        <div className="title text-center">
+          <Link to="/signup">
+            Don't have an account? SIGNUP HERE.
+          </Link>
+        </div>
+        </form>
+        </div>
+      </>;
 
     return (
       <AuthContext.Consumer>

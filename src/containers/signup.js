@@ -19,8 +19,9 @@ export default class Signup extends React.Component {
   }
 
   handleChange = (e) => {
-      console.log(e.target.name)
+      console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
+
   }
   componentDidUpdate = async()=> {
     if(this.state.firebase_token){
@@ -85,7 +86,7 @@ export default class Signup extends React.Component {
           <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="ENTER EMAIL" name="email" value={email} onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <input type="password" className="form-control" placeholder="Password" value={password} name="PASSWORD" onChange={this.handleChange} />
+          <input type="password" className="form-control" placeholder="PASSWORD" value={password} name="password" onChange={this.handleChange} />
         </div>
         <div className='buttons text-center mb-5'>
         <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>CREATE CLOSET</button>
