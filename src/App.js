@@ -3,7 +3,7 @@ import {Route,  Switch} from "react-router-dom";
 import firebase from './firebase';
 import axios from 'axios';
 
-// import Closet from './containers/closet';
+import Closet from './containers/closet';
 import Opening from './containers/opening';
 import AddItem from './containers/addItem';
 // import Filter from './components/filterslider';
@@ -66,11 +66,11 @@ class App extends Component {
       <Navbar/>
       
           <Switch>
-            {/* {/* <Route path="/" exact strict component={Closet} /> */}
+            <Route path="/" exact strict component={Closet} /> 
             <Route path="/opening" exact strict component={Opening} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
             <Route path="/mix-N-match" exact strict component={MixNMatch} />
-             {/*<Route path="/calendar" exact strict component={Calendar} /> */}
+            {/* <Route path="/calendar" exact strict component={Calendar} />  */}
             <Route path="/signup" exact component={Signup} />
             <Route path="/login" exact component={Login} />
             <Route path="/logout" exact component={Logout} />
