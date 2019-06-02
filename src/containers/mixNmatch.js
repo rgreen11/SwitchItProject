@@ -4,9 +4,8 @@ import Calendar from '../components/Calendar';
 import FilterEffect from '../components/filtereffect'
 
 
-const mixNmatch = () => {
+const mixNmatch = (props) => {
   return (
-
     <>
       <FilterEffect/>
       <CarouselClass />
