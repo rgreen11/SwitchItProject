@@ -4,8 +4,10 @@ import firebase from './firebase';
 import axios from 'axios';
 
 // import Closet from './containers/closet';
-// import Opening from './containers/opening';
+import Opening from './containers/opening';
 import AddItem from './containers/addItem';
+// import Filter from './components/filterslider';
+// import Calendar from './containers/calendar';
 import MixNMatch from './containers/mixNmatch';
 import BigCalender from './containers/BigCalender';
 import Signup from "./containers/signup";
@@ -18,9 +20,6 @@ import Logout from "./containers/logout";
 //components
 import AuthContext from "./contexts/auth";
 import Navbar from './components/navbar';
-
-
-
 
 
 class App extends Component {
@@ -68,17 +67,17 @@ class App extends Component {
       <Navbar/>
           <Switch>
             {/* {/* <Route path="/" exact strict component={Closet} /> */}
-            {/* <Route path="/opening" exact strict component={Opening} /> */}
+            <Route path="/opening" exact strict component={Opening} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
-            <Route path="/mix-N-match" exact strict component={MixNMatch} /> 
+            <Route path="/mix-N-match" exact strict component={MixNMatch} />
+             {/* <Route path="/calendar" exact strict component={Calendar} /> */}
             <Route path="/signup" exact component={Signup} />
-            <Route path="/calender" exact strict component={BigCalender} />
+            <Route path="/calendar" exact strict component={BigCalender} />
             <Route path="/login" exact component={Login} />
             <Route path="/logout" exact component={Logout} />
             <Route component={Error404} />
           </Switch>
           
-
       </AuthContext.Provider>
       </>
       );
