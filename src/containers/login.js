@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from '../firebase';
 import AuthContext from '../contexts/auth';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 export default class Login extends React.Component {
 
@@ -33,28 +33,20 @@ export default class Login extends React.Component {
     const { email, password, error } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
     const displayForm = <>
-    <div className="container-fluid" style={{height:'calc(100vh - 96.53px)'}}> 
-    <div className="title">
-          <h1>Login</h1>
-    </div>      
-    {displayError}
-      <form style={{maxWidth:'500px', margin:'0 auto'}}>        <div className="form-group">
-          <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="ENTER EMAIL" name="email" value={email} onChange={this.handleChange} />
+      <h1>Login</h1>
+      {displayError}
+      <form>
+        <div className="form-group">
+          <label htmlFor="exampleInputEmail1">Email</label>
+          <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email" value={email} onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <input type="password" className="form-control" placeholder="PASSWORD" value={password} name="password" onChange={this.handleChange} />
+          <label htmlFor="exampleInputPassword1">Password</label>
+          <input type="password" className="form-control" placeholder="Password" value={password} name="password" onChange={this.handleChange} />
         </div>
-        <div className='buttons text-center mb-5'>
         <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
-        </div>
-        <div className="title text-center">
-          <Link to="/signup">
-            Don't have an account? SIGNUP HERE.
-          </Link>
-        </div>
-        </form>
-        </div>
-      </>;
+      </form>
+    </>;
 
     return (
       <AuthContext.Consumer>
@@ -70,4 +62,4 @@ export default class Login extends React.Component {
       </AuthContext.Consumer>
     )
   }
-}
+} 
