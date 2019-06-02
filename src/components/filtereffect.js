@@ -9,53 +9,27 @@ export default class FilterEffect extends Component{
   constructor(props){
     super(props)
     this.state={
-      
-      styles: [],
-      chosentop: '',
-
-      chosenstyle:'',
-      colors: clothingColor,
-      chosencolor: '',
-      seasons: clothingSeason,
-      chosenseason: '',
+      chosentop: '',   //top dropdown
+      chosenstyle:[],  //selected style 
+      chosencolor: [], //selected color
+      chosenseason: [],  //selected season
       
 
-      topLongSleeve:[],
-      topLSChoosen:'',
-      styleshortsleeve:[],
-      topSLChoosen:'',
-      stylesleeveless:[],
-      topSleeveless:''
+      // topLongSleeve:[],
+      // topLSChoosen:'',
+      // styleshortsleeve:[],
+      // topSLChoosen:'',
+      // stylesleeveless:[],
+      // topSleeveless:''
     }
   }
 
 
 //--------------AXIOS FUNCTIONS 
 componentDidMount(){
-
-  axios.get(`http://localhost:8080/clothes/style/top`)
-  .then(response => response.data)
-  .then(alltops => {
-    console.log('styles',alltops )
-      this.setState({ alltops })
-  })
-
+ 
+ //-------------------TOPS 
   
- //--------get long-sleeve style
- axios.get(`http://localhost:8080/clothes/long-sleeve`)
- .then(response => response.data)
- .then(topLongSleeve => {
-   console.log('styles',topLongSleeve )
-     this.setState({ topLongSleeve })
- })
-
-    //--------get long-sleeve style
-    axios.get(`http://localhost:8080/clothes/long-sleeve`)
-    .then(response => response.data)
-    .then(topLongSleeve => {
-      console.log('styles',topLongSleeve )
-        this.setState({ topLongSleeve })
-    })
 
     //--------get short-sleeve style
     axios.get(`http://localhost:8080/clothes/short-sleeve`)
@@ -80,15 +54,42 @@ componentDidMount(){
    this.setState({ chosentop:e.target.value})
  }
 
- handleStyleTops=(e)=>{
-  this.setState({ chosenstyle:e.target.value})
+ handleTopStyle=(e)=>{
+   console.log(e.target.value)
+  axios.get(`http://localhost:8080/clothes/${e.target.value}`)
+
+  .then(response => response.data)
+  .then(styleResponse => {
+    this.setState({ chosenstyle:styleResponse})
+  })
+
+}
+
+handleTopColor=(e)=>{
+  axios.get(`http://localhost:8080/clothes/color/${e.target.value}`)
+
+  .then(response => response.data)
+  .then(colorResponse => {
+    this.setState({ chosencolor:colorResponse})
+  })
+}
+
+handleTopSeason=(e)=>{
+  axios.get(`http://localhost:8080/clothes/season/${e.target.value}`)
+
+  .then(response => response.data)
+  .then(seasonResponse => {
+    this.setState({ chosenseason:seasonResponse})
+  })
+  
 }
 
   render(){
-    // console.log('chosen',this.state.chosentop)
-    // console.log('chosenstyle',this.state.topLongSleeve)
-    console.log('random',this.state.topLongSleeve)
-    const {styles,chosenstyle,chosentop,colors,chosencolor,seasons,chosenseason}=this.state
+    // console.log('chosentop',this.state.chosentop)
+    console.log('chosenstyle',this.state.chosenstyle)
+    console.log('chosencolor',this.state.chosencolor)
+    console.log('chosenseason',this.state.chosenseason)
+    const {chosenstyle,chosentop,colors,chosencolor,seasons,chosenseason}=this.state
     return( 
   
 // --------------------------------TOP
@@ -100,16 +101,16 @@ componentDidMount(){
                             <option>tops</option>  
                     </select>
 
-                    <select id="inputState"  onChange={this.handleStyleTops} className="form-control tab-color"  defaultValue="STYLE">
+                    <select id="inputState"  onChange={this.handleTopStyle} className="form-control tab-color"  defaultValue="STYLE">
                         <option value="STYLE" disabled>STYLE</option>
                         {
-                            styles.map((style, i) => {
+                            stylesByCategory.top.map((style, i) => {
                                 return <option key={i}>{style}</option>
                             })
                         }
                     </select>
 
-                    <select id="inputState"  className="form-control tab-color" defaultValue="COLOR">
+                    <select id="inputState"  onChange={this.handleTopColor} className="form-control tab-color" defaultValue="COLOR">
                         <option value="COLOR" disabled>COLOR</option>
                         {
                             clothingColor.colors.map((color, i) => {
@@ -118,7 +119,7 @@ componentDidMount(){
                         }
                     </select>
 
-                    <select id="inputState"  className="form-control tab-color" defaultValue="SEASON">
+                    <select id="inputState"  onChange={this.handleTopSeason} className="form-control tab-color" defaultValue="SEASON">
                         <option value="SEASON" disabled>SEASON</option>
                         {
                             clothingSeason.seasons.map((season, i) => {

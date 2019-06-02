@@ -10,7 +10,7 @@ const clothingColor={
 }
 
 const clothingSeason={
-  seasons:['fall/winter','summer/spring']
+  seasons:['fall-winter','summer-spring']
 }
 
 export {clothingCategory,stylesByCategory, clothingColor,clothingSeason}
