@@ -1,7 +1,8 @@
 import React from 'react';
 import firebase from '../firebase';
 import AuthContext from '../contexts/auth';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+
 
 export default class Login extends React.Component {
 
@@ -33,22 +34,51 @@ export default class Login extends React.Component {
     const { email, password, error } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
     const displayForm = <>
-      <h1>Login</h1>
       {displayError}
-      <form>
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email</label>
-          <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter email" name="email" value={email} onChange={this.handleChange} />
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-heading">
+            <h2 className="text-center">Login</h2>
+          </div>
+          <hr />
+          <div className="modal-body">
+            <form action="" role="form">
+              <div className="form-group">
+                <div className="input-group">
+                  <span className="input-group-addon">
+                    <span className="glyphicon glyphicon-user"></span>
+                  </span>
+                  <input type="email" className="form-control" placeholder="Email Address" name="email" value={email} onChange={this.handleChange} />
+
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="input-group">
+                  <span className="input-group-addon">
+                    <span className="glyphicon glyphicon-lock"></span>
+                  </span>
+                  <input type="password" className="form-control" placeholder="Password" value={password} name="password" onChange={this.handleChange} />
+
+                </div>
+
+              </div>
+
+              <div className="form-group text-center">
+                <button type="submit" classname="btn btn-success btn-lg" onClick={this.handleSubmit}>Login</button>
+
+              </div>
+
+            </form>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
-          <input type="password" className="form-control" placeholder="Password" value={password} name="password" onChange={this.handleChange} />
-        </div>
-        <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Login</button>
-      </form>
+      </div>
+
+
     </>;
 
     return (
+      <>
+      {/* <Navbar/> */}
       <AuthContext.Consumer>
         {
           (user) => {
@@ -60,6 +90,7 @@ export default class Login extends React.Component {
           }
         }
       </AuthContext.Consumer>
+      </>
     )
   }
-}
+};

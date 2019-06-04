@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from '../components/image/SwitchIt-icon-logo-tee-02.jpg';
-//import '../Container/Style/home.css';
+import '../styles/opening.css';
 
 
 
 const Opening = (props) => {
   return (
     <>
+    
     <div className='tiledBackground'>
    
     <div>
@@ -21,7 +22,7 @@ const Opening = (props) => {
       </div>
       <div className="btn-wrapper" style={{display:'flex', justifyContent: 'center'}}>
       <Link to="/signup" className="left" style={{paddingRight: '10px', paddingTop: '20px'}}>
-        <button class="btn btn-primary btn-lg btn-danger"  >
+        <button className="btn btn-primary btn-lg btn-danger"  >
           Sign Up
         </button>
       </Link>
