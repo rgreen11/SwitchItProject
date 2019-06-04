@@ -9,6 +9,7 @@ import AddItem from './containers/addItem';
 // import Filter from './components/filterslider';
 // import Calendar from './containers/calendar';
 import MixNMatch from './containers/mixNmatch';
+import BigCalender from './containers/BigCalender';
 import Signup from "./containers/signup";
 import Login from "./containers/login";
 import Error404 from "./components/error404";
@@ -70,7 +71,7 @@ class App extends Component {
             <Route path="/" exact strict component={Closet} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
             <Route path="/mix-N-match" exact strict component={MixNMatch} />
-            {/* <Route path="/calendar" exact strict component={Calendar} />  */}
+            <Route path="/calendar" exact strict component={BigCalender} /> 
             <Route path="/logout" exact component={Logout} />
             <Route path="/opening" exact strict component={() => null} /> 
             <Route path="/signup" exact strict component={() => null} /> 

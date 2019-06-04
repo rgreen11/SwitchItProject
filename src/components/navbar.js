@@ -6,7 +6,6 @@ import 'mdbootstrap/css/mdb.min.css';
 import '../styles/Navbar.css';
 import AuthContext from "../contexts/auth";
 
-
 const Navbar = () => {
   return (
     <AuthContext.Consumer>
@@ -95,6 +94,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-
-
-
