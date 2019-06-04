@@ -12,7 +12,9 @@ export default class CarouselClass extends Component {
         super(props)
         this.state = {
             pictureTops: [],
-            pictureBottoms: []
+            pictureBottoms: [],
+            currentTopIndex: 0,
+            currentBottomIndex: 0
         }
 
     }
@@ -38,27 +40,35 @@ componentDidMount() {
 //-----Mix-Match Function
     //------tops
 mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pictureBottoms) => {
-    for (let i = pictureTops.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pictureTops[i], pictureTops[j]] = [pictureTops[j], pictureTops[i]];
-    }
+  
+    const randomTopIndex = Math.floor(Math.random() * pictureTops.length);
+    const randomBottomIndex = Math.floor(Math.random() * pictureBottoms.length);
     console.log('this',pictureTops)
-    this.setState({pictureTops})
-
-    //-------bottoms
-    for (let i = pictureBottoms.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pictureBottoms[i], pictureBottoms[j]] = [pictureBottoms[j], pictureBottoms[i]];
-    }
-    console.log('this',pictureBottoms)
-    this.setState({pictureBottoms})
+    this.setState({
+        currentTopIndex: randomTopIndex,
+        currentBottomIndex: randomBottomIndex
+    });
 
 }
 
-    render() {
-        const { pictureTops, pictureBottoms } = this.state
-        const state = this.state
 
+handleTopChange =(e)=>{
+this.setState({currentTopIndex: e})
+
+}
+
+handleBottomChange=(e)=>{
+
+    this.setState({currentBottomIndex: e})
+}
+
+
+
+    render() {
+        const { pictureTops, pictureBottoms, currentTopIndex, currentBottomIndex } = this.state
+        const state = this.state
+        console.log('top',currentTopIndex)
+        console.log('bottom',currentBottomIndex)
         return (
             <>
             <div className="center">
@@ -69,7 +79,9 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
                 <Carousel showArrows={true} 
                           showThumbs={false}
                           width={"500px"} 
-                          className="carousel">
+                          className="carousel"
+                          selectedItem={currentTopIndex || 0}
+                          onChange={this.handleTopChange}>
                     {
                         pictureTops.map((e, i) => {
                             return (
@@ -84,7 +96,13 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
                     </div>
 
                     <div className="bottom">
-                <Carousel showArrows={true}  width={"500px"} showThumbs={false} className="carousel">
+                <Carousel 
+                showArrows={true}  
+                width={"500px"} 
+                showThumbs={false} 
+                className="carousel" 
+                selectedItem={currentBottomIndex || 0}
+                onChange={this.handleBottomChange}>
                     {
                         pictureBottoms.map((e, i) => {
                             return (
