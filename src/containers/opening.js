@@ -22,7 +22,7 @@ const Opening = (props) => {
       </div>
       <div className="btn-wrapper" style={{display:'flex', justifyContent: 'center'}}>
       <Link to="/signup" className="left" style={{paddingRight: '10px', paddingTop: '20px'}}>
-        <button class="btn btn-primary btn-lg btn-danger"  >
+        <button className="btn btn-primary btn-lg btn-danger"  >
           Sign Up
         </button>
       </Link>

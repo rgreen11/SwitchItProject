@@ -3,6 +3,7 @@ import firebase from '../firebase';
 import AuthContext from '../contexts/auth';
 import { Redirect, Link } from 'react-router-dom';
 
+
 export default class Login extends React.Component {
 
   state = {
@@ -62,7 +63,7 @@ export default class Login extends React.Component {
 
               </div>
 
-              <div class="form-group text-center">
+              <div className="form-group text-center">
                 <button type="submit" classname="btn btn-success btn-lg" onClick={this.handleSubmit}>Login</button>
 
               </div>
@@ -76,6 +77,8 @@ export default class Login extends React.Component {
     </>;
 
     return (
+      <>
+      {/* <Navbar/> */}
       <AuthContext.Consumer>
         {
           (user) => {
@@ -87,6 +90,7 @@ export default class Login extends React.Component {
           }
         }
       </AuthContext.Consumer>
+      </>
     )
   }
 };

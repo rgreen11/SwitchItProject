@@ -12,8 +12,8 @@ const Navbar = () => {
     <AuthContext.Consumer>
       {
         user => {
-          // console.log(state);
-          if (user) {
+          console.log(user);
+          if (user.user) {
             console.log('logged in')
             return (
               <>
@@ -54,12 +54,36 @@ const Navbar = () => {
           else {
             console.log('logged out')
             return (
-              <>
-                <Link to='/opening'>{Logo}</Link>
-                <br />
-                <Link to="/login">Login</Link>
-                <br />
-              </>
+                <>
+                  <nav className="navbar navbar-expand-lg navbar-light aqua-gradient">
+                  <Link to="/">
+                    <img src={Logo} className="img-thumbnail float-right" style={{ width: '100px' }} alt="" />
+                  </Link>
+                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                  </button>
+
+                  <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                      <li className="nav-item active">
+                        <Link to="/login">
+                          <span className="nav-link" href="#">Login <span className="sr-only">(current)</span></span>
+                        </Link>
+                      </li>
+                    </ul>
+                    </div>
+                    <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                      <li className="nav-item active">
+                        <Link to="/signup">
+                          <span className="nav-link" >Sign Up <span className="sr-only">(current)</span></span>
+                        </Link>
+                      </li>
+                    </ul>
+                    </div>
+                  </nav>
+                  </>
+            
 
 
             )
