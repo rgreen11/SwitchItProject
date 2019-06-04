@@ -55,7 +55,6 @@ export default class Login extends React.Component {
         </form>
         </div>
       </>;
-
     return (
       <AuthContext.Consumer>
         {
