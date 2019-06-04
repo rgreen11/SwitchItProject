@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ButtonCalendar from './ButtonCalendar';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import './hidemix.css';
+import '../styles/hidemix.css';
 import { Carousel } from 'react-responsive-carousel';
 
 
