@@ -75,8 +75,6 @@ class App extends Component {
             <Route path="/login" exact component={Login} />
             <Route path="/logout" exact component={Logout} />
             <Route component={Error404} />
-
- 
           </Switch>
           
 

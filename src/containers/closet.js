@@ -4,12 +4,14 @@ import ItemsList from '../components/closetitems';
 import Axios from 'axios';
 import {Link} from 'react-router-dom';
 
+
 class Closet extends React.Component{
     constructor(props){
         super(props);
         this.state={
         id:[],
         img_url:[],
+        user: null
         }  
     }
      componentDidMount() {
