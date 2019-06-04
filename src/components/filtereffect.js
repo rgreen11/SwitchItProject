@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
-import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
+import {stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -10,42 +10,11 @@ export default class FilterEffect extends Component{
     super(props)
     this.state={
       chosentop: '',   //top dropdown
-      chosenstyle:[],  //selected style 
-      chosencolor: [], //selected color
-      chosenseason: [],  //selected season
-      
-
-      // topLongSleeve:[],
-      // topLSChoosen:'',
-      // styleshortsleeve:[],
-      // topSLChoosen:'',
-      // stylesleeveless:[],
-      // topSleeveless:''
+      chosenstyle:'',  //selected style 
+      chosencolor: '', //selected color
+      chosenseason: '',  //selected season
+    
     }
-  }
-
-
-//--------------AXIOS FUNCTIONS 
-componentDidMount(){
- 
- //-------------------TOPS 
-  
-
-    //--------get short-sleeve style
-    axios.get(`http://localhost:8080/clothes/short-sleeve`)
-    .then(response => response.data)
-    .then(styleshortsleeve => {
-      console.log('styles2', styleshortsleeve)
-        this.setState({ styleshortsleeve})
-    }) 
-
-    //--------get sleeve-less style
-    axios.get(`http://localhost:8080/clothes/sleeve-less`)
-    .then(response => response.data)
-    .then(stylesleeveless => {
-      console.log('styles3',stylesleeveless )
-        this.setState({ stylesleeveless})
-    })
   }
 
 
@@ -55,44 +24,54 @@ componentDidMount(){
  }
 
  handleTopStyle=(e)=>{
-   console.log(e.target.value)
-  axios.get(`http://localhost:8080/clothes/${e.target.value}`)
+   this.setState({ chosenstyle:e.target.value})
+}
 
+handleTopColor=(e)=>{
+  this.setState({ chosencolor:e.target.value})
+}
+
+handleTopSeason=(e)=>{
+  this.setState({ chosenseason:e.target.value})
+}
+
+
+//--------------AXIOS FUNCTIONS 
+
+submitButton=(e)=>{
+//TOPS 
+
+//STYLE 
+  axios.get(`http://localhost:8080/clothes/${this.state.chosenstyle}`)
   .then(response => response.data)
   .then(styleResponse => {
     this.setState({ chosenstyle:styleResponse})
   })
 
-}
-
-handleTopColor=(e)=>{
-  axios.get(`http://localhost:8080/clothes/color/${e.target.value}`)
-
+// //COLOR
+ axios.get(`http://localhost:8080/clothes/color/${this.state.chosentop}/${this.state.chosenstyle}/${this.state.chosencolor}`)
   .then(response => response.data)
   .then(colorResponse => {
     this.setState({ chosencolor:colorResponse})
   })
-}
 
-handleTopSeason=(e)=>{
-  axios.get(`http://localhost:8080/clothes/season/${e.target.value}`)
-
+// //SEASON
+axios.get(`http://localhost:8080/clothes/season/${this.state.chosentop}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`)
   .then(response => response.data)
   .then(seasonResponse => {
     this.setState({ chosenseason:seasonResponse})
   })
-  
 }
 
+//--------------------------BOTTOMS 
+
   render(){
-    // console.log('chosentop',this.state.chosentop)
+    console.log('chosentop',this.state.chosentop)
     console.log('chosenstyle',this.state.chosenstyle)
     console.log('chosencolor',this.state.chosencolor)
     console.log('chosenseason',this.state.chosenseason)
-    const {chosenstyle,chosentop,colors,chosencolor,seasons,chosenseason}=this.state
+
     return( 
-  
-// --------------------------------TOP
        <>
 
                 <form>
@@ -130,7 +109,7 @@ handleTopSeason=(e)=>{
 
                 </form>
 
-                <button type="button" class="btn btn-info"> Submit</button>
+                <button type="button" onClick={this.submitButton} class="btn btn-info"> Submit</button>
           
         
     </>)
