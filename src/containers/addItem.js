@@ -8,6 +8,8 @@ import '../styles/AddItem.css';
 import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 import {Animated} from "react-animated-css";
 import Media from "react-media";
+import AuthContext from '../contexts/auth';
+
 
 export default class AddItem extends Component {
     constructor(props) {
@@ -125,6 +127,8 @@ handleSlider=(isOpen)=>{
         //-----------------------------------------------------------------------------------------------
         const selectionToggle = () =>{
             return(
+                <>
+                
                 <Media query="(min-width: 800px)">
           {matches =>
             matches ? (
@@ -235,12 +239,21 @@ handleSlider=(isOpen)=>{
             )
           }
         </Media>
+        </>
             )
         }
         //-----------------------------------------------------------------------------------------------
         return (
-        <>
-            <div className={isOpen ?  "shadow": "noshadow" }></div>
+            <>
+            
+            <AuthContext.Consumer>
+                
+                {(user)=>{
+                   console.log(user , "is user rn")
+                    if (user.user || user.user_id){
+                        return(
+                            <>
+                                <div className={isOpen ?  "shadow": "noshadow" }></div>
             <div className='bigbox'>
                 <div className ="upload-box">
                     <label className ="upload-button">
@@ -261,7 +274,23 @@ handleSlider=(isOpen)=>{
                     selectionToggle()
                 }
             </div>
-        </>
+                            </>
+                        )
+                    }
+                    else {
+                        return (
+                            !this.state.user ?
+                            <h5>You Are Not Logged In!</h5>
+                            :
+                            <h5> {this.state.user}</h5>
+                        // <h5>Your'e not logged in!</h5>
+                        )
+                    }
+                }
+                }
+
+            </AuthContext.Consumer>
+            </>
         );
     }
 }
