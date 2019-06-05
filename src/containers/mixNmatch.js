@@ -5,6 +5,7 @@ import ButtonCalendar from '../components/ButtonCalendar';
 import Media from 'react-media';
 import {Link} from 'react-router-dom';
 import FilterEffect from '../components/filtereffect';
+import FilterBottomEffect from '../components/filterbottomeffect';
 import FilterContext from '../contexts/filterContext';
 
 
@@ -27,8 +28,10 @@ export default class mixNmatch extends React.Component {
       <FilterContext.Provider value={this.state.filteredTops}>
         <FilterEffect updateFilter={this.updateFilter}/>
         <CarouselClass/>
+        <FilterBottomEffect updateBottomFilter={this.updateBottomFilter}/>
         {/* <Calendar/> */}
         {/* <ButtonCalendar /> */}
+
       
       </FilterContext.Provider>
   

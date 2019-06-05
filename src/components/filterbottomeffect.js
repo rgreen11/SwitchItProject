@@ -5,51 +5,49 @@ import {stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-export default class FilterEffect extends Component{
+export default class FilterBottomEffect extends Component{
   constructor(props){
     super(props)
     this.state={
-      chosentop: '',   //top dropdown
+      chosenbottom: '',   //top dropdown
       chosenstyle:'',  //selected style 
       chosencolor: '', //selected color
       chosenseason: '',  //selected season
+      // bottomaye:[]
     }
   }
 
 
 //--------------GET FUNCTIONS 
- handleTops=(e)=>{
-   this.setState({ chosentop:e.target.value})
+ handleBottoms=(e)=>{
+   this.setState({ chosenbottom:e.target.value})
  }
 
- handleTopStyle=(e)=>{
+ handleBottomStyle=(e)=>{
    this.setState({ chosenstyle:e.target.value})
 }
 
-handleTopColor=(e)=>{
+handleBottomColor=(e)=>{
   this.setState({ chosencolor:e.target.value})
 }
 
-handleTopSeason=(e)=>{
+handleBottomSeason=(e)=>{
   this.setState({ chosenseason:e.target.value})
 }
 
 
 //--------------AXIOS FUNCTIONS 
 
-submitButton=(e)=>{
-//TOPS 
-const allSelected=this.state
+submitBottomButton=(e)=>{
+//BOTTOM
 
-
-
-// //SEASON
-let url=`http://localhost:8080/clothes/season/${this.state.chosentop}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`
-console.log('lala', url)
+let url=`http://localhost:8080/clothes/season/${this.state.chosenbottom}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`
+console.log('boottom', url)
 axios.get(url)
   .then(res => {
     let data = res.data;
-    this.props.updateFilter(data);
+    this.props.updateBottomFilter(data);
+    // this.setState({bottomaye:data})
   })
 }
 
@@ -58,31 +56,31 @@ axios.get(url)
 //--------------------------BOTTOMS 
 
   render(){
-    // console.log('chosentop',this.state.chosentop)
-    // console.log('chosenstyle',this.state.chosenstyle)
-    // console.log('chosencolor',this.state.chosencolor)
-    // console.log('chosenseason',this.state.chosenseason)
-    // console.log('all selected',this.state.allSelected)
-
+    console.log('chosenbottom',this.state.chosenbottom)
+    console.log('chosenstyle',this.state.chosenstyle)
+    console.log('chosencolor',this.state.chosencolor)
+    console.log('chosenseason',this.state.chosenseason)
+    console.log('chosenbottom',this.state.bottomaye)
+  
     return( 
        <>
 
                 <form>
-                    <select id="inputState"  onChange={this.handleTops} className="form-control tab-color" defaultValue="CATEGORY">
+                    <select id="inputState"  onChange={this.handleBottoms} className="form-control tab-color" defaultValue="CATEGORY">
                         <option value="CATEGORY" disabled>CATEGORY</option>  
-                            <option>top</option>  
+                            <option>bottom</option>  
                     </select>
 
-                    <select id="inputState"  onChange={this.handleTopStyle} className="form-control tab-color"  defaultValue="STYLE">
+                    <select id="inputState"  onChange={this.handleBottomStyle} className="form-control tab-color"  defaultValue="STYLE">
                         <option value="STYLE" disabled>STYLE</option>
                         {
-                            stylesByCategory.top.map((style, i) => {
+                            stylesByCategory.bottom.map((style, i) => {
                                 return <option key={i}>{style}</option>
                             })
                         }
                     </select>
 
-                    <select id="inputState"  onChange={this.handleTopColor} className="form-control tab-color" defaultValue="COLOR">
+                    <select id="inputState"  onChange={this.handleBottomColor} className="form-control tab-color" defaultValue="COLOR">
                         <option value="COLOR" disabled>COLOR</option>
                         {
                             clothingColor.colors.map((color, i) => {
@@ -91,7 +89,7 @@ axios.get(url)
                         }
                     </select>
 
-                    <select id="inputState"  onChange={this.handleTopSeason} className="form-control tab-color" defaultValue="SEASON">
+                    <select id="inputState"  onChange={this.handleBottomSeason} className="form-control tab-color" defaultValue="SEASON">
                         <option value="SEASON" disabled>SEASON</option>
                         {
                             clothingSeason.seasons.map((season, i) => {
@@ -102,11 +100,10 @@ axios.get(url)
 
                 </form>
 
-                <button type="button" onClick={this.submitButton} class="btn btn-info"> Submit</button>
+                <button type="button" onClick={this.submitBottomButton} class="btn btn-info"> Submit</button>
           
         
     </>)
 
 }
 } 
-
