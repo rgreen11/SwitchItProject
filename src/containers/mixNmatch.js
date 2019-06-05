@@ -1,12 +1,20 @@
 import React from 'react'
 import CarouselClass from '../components/carousel'
+<<<<<<< HEAD
 import Calendar from '../components/Calendar';
 import AuthContext from '../contexts/auth';
 
+=======
+// import Calendar from '../components/Calendar';
+import ButtonCalendar from '../components/ButtonCalendar';
+import Media from 'react-media';
+import {Link} from 'react-router-dom';
+>>>>>>> master
 
 
 const mixNmatch = () => {
   return (
+<<<<<<< HEAD
     <AuthContext.Consumer>
       {(user)=>{
         console.log(user , "is user rn")
@@ -29,6 +37,15 @@ else {
 }
 }
     </AuthContext.Consumer>
+=======
+
+    <>
+      <CarouselClass />
+      {/* <Calendar/> */}
+      {/* <ButtonCalendar /> */}
+    </>
+
+>>>>>>> master
   )
 }
 export default mixNmatch;
