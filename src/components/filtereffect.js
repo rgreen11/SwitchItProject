@@ -13,7 +13,6 @@ export default class FilterEffect extends Component{
       chosenstyle:'',  //selected style 
       chosencolor: '', //selected color
       chosenseason: '',  //selected season
-    
     }
   }
 
@@ -40,28 +39,21 @@ handleTopSeason=(e)=>{
 
 submitButton=(e)=>{
 //TOPS 
+const allSelected=this.state
 
-//STYLE 
-  axios.get(`http://localhost:8080/clothes/${this.state.chosenstyle}`)
-  .then(response => response.data)
-  .then(styleResponse => {
-    this.setState({ chosenstyle:styleResponse})
-  })
 
-// //COLOR
- axios.get(`http://localhost:8080/clothes/color/${this.state.chosentop}/${this.state.chosenstyle}/${this.state.chosencolor}`)
-  .then(response => response.data)
-  .then(colorResponse => {
-    this.setState({ chosencolor:colorResponse})
-  })
 
 // //SEASON
-axios.get(`http://localhost:8080/clothes/season/${this.state.chosentop}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`)
-  .then(response => response.data)
-  .then(seasonResponse => {
-    this.setState({ chosenseason:seasonResponse})
+let url=`http://localhost:8080/clothes/season/${this.state.chosentop}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`
+console.log('lala', url)
+axios.get(url)
+  .then(res => {
+    let data = res.data;
+    this.props.updateFilter(data);
   })
 }
+
+
 
 //--------------------------BOTTOMS 
 
@@ -70,6 +62,7 @@ axios.get(`http://localhost:8080/clothes/season/${this.state.chosentop}/${this.s
     console.log('chosenstyle',this.state.chosenstyle)
     console.log('chosencolor',this.state.chosencolor)
     console.log('chosenseason',this.state.chosenseason)
+    console.log('all selected',this.state.allSelected)
 
     return( 
        <>
@@ -77,7 +70,7 @@ axios.get(`http://localhost:8080/clothes/season/${this.state.chosentop}/${this.s
                 <form>
                     <select id="inputState"  onChange={this.handleTops} className="form-control tab-color" defaultValue="CATEGORY">
                         <option value="CATEGORY" disabled>CATEGORY</option>  
-                            <option>tops</option>  
+                            <option>top</option>  
                     </select>
 
                     <select id="inputState"  onChange={this.handleTopStyle} className="form-control tab-color"  defaultValue="STYLE">
