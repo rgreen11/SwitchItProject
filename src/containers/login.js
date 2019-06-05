@@ -34,6 +34,10 @@ export default class Login extends React.Component {
     const { email, password, error } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
     const displayForm = <>
+    <div className="container-fluid" style={{height:'100vh'}}>
+    <div className="title">
+      <h1>LOGIN</h1>
+    </div>
       {displayError}
       <div className="modal-dialog">
         <div className="modal-content">
