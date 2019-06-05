@@ -2,7 +2,7 @@ const clothingCategory=['top','bottom']
 
 const stylesByCategory = {
   top: ['short-sleeve', 'long-sleeve', 'sleeveless'],
-  bottom: ['skirt', 'pants', 'shorts'],
+  bottom: ['skirt', 'pants', 'short'],
 };
 
 const clothingColor={

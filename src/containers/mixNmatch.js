@@ -6,7 +6,7 @@ import Media from 'react-media';
 import {Link} from 'react-router-dom';
 import FilterEffect from '../components/filtereffect';
 import FilterBottomEffect from '../components/filterbottomeffect';
-import FilterContext from '../contexts/filterContext';
+import AuthContext from '../contexts/auth';
 
 
 export default class mixNmatch extends React.Component {
@@ -14,6 +14,7 @@ export default class mixNmatch extends React.Component {
     super(props)
     this.state={
       filteredTops: '',
+      filteredBottoms:'',
     }
   }  
 
@@ -21,22 +22,28 @@ export default class mixNmatch extends React.Component {
     console.log('new tops:', filteredResponse) //filter response is the response from the filtereffect
     this.setState({filteredTops: filteredResponse})
   }
-
+  
+  updateBottomFilter = (filteredResponse) => {
+    console.log('new bottoms:', filteredResponse) //filter response is the response from the filtereffect
+    this.setState({filteredBottoms: filteredResponse})
+  }
 
   render(){
     return (
-      <FilterContext.Provider value={this.state.filteredTops}>
+      <AuthContext.Provider value={this.state}>
+      
+  
         <FilterEffect updateFilter={this.updateFilter}/>
         <CarouselClass/>
         <FilterBottomEffect updateBottomFilter={this.updateBottomFilter}/>
         {/* <Calendar/> */}
         {/* <ButtonCalendar /> */}
-
+   
       
-      </FilterContext.Provider>
+      </AuthContext.Provider>
   
     )
-  }
+    }
 
 }
 

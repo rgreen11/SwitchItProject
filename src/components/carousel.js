@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '../styles/hidemix.css';
 import { Carousel } from 'react-responsive-carousel';
 import { auth } from 'firebase';
-import FilterContext from '../contexts/filterContext';
+import AuthContext from '../contexts/auth';
 
 
 
@@ -15,7 +15,7 @@ export default class CarouselClass extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            pictureTops:  [],
+            pictureTops: [],
             pictureBottoms: [],
             currentTopIndex: 0,
             currentBottomIndex: 0
@@ -80,93 +80,197 @@ export default class CarouselClass extends Component {
 
                     <button className='mixClothes' onClick={this.mixClothes} type="button" class="btn btn-info">Mix-N-Match</button>
 
-                  
-                    <div className="top">
-                     
-                        <FilterContext.Consumer>
 
-                            {
-                                (filteredTops) => {
-                                    if (filteredTops !== '') {
-                                        return (<Carousel showArrows={true}
-                                        showThumbs={false}
-                                        width={"500px"}
-                                        className="carousel"
-                                        selectedItem={currentTopIndex || 0}
-                                        onChange={this.handleTopChange}>
-                                        {
-                                            filteredTops.map((e, i) => {
-                                                return (
-                                                    <>
-                                                        <div id='imageOutfit'>
-                                                            <img key={i} src={e.img_url} alt='tops' className='images' />
-                                                        </div>
-                                                    </>)
-                                            })
-                                        }
-                                    </Carousel>)
-                                    }
-                                    else{
-                                        return (<Carousel showArrows={true}
-                                            showThumbs={false}
-                                            width={"500px"}
-                                            className="carousel"
-                                            selectedItem={currentTopIndex || 0}
-                                            onChange={this.handleTopChange}>
-                                            {
-                                                pictureTops.map((e, i) => {
-                                                    return (
-                                                        <>
-                                                            <div id='imageOutfit'>
-                                                                <img key={i} src={e.img_url} alt='tops' className='images' />
-                                                            </div>
-                                                        </>)
-                                                })
-                                            }
-                                        </Carousel>)
-                                    }
+
+
+                    <AuthContext.Consumer>
+
+                        {
+
+                            (state) => {
+                                if (state.filteredTops !== '' && state.filteredBottoms !=='') {
+                                    return (
+                                        <>
+                                       
+                                        <div className="top">
+                                            <Carousel showArrows={true}
+                                                showThumbs={false}
+                                                width={"500px"}
+                                                className="carousel"
+                                                selectedItem={currentTopIndex || 0}
+                                                onChange={this.handleTopChange}>
+                                                {
+                                                    state.filteredTops.map((e, i) => {
+                                                        return (
+                                                            <>
+                                                                <div id='imageOutfit'>
+                                                                    <img key={i} src={e.img_url} alt='tops' className='images' />
+                                                                </div>
+                                                            </>)
+                                                    })
+                                                }
+                                            </Carousel>
+                                        </div>
+
+                                        
+                                        <div className="bottom">
+                                            <Carousel
+                                                showArrows={true}
+                                                width={"500px"}
+                                                showThumbs={false}
+                                                className="carousel"
+                                                selectedItem={currentBottomIndex || 0}
+                                                onChange={this.handleBottomChange}>
+                                                {
+                                                    state.filteredBottoms.map((e, i) => {
+                                                        return (
+                                                            <>
+                                                                <div id='imageOutfit'>
+                                                                    <img key={i} src={e.img_url} alt='bottoms' className='images' />
+                                                                </div>
+                                                            </>)
+                                                    })
+                                                }
+
+                                            </Carousel>
+                                        </div>
+    </>
+                                        
+                                        )
+                                }
+                                else {
+                                    return (
+
+                                        <>
+                                        <div className="top">
+                                            <Carousel showArrows={true}
+                                                showThumbs={false}
+                                                width={"500px"}
+                                                className="carousel"
+                                                selectedItem={currentTopIndex || 0}
+                                                onChange={this.handleTopChange}>
+                                                {
+                                                    pictureTops.map((e, i) => {
+                                                        return (
+                                                            <>
+                                                                <div id='imageOutfit'>
+                                                                    <img key={i} src={e.img_url} alt='tops' className='images' />
+                                                                </div>
+                                                            </>)
+                                                    })
+                                                }
+                                            </Carousel>
+                                        </div>
+
+
+                                    
+<div className="bottom">
+<Carousel
+    showArrows={true}
+    width={"500px"}
+    showThumbs={false}
+    className="carousel"
+    selectedItem={currentBottomIndex || 0}
+    onChange={this.handleBottomChange}>
+    {
+        pictureBottoms.map((e, i) => {
+            return (
+                <>
+                    <div id='imageOutfit'>
+                        <img key={i} src={e.img_url} alt='bottoms' className='images' />
+                    </div>
+                </>)
+        })
+    }
+</Carousel>
+</div>
+</>
+
+                                    )
                                 }
 
 
+
+
+
                             }
+                        }
 
-                        </FilterContext.Consumer>
-                     
-                    
 
-                    </div>
-                  
 
-                    <div className="bottom">
-                        <Carousel
-                            showArrows={true}
-                            width={"500px"}
-                            showThumbs={false}
-                            className="carousel"
-                            selectedItem={currentBottomIndex || 0}
-                            onChange={this.handleBottomChange}>
-                            {
-                                pictureBottoms.map((e, i) => {
+
+
+                        {/* {
+
+
+                            (filteredBottoms) => {
+                                if (filteredBottoms !== '') {
                                     return (
-                                        <>
-                                            <div id='imageOutfit'>
-                                                <img key={i} src={e.img_url} alt='bottoms' className='images' />
-                                            </div>
-                                        </>)
-                                })
-                            }
-                        </Carousel>
+                                        <div className="bottom">
+                                            <Carousel
+                                                showArrows={true}
+                                                width={"500px"}
+                                                showThumbs={false}
+                                                className="carousel"
+                                                selectedItem={currentBottomIndex || 0}
+                                                onChange={this.handleBottomChange}>
+                                                {
+                                                    filteredBottoms.map((e, i) => {
+                                                        return (
+                                                            <>
+                                                                <div id='imageOutfit'>
+                                                                    <img key={i} src={e.img_url} alt='bottoms' className='images' />
+                                                                </div>
+                                                            </>)
+                                                    })
+                                                }
 
-                    </div>
+                                            </Carousel>
+                                        </div>)
+
+
+                                }
+                                else {
+
+                                    return (
+                                        <div className="bottom">
+                                            <Carousel
+                                                showArrows={true}
+                                                width={"500px"}
+                                                showThumbs={false}
+                                                className="carousel"
+                                                selectedItem={currentBottomIndex || 0}
+                                                onChange={this.handleBottomChange}>
+                                                {
+                                                    pictureBottoms.map((e, i) => {
+                                                        return (
+                                                            <>
+                                                                <div id='imageOutfit'>
+                                                                    <img key={i} src={e.img_url} alt='bottoms' className='images' />
+                                                                </div>
+                                                            </>)
+                                                    })
+                                                }
+                                            </Carousel>
+                                        </div>)
+                                }
+                            }
+                        }      */}
+
+                    </AuthContext.Consumer>
+
+
                     <ButtonCalendar state={state} />
                 </div>
 
 
-             
-            
+
+
             </>
         );
     }
+
 }
+
 
 // ReactDOM.render(<DemoCarousel />, document.querySelector('.demo-carousel'));
