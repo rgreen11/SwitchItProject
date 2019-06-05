@@ -10,6 +10,7 @@ import {Animated} from "react-animated-css";
 import Media from "react-media";
 import AuthContext from '../contexts/auth';
 
+
 export default class AddItem extends Component {
     constructor(props) {
         super(props)
@@ -128,6 +129,8 @@ handleSlider=(isOpen)=>{
         //-----------------------------------------------------------------------------------------------
         const selectionToggle = () =>{
             return(
+                <>
+                
                 <Media query="(min-width: 800px)">
           {matches =>
             matches ? (
@@ -238,10 +241,13 @@ handleSlider=(isOpen)=>{
             )
           }
         </Media>
+        </>
             )
         }
         //-----------------------------------------------------------------------------------------------
         return (
+            <>
+            
             <AuthContext.Consumer>
                 
                 {(user)=>{
@@ -285,7 +291,7 @@ handleSlider=(isOpen)=>{
                 }
 
             </AuthContext.Consumer>
-       
+            </>
         );
     }
 }

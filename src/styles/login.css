@@ -1,5 +1,9 @@
-/* }
-.container-fluid{
-    background:  #69c8c9;
-    
-}  */
+.modal-body{
+	background-color: #69c8c9;
+}
+.btn-link{
+	color:white;
+}
+.modal-heading h2{
+	color:#ffffff;
+}

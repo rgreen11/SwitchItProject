@@ -14,13 +14,9 @@ import Login from "./containers/login";
 import Error404 from "./components/error404";
 import Logout from "./containers/logout";
 
-
-
-
 //components
 import AuthContext from "./contexts/auth";
 import Navbar from './components/navbar';
-
 
 class App extends Component {
   state = {
@@ -63,29 +59,30 @@ class App extends Component {
     return (
       <>
       <AuthContext.Provider value={this.state.user}>
+          <Switch>
+            <Route path="/opening" exact strict component={Opening} /> 
+            <Route path="/signup" exact component={Signup} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/" component={Navbar} />
+          </Switch>
 
-      <Navbar/>
           <Switch>
             <Route path="/" exact strict component={Closet} /> 
-            <Route path="/opening" exact strict component={Opening} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
             <Route path="/mix-N-match" exact strict component={MixNMatch} />
             {/* <Route path="/calendar" exact strict component={Calendar} />  */}
-            <Route path="/signup" exact component={Signup} />
-            <Route path="/login" exact component={Login} />
             <Route path="/logout" exact component={Logout} />
+            <Route path="/opening" exact strict component={() => null} /> 
+            <Route path="/signup" exact strict component={() => null} /> 
+            <Route path="/login" exact strict component={() => null} /> 
             <Route component={Error404} />
           </Switch>
-          
-
       </AuthContext.Provider>
       </>
       );
     }
   }
       
-    
-    
-    export default App;
+export default App;
     
 

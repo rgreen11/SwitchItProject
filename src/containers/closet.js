@@ -35,6 +35,8 @@ class Closet extends React.Component{
         const {img_url}=this.state;
         if(img_url.length) {
             return (
+              <>
+              
             <div className="container row col-md">
               {
                 img_url.map((e, i) => {
@@ -42,12 +44,18 @@ class Closet extends React.Component{
                 })
               }
             </div>
+            </>
             )
           }
           else {
             return (
+            <>
+         
+              
               <Link to ="addItlem.js">UPLOAD IMAGES</Link>
+            </>
             )
+            
            }
           
           
