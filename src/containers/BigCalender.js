@@ -37,7 +37,7 @@ componentDidMount(){
     const data = localStorage.getItem('ootd');
     const nickName = localStorage.getItem('nickName');
     // const name = JSON.parse(nickName);
-    console.log(data)
+    console.log('bigCalendarData',data[0]) 
     console.log(nickName)
     const event = {
         start: new Date(),
