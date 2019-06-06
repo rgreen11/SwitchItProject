@@ -11,6 +11,7 @@ class Closet extends React.Component{
         this.state={
         id:[],
         img_url:[],
+        user: null
         }  
     }
      componentDidMount() {

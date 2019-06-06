@@ -25,6 +25,8 @@ export default class AddItem extends Component {
             seasons: clothingSeason,
             chosenseason: '',
             isOpen: false,
+            user: null,
+            id: null,
         }
     }
 
@@ -279,11 +281,10 @@ handleSlider=(isOpen)=>{
                     }
                     else {
                         return (
-                            !this.state.user ?
+                            !user ?
                             <h5>You Are Not Logged In!</h5>
                             :
-                            <h5> {this.state.user}</h5>
-                        // <h5>Your'e not logged in!</h5>
+                            <h5> {user.user || user.user_id}</h5>
                         )
                     }
                 }
