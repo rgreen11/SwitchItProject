@@ -13,8 +13,8 @@ export default class mixNmatch extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      filteredTops: '',
-      filteredBottoms:'',
+      filteredTops: [],
+      filteredBottoms:[],
     }
   }  
 

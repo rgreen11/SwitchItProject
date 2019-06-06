@@ -60,7 +60,7 @@ axios.get(url)
     console.log('chosenstyle',this.state.chosenstyle)
     console.log('chosencolor',this.state.chosencolor)
     console.log('chosenseason',this.state.chosenseason)
-    console.log('chosenbottom',this.state.bottomaye)
+    // console.log('chosenbottom',this.state.bottomaye)
   
     return( 
        <>

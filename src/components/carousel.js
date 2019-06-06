@@ -88,57 +88,10 @@ export default class CarouselClass extends Component {
                         {
 
                             (state) => {
-                                if (state.filteredTops !== '' && state.filteredBottoms !=='') {
-                                    return (
-                                        <>
-                                       
-                                        <div className="top">
-                                            <Carousel showArrows={true}
-                                                showThumbs={false}
-                                                width={"500px"}
-                                                className="carousel"
-                                                selectedItem={currentTopIndex || 0}
-                                                onChange={this.handleTopChange}>
-                                                {
-                                                    state.filteredTops.map((e, i) => {
-                                                        return (
-                                                            <>
-                                                                <div id='imageOutfit'>
-                                                                    <img key={i} src={e.img_url} alt='tops' className='images' />
-                                                                </div>
-                                                            </>)
-                                                    })
-                                                }
-                                            </Carousel>
-                                        </div>
+                                const tops = state.filteredTops.length ? state.filteredTops : pictureTops;
+                                const bottoms = state.filteredBottoms.length ? state.filteredBottoms : pictureBottoms;
 
-                                        
-                                        <div className="bottom">
-                                            <Carousel
-                                                showArrows={true}
-                                                width={"500px"}
-                                                showThumbs={false}
-                                                className="carousel"
-                                                selectedItem={currentBottomIndex || 0}
-                                                onChange={this.handleBottomChange}>
-                                                {
-                                                    state.filteredBottoms.map((e, i) => {
-                                                        return (
-                                                            <>
-                                                                <div id='imageOutfit'>
-                                                                    <img key={i} src={e.img_url} alt='bottoms' className='images' />
-                                                                </div>
-                                                            </>)
-                                                    })
-                                                }
-
-                                            </Carousel>
-                                        </div>
-    </>
-                                        
-                                        )
-                                }
-                                else {
+                                
                                     return (
 
                                         <>
@@ -150,7 +103,7 @@ export default class CarouselClass extends Component {
                                                 selectedItem={currentTopIndex || 0}
                                                 onChange={this.handleTopChange}>
                                                 {
-                                                    pictureTops.map((e, i) => {
+                                                    tops.map((e, i) => {
                                                         return (
                                                             <>
                                                                 <div id='imageOutfit'>
@@ -173,7 +126,7 @@ export default class CarouselClass extends Component {
     selectedItem={currentBottomIndex || 0}
     onChange={this.handleBottomChange}>
     {
-        pictureBottoms.map((e, i) => {
+        bottoms.map((e, i) => {
             return (
                 <>
                     <div id='imageOutfit'>
@@ -188,14 +141,7 @@ export default class CarouselClass extends Component {
 
                                     )
                                 }
-
-
-
-
-
                             }
-                        }
-
 
 
 
