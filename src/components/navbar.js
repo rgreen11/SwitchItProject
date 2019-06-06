@@ -40,7 +40,13 @@ const Navbar = () => {
                       </li>
                       <li className="nav-item">
                         <Link to="/ootd">
-                          <a className="nav-link" href="#">Outfit of the Day</a>
+                          < a className="nav-link" href="#">Outfit of the Day</a>
+                        </Link>
+                      </li>
+                   
+                      <li className="nav-item textA float-right">
+                        <Link to="/logout">
+                          <a className="nav-link textA float-right" href="#">Log Out</a>
                         </Link>
                       </li>
                     </ul>
@@ -56,31 +62,29 @@ const Navbar = () => {
             return (
                 <>
                   <nav className="navbar navbar-expand-lg navbar-light aqua-gradient">
-                  <Link to="/">
+                  <Link to="/opening">
                     <img src={Logo} className="img-thumbnail float-right" style={{ width: '100px' }} alt="" />
                   </Link>
                   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                   </button>
-
                   <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                      <li className="nav-item active">
+                  <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                      
+                      <li className="nav-item textA">
                         <Link to="/login">
-                          <span className="nav-link" href="#">Login <span className="sr-only">(current)</span></span>
+                          <a className="nav-link" href="#">Login</a>
                         </Link>
                       </li>
-                    </ul>
-                    </div>
-                    <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-                      <li className="nav-item active">
+                      <li className="nav-item textA">
                         <Link to="/signup">
-                          <span className="nav-link" >Sign Up <span className="sr-only">(current)</span></span>
+                          < a className="nav-link" href="#">Sign Up</a>
                         </Link>
                       </li>
+              
                     </ul>
-                    </div>
+                  </div>
+                 
                   </nav>
                   </>
             
