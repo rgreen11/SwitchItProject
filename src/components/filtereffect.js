@@ -58,12 +58,7 @@ axios.get(url)
 //--------------------------BOTTOMS 
 
   render(){
-    // console.log('chosentop',this.state.chosentop)
-    // console.log('chosenstyle',this.state.chosenstyle)
-    // console.log('chosencolor',this.state.chosencolor)
-    // console.log('chosenseason',this.state.chosenseason)
-    // console.log('all selected',this.state.allSelected)
-
+ 
     return( 
        <>
 
