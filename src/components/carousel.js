@@ -14,7 +14,9 @@ export default class CarouselClass extends Component {
             pictureTops: [],
             pictureBottoms: [],
             currentTopIndex: 0,
-            currentBottomIndex: 0
+            currentBottomIndex: 0,
+            idTop: 0,
+            idBottom:0,
         }
 
     }
@@ -43,22 +45,29 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
   
     const randomTopIndex = Math.floor(Math.random() * pictureTops.length);
     const randomBottomIndex = Math.floor(Math.random() * pictureBottoms.length);
-    console.log('this',pictureTops)
+    const top = pictureTops[randomTopIndex].id
+    const bottom = pictureTops[randomTopIndex].id
+
+
     this.setState({
         currentTopIndex: randomTopIndex,
-        currentBottomIndex: randomBottomIndex
+        currentBottomIndex: randomBottomIndex,
+        idTop: top,
+        idBottom: bottom
     });
 
 }
 
 
 handleTopChange =(e)=>{
+    console.log(e)
 this.setState({currentTopIndex: e})
 
 }
 
 handleBottomChange=(e)=>{
 
+console.log(this.state.pictureBottoms[e])
     this.setState({currentBottomIndex: e})
 }
 
@@ -67,8 +76,8 @@ handleBottomChange=(e)=>{
     render() {
         const { pictureTops, pictureBottoms, currentTopIndex, currentBottomIndex } = this.state
         const state = this.state
-        console.log('top',currentTopIndex)
-        console.log('bottom',currentBottomIndex)
+        // console.log('top',currentTopIndex)
+        // console.log('bottom',currentBottomIndex)
         return (
             <>
             <div className="center">

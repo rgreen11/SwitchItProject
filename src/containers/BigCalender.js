@@ -37,8 +37,8 @@ componentDidMount(){
     const data = localStorage.getItem('ootd');
     const nickName = localStorage.getItem('nickName');
     // const name = JSON.parse(nickName);
-    console.log(data)
-    console.log(nickName)
+    // console.log(data)
+    // console.log(nickName)
     const event = {
         start: new Date(),
         end: new Date(),

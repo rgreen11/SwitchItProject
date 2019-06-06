@@ -68,6 +68,7 @@ class App extends Component {
           </Switch>
 
           <Switch>
+          
             <Route path="/" exact strict component={Closet} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
             <Route path="/mix-N-match" exact strict component={MixNMatch} />
@@ -76,6 +77,7 @@ class App extends Component {
             <Route path="/opening" exact strict component={() => null} /> 
             <Route path="/signup" exact strict component={() => null} /> 
             <Route path="/login" exact strict component={() => null} /> 
+            
             <Route component={Error404} />
           </Switch>
       </AuthContext.Provider>
