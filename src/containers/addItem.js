@@ -35,16 +35,13 @@ export default class AddItem extends Component {
       this.setState({
           chosencategory: e.target.value,
           styles: stylesByCategory[e.target.value]
-        })
-      
-   
+        })  
 }
 
     handleStyle = (e) => {
         console.log('STYLE selected', e.target.value);
         this.setState({ chosenstyle: e.target.value })
 
-        
     }
 
     handleColor = (e) => {
@@ -123,7 +120,6 @@ handleSlider=(isOpen)=>{
         }
       }
     
-    //-------------------------------------------
     render() {
         let { categories, styles, isOpen } = this.state
         //-----------------------------------------------------------------------------------------------
