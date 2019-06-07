@@ -61,9 +61,9 @@ export default class Signup extends React.Component {
     const { firstname, lastname, email, username, password, error } = this.state;
     const displayError = error === '' ? '' : <div className="alert alert-danger" role="alert">{error}</div>
     const displayForm = <>
-    <div className="container-fluid" style={{height:'calc(100vh - 96.53px)'}}>
+    <div className="container-fluid" style={{height:'100vh'}}>
         <div className="title">
-          <h1>Sign Up</h1>
+          <h1>SIGN UP</h1>
         </div>
         <div className='buttons text-center mb-5'>
         <button className="loginBtn loginBtn--google">

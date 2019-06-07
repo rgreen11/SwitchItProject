@@ -4,10 +4,15 @@ import ButtonCalendar from './ButtonCalendar';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '../styles/hidemix.css';
 import { Carousel } from 'react-responsive-carousel';
+import { auth } from 'firebase';
+import AuthContext from '../contexts/auth';
+// import Context from '../contexts/TopBottom'
 
-
+const TopBottomContext = React.createContext()
 
 export default class CarouselClass extends Component {
+    // static contextType = FilterContext;
+
     constructor(props) {
         super(props)
         this.state = {
@@ -18,12 +23,12 @@ export default class CarouselClass extends Component {
             idTop: 0,
             idBottom:0,
         }
-
     }
 
-//--------Axios
-componentDidMount() {
+    //--------Axios
+    componentDidMount() {
         //top
+        console.log('context: ', this.context)
         axios.get(`http://localhost:8080/clothes/style/top`)
 
             .then(response => response.data)
@@ -39,7 +44,7 @@ componentDidMount() {
             })
     }
 
-//-----Mix-Match Function
+    //-----Mix-Match Function
     //------tops
 mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pictureBottoms) => {
   
@@ -55,84 +60,112 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
         idTop: top,
         idBottom: bottom
     });
+    }
 
-}
+    handleTopChange = (e) => {
 
 
-handleTopChange =(e)=>{
+        console.log('item:',this.state.pictureTops[e].id)
+        console.log('array:',this.state.pictureTops)
+        this.setState({ currentTopIndex: this.state.pictureTops[e].id })
+
+    }
+
+    handleBottomChange = (e) => {
     console.log(e)
-this.setState({currentTopIndex: e})
+        this.setState({ currentBottomIndex: e })
+    }
 
-}
+// handleTopChange =(e)=>{
+//     const topid = this.state.pictureTops[e]
+//     localStorage.setItem('topid', topid )
+//     let changedTop = this.state.topid
+//     changedTop = topid
+//     return changedTop
+// // console.log('top Carousel:', changedTop)
 
-handleBottomChange=(e)=>{
+// }
 
-console.log(this.state.pictureBottoms[e])
-    this.setState({currentBottomIndex: e})
-}
+// handleBottomChange = (e) => {
+//     const bottomid = this.state.pictureBottoms[e]
+//     localStorage.setItem('bottomid', bottomid)
+//     let changedBottom = this.state.bottomid
+//     changedBottom = bottomid
+//     return changedBottom
+//     // console.log('bottom Carousel:', changedBottom)
+// }
 
 
 
     render() {
-        const { pictureTops, pictureBottoms, currentTopIndex, currentBottomIndex } = this.state
+        const { pictureTops, pictureBottoms, currentTopIndex, currentBottomIndex, topid } = this.state
         const state = this.state
-        // console.log('top',currentTopIndex)
+        console.log('top',topid)
         // console.log('bottom',currentBottomIndex)
         return (
             <>
-            <div className="center">
-            
-            <button className='mixClothes' onClick={this.mixClothes} type="button" class="btn btn-info">Mix-N-Match</button>
-            
-            <div className="top">
-                <Carousel showArrows={true} 
-                          showThumbs={false}
-                          width={"500px"} 
-                          className="carousel"
-                          selectedItem={currentTopIndex || 0}
-                          onChange={this.handleTopChange}>
-                    {
-                        pictureTops.map((e, i) => {
-                            return (
-                                <>
-                                    <div id='imageOutfit'>
-                                        <img key={i} src={e.img_url} alt='tops'className='images' />
-                                    </div>
-                                </>)
-                        })
-                    }
-                </Carousel>
+            <TopBottomContext.Provider value={this.state}>
+                <div className="center">
+                    <button className='mixClothes' onClick={this.mixClothes} type="button" class="btn btn-info">Mix-N-Match</button>
+                        <AuthContext.Consumer>
+                            {
+                                (state) => {
+                                    const tops = state.filteredTops.length ? state.filteredTops : pictureTops;
+                                    const bottoms = state.filteredBottoms.length ? state.filteredBottoms : pictureBottoms;
+                                        return (
+                                        <>
+                                            <div className="top">
+                                                <Carousel showArrows={true}
+                                                    showThumbs={false}
+                                                    width={"500px"}
+                                                    className="carousel"
+                                                    selectedItem={currentTopIndex || 0}
+                                                    onChange={this.handleTopChange}>
+                                                    {
+                                                        tops.map((e, i) => {
+                                                            return (
+                                                                <>
+                                                                    <div id='imageOutfit'>
+                                                                        <img key={i} src={e.img_url} alt='tops' className='images' />
+                                                                    </div>
+                                                                </>)
+                                                        })
+                                                    }
+                                                </Carousel>
+                                            </div>
+                                        
+                                <div className="bottom">
+                                    <Carousel
+                                    showArrows={true}
+                                    width={"500px"}
+                                    showThumbs={false}
+                                    className="carousel"
+                                    selectedItem={currentBottomIndex || 0}
+                                    onChange={this.handleBottomChange}>
+                                        {
+                                        bottoms.map((e, i) => {
+                                            return (
+                                                <>
+                                                    <div id='imageOutfit'>
+                                                    <img key={i} src={e.img_url} alt='bottoms' className='images' />
+                                                    </div>
+                                                </>)
+                                            })
+                                        }
+                                    </Carousel>
+                                </div>
+                                </>
+                                        )
+                                    }
+                                }
+                        </AuthContext.Consumer>
+                        <ButtonCalendar state={state} />
                     </div>
-
-                    <div className="bottom">
-                <Carousel 
-                showArrows={true}  
-                width={"500px"} 
-                showThumbs={false} 
-                className="carousel" 
-                selectedItem={currentBottomIndex || 0}
-                onChange={this.handleBottomChange}>
-                    {
-                        pictureBottoms.map((e, i) => {
-                            return (
-                                <>
-                                    <div id='imageOutfit'>
-                                        <img key={i} src={e.img_url} alt='bottoms' className='images' />
-                                    </div>
-                                </>)
-                        })
-                    }
-                </Carousel>
-                </div>
-                <ButtonCalendar state={state}/>
-            </div>
-
+                </TopBottomContext.Provider>
             </>
-
-
-
         );
     }
+
 }
 
-// ReactDOM.render(<DemoCarousel />, document.querySelector('.demo-carousel'));
+
