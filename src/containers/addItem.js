@@ -27,6 +27,8 @@ export default class AddItem extends Component {
             isOpen: false,
             user: null,
             id: null,
+            preview: null,
+            image: null,
         }
     }
 
@@ -78,6 +80,32 @@ export default class AddItem extends Component {
             console.log(err);
           }
           
+        }
+
+        // handlePreview = (e) => {
+        //     if (!e.target.files[0]) {
+        //         return <></>
+        //     }
+        //     this.setState({
+        //         preview: URL.createObjectURL(e.target.files[0]),
+        //         image: e.target.files[0]
+        //     })
+        // }
+        ImagePreview = () => {
+            if (this.state.preview === null) {
+                return (
+                <>
+                    <img alt='preview' className='imgBox img-fluid' src='https://imgplaceholder.com/420x320/cccccc/757575/fa-file-photo-o'></img>
+    
+                </>
+                )
+            }
+            else {
+                return (<>
+                    <img alt='preview' className='imgBox img-fluid' src={this.state.preview}></img>
+                </>)
+            }
+    
         }
     
 //function to post
