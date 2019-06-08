@@ -61,7 +61,6 @@ axios.get(url)
  
     return( 
        <>
-
                 <form>
                     <select id="inputState"  onChange={this.handleTops} className="form-control tab-color" defaultValue="CATEGORY">
                         <option value="CATEGORY" disabled>CATEGORY</option>  
@@ -98,8 +97,6 @@ axios.get(url)
                 </form>
 
                 <button type="button" onClick={this.submitButton} class="btn btn-info"> Submit</button>
-          
-        
     </>)
 
 }
