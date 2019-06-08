@@ -1,6 +1,9 @@
 import React from 'react'
 import CarouselClass from '../components/carousel'
-import Calendar from '../components/Calendar';
+// import Calendar from '../components/Calendar';
+import ButtonCalendar from '../components/ButtonCalendar';
+import Media from 'react-media';
+import {Link} from 'react-router-dom';
 
 
 const mixNmatch = () => {
@@ -8,7 +11,8 @@ const mixNmatch = () => {
 
     <>
       <CarouselClass />
-      <Calendar/>
+      {/* <Calendar/> */}
+      {/* <ButtonCalendar /> */}
     </>
 
   )

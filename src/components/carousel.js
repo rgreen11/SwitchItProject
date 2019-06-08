@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ButtonCalendar from './ButtonCalendar';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import './hidemix.css';
+import '../styles/hidemix.css';
 import { Carousel } from 'react-responsive-carousel';
+
 
 
 export default class CarouselClass extends Component {
@@ -10,7 +12,9 @@ export default class CarouselClass extends Component {
         super(props)
         this.state = {
             pictureTops: [],
-            pictureBottoms: []
+            pictureBottoms: [],
+            currentTopIndex: 0,
+            currentBottomIndex: 0
         }
 
     }
@@ -36,35 +40,48 @@ componentDidMount() {
 //-----Mix-Match Function
     //------tops
 mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pictureBottoms) => {
-    for (let i = pictureTops.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pictureTops[i], pictureTops[j]] = [pictureTops[j], pictureTops[i]];
-    }
+  
+    const randomTopIndex = Math.floor(Math.random() * pictureTops.length);
+    const randomBottomIndex = Math.floor(Math.random() * pictureBottoms.length);
     console.log('this',pictureTops)
-    this.setState({pictureTops})
-
-    //-------bottoms
-    for (let i = pictureBottoms.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pictureBottoms[i], pictureBottoms[j]] = [pictureBottoms[j], pictureBottoms[i]];
-    }
-    console.log('this',pictureBottoms)
-    this.setState({pictureBottoms})
+    this.setState({
+        currentTopIndex: randomTopIndex,
+        currentBottomIndex: randomBottomIndex
+    });
 
 }
 
+
+handleTopChange =(e)=>{
+this.setState({currentTopIndex: e})
+
+}
+
+handleBottomChange=(e)=>{
+
+    this.setState({currentBottomIndex: e})
+}
+
+
+
     render() {
-        const { pictureTops, pictureBottoms } = this.state
-        console.log('this is state',this.state.pictureTops)
+        const { pictureTops, pictureBottoms, currentTopIndex, currentBottomIndex } = this.state
+        const state = this.state
+        console.log('top',currentTopIndex)
+        console.log('bottom',currentBottomIndex)
         return (
             <>
             <div className="center">
+            
             <button className='mixClothes' onClick={this.mixClothes} type="button" class="btn btn-info">Mix-N-Match</button>
+            
             <div className="top">
                 <Carousel showArrows={true} 
                           showThumbs={false}
                           width={"500px"} 
-                          className="carousel">
+                          className="carousel"
+                          selectedItem={currentTopIndex || 0}
+                          onChange={this.handleTopChange}>
                     {
                         pictureTops.map((e, i) => {
                             return (
@@ -79,7 +96,13 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
                     </div>
 
                     <div className="bottom">
-                <Carousel showArrows={true}  width={"500px"} showThumbs={false} className="carousel">
+                <Carousel 
+                showArrows={true}  
+                width={"500px"} 
+                showThumbs={false} 
+                className="carousel" 
+                selectedItem={currentBottomIndex || 0}
+                onChange={this.handleBottomChange}>
                     {
                         pictureBottoms.map((e, i) => {
                             return (
@@ -92,7 +115,9 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
                     }
                 </Carousel>
                 </div>
+                <ButtonCalendar state={state}/>
             </div>
+
             </>
 
 

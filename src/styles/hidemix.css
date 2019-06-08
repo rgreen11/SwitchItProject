@@ -2,10 +2,6 @@
   display: none;
 }
 
-/* img {
-  height: 550px;
-} */
-
 
 .top{
   display: flex;
@@ -25,9 +21,6 @@
   background: white;
 }
 
-/* .carousel .control-arrow {
-  color:blue;
-} */
 
 .carousel{
   display: flex;

@@ -6,7 +6,6 @@ import 'mdbootstrap/css/mdb.min.css';
 import '../styles/Navbar.css';
 import AuthContext from "../contexts/auth";
 
-
 const Navbar = () => {
   return (
     <AuthContext.Consumer>
@@ -20,7 +19,7 @@ const Navbar = () => {
             
                 <nav className="navbar navbar-expand-lg navbar-light aqua-gradient">
                   <Link to="/">
-                    <img src={Logo} className="img-thumbnail float-right" style={{ width: '100px' }} alt="" />
+                    <img src={Logo} className="img-thumbnail float-right" style={{ width: '75px' }} alt="" />
                   </Link>
                   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -63,7 +62,7 @@ const Navbar = () => {
                 <>
                   <nav className="navbar navbar-expand-lg navbar-light aqua-gradient">
                   <Link to="/opening">
-                    <img src={Logo} className="img-thumbnail float-right" style={{ width: '100px' }} alt="" />
+                    <img src={Logo} className="img-thumbnail float-right" style={{ width: '75px' }} alt="" />
                   </Link>
                   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -86,10 +85,7 @@ const Navbar = () => {
                   </div>
                  
                   </nav>
-                  </>
-            
-
-
+              </>
             )
           };
         }
@@ -99,6 +95,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-
-
-
