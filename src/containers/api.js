@@ -2,7 +2,7 @@ const clothingCategory=['top','bottom']
 
 const stylesByCategory = {
   top: ['short-sleeve', 'long-sleeve', 'sleeveless'],
-  bottom: ['skirt', 'pants', 'shorts'],
+  bottom: ['skirt', 'pants', 'short'],
 };
 
 const clothingColor={
@@ -10,7 +10,7 @@ const clothingColor={
 }
 
 const clothingSeason={
-  seasons:['fall/winter','summer/spring']
+  seasons:['fall-winter','summer-spring']
 }
 
 export {clothingCategory,stylesByCategory, clothingColor,clothingSeason}
