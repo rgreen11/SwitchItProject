@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Context from './carousel';
+import axios from 'axios';
 
 
 class ModalNickname extends React.Component {
@@ -29,18 +30,47 @@ class ModalNickname extends React.Component {
     }
 
     handleClick = (nickName)=>{
-      const {idTop, idBottom} = this.props.state
-      console.log(this.props.state)
-      console.log('top:',idTop)
-      console.log('bottom:', idBottom)
-      localStorage.setItem('nickName', nickName)
-    //   let top = localStorage.getItem('topid')
-    //   let topOutfit = JSON.parse(top)
+      const {currentTopIndex, currentBottomIndex, pictureTops, pictureBottoms} = this.props.state
 
-    //   let bottom = localStorage.getItem('bottomid')
-    //   let bottomOutfit = JSON.parse(bottom)
-    //  console.log('top:', topOutfit)
-    //  console.log('bottom:', bottomOutfit)
+      
+      let idTop = pictureTops[currentTopIndex].id
+      let idBottom = pictureBottoms[currentBottomIndex].id
+
+
+      localStorage.setItem('nickName', nickName)
+
+      axios({
+        method: 'post',
+        url: 'http://localhost:8080/ootd',
+        data: {
+            clothes_id: idTop,
+            nickname: nickName,
+            stamp: '',
+        }
+      })
+      .then(data=>{
+          console.log('ootd saved')
+      })
+      .catch(error=>{
+          console.log(error)
+      })
+
+
+      axios({
+        method: 'post',
+        url: 'http://localhost:8080/ootd',
+        data: {
+            clothes_id: idBottom,
+            nickname: nickName,
+            stamp: '',
+        }
+      })
+      .then(data=>{
+          console.log('ootd saved')
+      })
+      .catch(error=>{
+          console.log(error)
+      })
 
   }
     render() {
@@ -57,17 +87,10 @@ class ModalNickname extends React.Component {
               <input className='inputNickName' onChange={(e)=>{this.handleChange(e)}}></input>
               </ModalBody>
               <ModalFooter>
-
-
-                   <Link to='/calendar' onClick={(props)=>{this.handleClick(nickName)}} className="display"><Button color="primary" onClick={this.toggle}>Save</Button></Link>
-
-                 
-
-              
-                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+              <Link to='/calendar' onClick={(props)=>{this.handleClick(nickName)}} className="display"><Button color="primary" onClick={this.toggle}>Save</Button></Link>
+              <Button color="secondary" onClick={this.toggle}>Cancel</Button>
               </ModalFooter>
             </Modal>
-          
         </div>
 
       );

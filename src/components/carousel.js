@@ -52,55 +52,29 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
     const randomBottomIndex = Math.floor(Math.random() * pictureBottoms.length);
     const top = pictureTops[randomTopIndex].id
     const bottom = pictureTops[randomTopIndex].id
-
-
     this.setState({
         currentTopIndex: randomTopIndex,
         currentBottomIndex: randomBottomIndex,
         idTop: top,
         idBottom: bottom
-    });
+        });
     }
 
     handleTopChange = (e) => {
-
-
-        console.log('item:',this.state.pictureTops[e].id)
-        console.log('array:',this.state.pictureTops)
-        this.setState({ currentTopIndex: this.state.pictureTops[e].id })
-
+        this.setState({ currentTopIndex: e })
     }
 
     handleBottomChange = (e) => {
-    console.log(e)
         this.setState({ currentBottomIndex: e })
     }
-
-// handleTopChange =(e)=>{
-//     const topid = this.state.pictureTops[e]
-//     localStorage.setItem('topid', topid )
-//     let changedTop = this.state.topid
-//     changedTop = topid
-//     return changedTop
-// // console.log('top Carousel:', changedTop)
-
-// }
-
-// handleBottomChange = (e) => {
-//     const bottomid = this.state.pictureBottoms[e]
-//     localStorage.setItem('bottomid', bottomid)
-//     let changedBottom = this.state.bottomid
-//     changedBottom = bottomid
-//     return changedBottom
-//     // console.log('bottom Carousel:', changedBottom)
-// }
-
 
 
     render() {
         const { pictureTops, pictureBottoms, currentTopIndex, currentBottomIndex, topid } = this.state
-        const state = this.state
-        console.log('top',topid)
+        // const state = this.state
+        // console.log('top',topid)
+        console.log(currentTopIndex)
+        console.log(currentBottomIndex)
         // console.log('bottom',currentBottomIndex)
         return (
             <>
@@ -159,7 +133,7 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
                                     }
                                 }
                         </AuthContext.Consumer>
-                        <ButtonCalendar state={state} />
+                        <ButtonCalendar state={this.state} />
                     </div>
                 </TopBottomContext.Provider>
             </>
