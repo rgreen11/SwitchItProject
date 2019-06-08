@@ -2,8 +2,28 @@ import React from 'react'
 import CarouselClass from '../components/carousel'
 import Calendar from '../components/Calendar';
 import AuthContext from '../contexts/auth';
+import axios from 'axios';
 
-const ootd = () => {
+export default class ootd extends React.Component {    
+    constructor(props){
+        super(props)
+        this.state={
+
+        }
+      }  
+    //--------Axios
+    componentDidMount() {
+        //top
+        console.log('context: ', this.context)
+        axios.get(`http://localhost:8080/clothes/style/top`)
+
+            .then(response => response.data)
+            .then(topsResponse => {
+                this.setState({ pictureTops: topsResponse })
+            })
+        };
+  render() {
+
     return (
       <AuthContext.Consumer>
         {(user)=>{
@@ -11,8 +31,7 @@ const ootd = () => {
           if (user.user || user.user_id) {
             return(
                       <>
-                        <CarouselClass />
-                        <Calendar/>
+                        
                       </>
             )
         }
@@ -28,17 +47,5 @@ const ootd = () => {
   }
       </AuthContext.Consumer>
     )
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-export default ootd;
+    }
+  };

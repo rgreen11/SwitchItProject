@@ -15,6 +15,7 @@ import Signup from "./containers/signup";
 import Login from "./containers/login";
 import Error404 from "./components/error404";
 import Logout from "./containers/logout";
+import OOTD from "./containers/ootd";
 
 //components
 import AuthContext from "./contexts/auth";
@@ -72,6 +73,7 @@ class App extends Component {
             <Route path="/" exact strict component={Closet} /> 
             <Route path="/additem" exact strict component={AddItem} /> 
             <Route path="/mix-N-match" exact strict component={MixNMatch} />
+            <Route path="/ootd" exact strict component={OOTD} /> 
             <Route path="/calendar" exact strict component={BigCalender} /> 
             <Route path="/logout" exact component={Logout} />
             <Route path="/opening" exact strict component={() => null} /> 

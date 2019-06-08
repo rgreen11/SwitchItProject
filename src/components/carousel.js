@@ -75,6 +75,7 @@ export default class CarouselClass extends Component {
         console.log('bottom', currentBottomIndex)
         return (
             <>
+            <AuthContext.Consumer>
 
                 <div className="center">
 
@@ -83,7 +84,7 @@ export default class CarouselClass extends Component {
 
 
 
-                    <AuthContext.Consumer>
+                    
 
                         {
 
@@ -203,12 +204,10 @@ export default class CarouselClass extends Component {
                             }
                         }      */}
 
-                    </AuthContext.Consumer>
-
 
                     <ButtonCalendar state={state} />
                 </div>
-
+                </AuthContext.Consumer>
 
 
 
