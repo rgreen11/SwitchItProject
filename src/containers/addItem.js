@@ -8,6 +8,8 @@ import '../styles/AddItem.css';
 import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 import {Animated} from "react-animated-css";
 import Media from "react-media";
+import AuthContext from '../contexts/auth';
+
 
 export default class AddItem extends Component {
     constructor(props) {
@@ -23,6 +25,8 @@ export default class AddItem extends Component {
             seasons: clothingSeason,
             chosenseason: '',
             isOpen: false,
+            user: null,
+            id: null,
         }
     }
 
@@ -31,16 +35,13 @@ export default class AddItem extends Component {
       this.setState({
           chosencategory: e.target.value,
           styles: stylesByCategory[e.target.value]
-        })
-      
-   
+        })  
 }
 
     handleStyle = (e) => {
         console.log('STYLE selected', e.target.value);
         this.setState({ chosenstyle: e.target.value })
 
-        
     }
 
     handleColor = (e) => {
@@ -119,16 +120,17 @@ handleSlider=(isOpen)=>{
         }
       }
     
-    //-------------------------------------------
     render() {
         let { categories, styles, isOpen } = this.state
         //-----------------------------------------------------------------------------------------------
         const selectionToggle = () =>{
             return(
+                <>
+                
                 <Media query="(min-width: 800px)">
           {matches =>
             matches ? (
-                <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in"}`} >
+                <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in2"}`} >
                 <div className="sliderbox">
                     <form>
                         <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
@@ -173,7 +175,7 @@ handleSlider=(isOpen)=>{
                         </div>
 
                         <div className='containertext'>
-                            <h6 className="slidertext">Return</h6>
+                            <h6 className="slidertext">Done</h6>
                             <button className="rightarrow arrow-left" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
                         </div>
                     </form>
@@ -226,7 +228,7 @@ handleSlider=(isOpen)=>{
                         </div>
 
                         <div className='containertext'>
-                            <h6 className="slidertext">Return</h6>
+                            <h6 className="slidertext">Done</h6>
                             <button className="rightarrow arrow-left" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
                         </div>
                     </form>
@@ -235,12 +237,21 @@ handleSlider=(isOpen)=>{
             )
           }
         </Media>
+        </>
             )
         }
         //-----------------------------------------------------------------------------------------------
         return (
-        <>
-            <div className={isOpen ?  "shadow": "noshadow" }></div>
+            <>
+            
+            <AuthContext.Consumer>
+                
+                {(user)=>{
+                   console.log(user , "is user rn")
+                    if (user.user || user.user_id){
+                        return(
+                            <>
+                                <div className={isOpen ?  "shadow": "noshadow" }></div>
             <div className='bigbox'>
                 <div className ="upload-box">
                     <label className ="upload-button">
@@ -250,18 +261,33 @@ handleSlider=(isOpen)=>{
                     </label>
                 </div>
 
-                <div className="button_holder">
-                    <button type="button" onClick={this.postPosted}  className="submit-button"><h1 className='button-text'>Submit</h1> </button>
+                <div className="button_holder text-center">
+                    <button type="button" onClick={this.postPosted}  className="text-white btn blue-gradient rounded-pill"><h1 className='button-text'>Submit</h1> </button>
                 </div>
                 <div className='containertext'>
-                    <h6 className="slidertext">Click</h6>
+                    <h6 className="slidertext">Filter</h6>
                 </div>
                 <button className="rightarrow arrow-right" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
                 {
                     selectionToggle()
                 }
             </div>
-        </>
+                            </>
+                        )
+                    }
+                    else {
+                        return (
+                            !user ?
+                            <h5>You Are Not Logged In!</h5>
+                            :
+                            <h5> {user.user || user.user_id}</h5>
+                        )
+                    }
+                }
+                }
+
+            </AuthContext.Consumer>
+            </>
         );
     }
 }

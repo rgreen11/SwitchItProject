@@ -7,20 +7,18 @@ import Closet from './containers/closet';
 import Opening from './containers/opening';
 import AddItem from './containers/addItem';
 // import Filter from './components/filterslider';
-// import Calendar from './containers/calendar';
+// import Calendar from './containers/Calendar';
 import MixNMatch from './containers/mixNmatch';
+import BigCalender from './containers/BigCalender';
+// /*Practice CONSUMER */import Practice from './containers/BigCalender';
 import Signup from "./containers/signup";
 import Login from "./containers/login";
 import Error404 from "./components/error404";
 import Logout from "./containers/logout";
 
-
-
-
 //components
 import AuthContext from "./contexts/auth";
 import Navbar from './components/navbar';
-
 
 class App extends Component {
   state = {
@@ -63,31 +61,32 @@ class App extends Component {
     return (
       <>
       <AuthContext.Provider value={this.state.user}>
-
-      <Navbar/>
           <Switch>
-            <Route path="/" exact strict component={Closet} /> 
             <Route path="/opening" exact strict component={Opening} /> 
-            <Route path="/additem" exact strict component={AddItem} /> 
-            <Route path="/mix-N-match" exact strict component={MixNMatch} />
-            {/* <Route path="/calendar" exact strict component={Calendar} />  */}
             <Route path="/signup" exact component={Signup} />
             <Route path="/login" exact component={Login} />
-            <Route path="/logout" exact component={Logout} />
-            <Route component={Error404} />
-
- 
+            <Route path="/" component={Navbar} />
           </Switch>
-          
 
+          <Switch>
+          
+            <Route path="/" exact strict component={Closet} /> 
+            <Route path="/additem" exact strict component={AddItem} /> 
+            <Route path="/mix-N-match" exact strict component={MixNMatch} />
+            <Route path="/calendar" exact strict component={BigCalender} /> 
+            <Route path="/logout" exact component={Logout} />
+            <Route path="/opening" exact strict component={() => null} /> 
+            <Route path="/signup" exact strict component={() => null} /> 
+            <Route path="/login" exact strict component={() => null} /> 
+            
+            <Route component={Error404} />
+          </Switch>
       </AuthContext.Provider>
       </>
       );
     }
   }
       
-    
-    
-    export default App;
+export default App;
     
 

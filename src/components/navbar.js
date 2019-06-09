@@ -2,23 +2,24 @@ import React from 'react';
 import Logo from '../components/image/SwitchIt-icon-logo-01.jpg';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdbootstrap/css/mdb.min.css';
 import '../styles/Navbar.css';
 import AuthContext from "../contexts/auth";
-
 
 const Navbar = () => {
   return (
     <AuthContext.Consumer>
       {
         user => {
-          // console.log(state);
-          if (user) {
+          console.log(user);
+          if (user.user) {
+            console.log('logged in')
             return (
               <>
-
-                <nav className="navbar navbar-expand-lg navbar-light bk-love">
+            
+                <nav className="navbar navbar-expand-lg navbar-light aqua-gradient">
                   <Link to="/">
-                    <img src={Logo} className="img-thumbnail float-right" style={{ width: '100px' }} alt="" />
+                    <img src={Logo} className="img-thumbnail float-right" style={{ width: '75px' }} alt="" />
                   </Link>
                   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -38,7 +39,13 @@ const Navbar = () => {
                       </li>
                       <li className="nav-item">
                         <Link to="/ootd">
-                          <a className="nav-link" href="#">Outfit of the Day</a>
+                          < a className="nav-link" href="#">Outfit of the Day</a>
+                        </Link>
+                      </li>
+                   
+                      <li className="nav-item textA float-right">
+                        <Link to="/logout">
+                          <a className="nav-link textA float-right" href="#">Log Out</a>
                         </Link>
                       </li>
                     </ul>
@@ -50,20 +57,35 @@ const Navbar = () => {
             )
           }
           else {
+            console.log('logged out')
             return (
-              <>
-                <div>The Ends</div>
-                <Link to='/'>Home</Link>
-                <br />
-                <Link to='/marketplace'>Marketplace</Link>
-                <br />
-                <Link to="/signup">Sign Up</Link>
-                <br />
-                <Link to="/ootd">Outfit of the Day</Link>
-                <hr />
+                <>
+                  <nav className="navbar navbar-expand-lg navbar-light aqua-gradient">
+                  <Link to="/opening">
+                    <img src={Logo} className="img-thumbnail float-right" style={{ width: '75px' }} alt="" />
+                  </Link>
+                  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                  </button>
+                  <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+                  <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                      
+                      <li className="nav-item textA">
+                        <Link to="/login">
+                          <a className="nav-link" href="#">Login</a>
+                        </Link>
+                      </li>
+                      <li className="nav-item textA">
+                        <Link to="/signup">
+                          < a className="nav-link" href="#">Sign Up</a>
+                        </Link>
+                      </li>
+              
+                    </ul>
+                  </div>
+                 
+                  </nav>
               </>
-
-
             )
           };
         }
@@ -73,6 +95,3 @@ const Navbar = () => {
 }
 
 export default Navbar;
-
-
-
