@@ -11,8 +11,16 @@ class Closet extends React.Component{
         this.state={
         id:[],
         img_url:[],
-        user: null
+        username: [],
         }  
+    }
+    componentDidMount(){
+      const {username} =this.state;
+      Axios.post(`users`)
+      .then(response => response.data)
+      .then(users => {
+        this.setState({username : username})
+      })
     }
      componentDidMount() {
     const{img_url}=this.state
@@ -46,6 +54,7 @@ class Closet extends React.Component{
             </div>
             </>
             )
+            
           }
           else {
             return (
@@ -57,8 +66,7 @@ class Closet extends React.Component{
             )
             
            }
-          
-          
     }
+    
   }     
 export default Closet
