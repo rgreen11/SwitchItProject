@@ -79,14 +79,14 @@ export default class AddItem extends Component {
     
 //function to post
 postPosted=(e)=>{
-    
     if(this.state.chosencategory==='' || this.state.chosencolor==='' || this.state.chosenseason==='' || this.state.chosenstyle===''){
         return alert('You must select from all fields')
     }
 
 else {
-    console.log('thisisstate',this.state.url)
+
 e.preventDefault();
+    console.log(this.state.fileUploadURL)
     axios({
      method: 'POST',
      url: `http://localhost:8080/`,

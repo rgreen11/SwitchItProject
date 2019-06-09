@@ -16,6 +16,7 @@ export default class LittleCalender extends Component {
         <Calendar
           onChange={this.onChange}
           value={this.state.date}
+          
         />
       </div>
     );
