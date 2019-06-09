@@ -3,6 +3,7 @@ import axios from 'axios';
 import firebase from '../firebase';
 import {stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 import 'bootstrap/dist/css/bootstrap.css';
+import '../styles/filterBottom.css';
 
 
 export default class FilterBottomEffect extends Component{
@@ -65,7 +66,7 @@ axios.get(url)
     return( 
        <>
 
-                <form>
+                <form className ='filterBottom'>
                     <select id="inputState"  onChange={this.handleBottoms} className="form-control tab-color" defaultValue="CATEGORY">
                         <option value="CATEGORY" disabled>CATEGORY</option>  
                             <option>bottom</option>  
