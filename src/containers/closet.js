@@ -10,7 +10,16 @@ class Closet extends React.Component{
         this.state={
         id:[],
         img_url:[],
+        username: [],
         }  
+    }
+    componentDidMount(){
+      const {username} =this.state;
+      Axios.post(`users`)
+      .then(response => response.data)
+      .then(users => {
+        this.setState({username : username})
+      })
     }
      componentDidMount() {
     const{img_url}=this.state
@@ -41,14 +50,14 @@ class Closet extends React.Component{
               }
             </div>
             )
+            
           }
           else {
             return (
               <Link to ="addItlem.js">UPLOAD IMAGES</Link>
             )
            }
-          
-          
     }
+    
   }     
 export default Closet
