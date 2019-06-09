@@ -1,7 +1,7 @@
 const clothingCategory=['top','bottom']
 
 const stylesByCategory = {
-  top: ['short-sleeve', 'long-sleeve', 'sleeveless'],
+  top: ['short-sleeve', 'long-sleeve', 'sleeve-less'],
   bottom: ['skirt', 'pants', 'short'],
 };
 
