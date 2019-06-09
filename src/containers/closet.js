@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ItemsList from '../components/closetitems';
 import Axios from 'axios';
 import {Link} from 'react-router-dom';
+import Items from '../components/closetfilter';
 
 
 class Closet extends React.Component{
@@ -11,16 +12,8 @@ class Closet extends React.Component{
         this.state={
         id:[],
         img_url:[],
-        username: [],
+        user: null
         }  
-    }
-    componentDidMount(){
-      const {username} =this.state;
-      Axios.post(`users`)
-      .then(response => response.data)
-      .then(users => {
-        this.setState({username : username})
-      })
     }
      componentDidMount() {
     const{img_url}=this.state
@@ -31,6 +24,11 @@ class Closet extends React.Component{
         this.setState({img_url:pics})
       })
 }
+
+    getClothingItems = (filteredItems) => {
+      console.log("what we want", filteredItems)
+   }
+
     // componentWillMount(){
     //   const{id}=this.id;
     //   Axios.get(`http://localhost:8080/clothes`)
@@ -40,11 +38,12 @@ class Closet extends React.Component{
     //   })
     // }
     render(){
+     console.log("trying filter" , this.props.filterItem)
         const {img_url}=this.state;
         if(img_url.length) {
             return (
               <>
-              
+                <Items getClothingItems={this.getClothingItems}/>
             <div className="container row col-md">
               {
                 img_url.map((e, i) => {
@@ -54,19 +53,17 @@ class Closet extends React.Component{
             </div>
             </>
             )
-            
           }
           else {
             return (
             <>
-         
-              
               <Link to ="addItlem.js">UPLOAD IMAGES</Link>
             </>
             )
             
            }
+          
+          
     }
-    
   }     
-export default Closet
+export default Closet;
