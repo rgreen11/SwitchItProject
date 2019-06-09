@@ -42,7 +42,6 @@ submitButton=(e)=>{
 const allSelected=this.state
 
 
-
 // //SEASON
 let url=`http://localhost:8080/clothes/season/${this.state.chosentop}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`
 console.log('lala', url)

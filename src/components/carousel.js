@@ -71,16 +71,15 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
 
     render() {
         const { pictureTops, pictureBottoms, currentTopIndex, currentBottomIndex, topid } = this.state
-        // const state = this.state
-        // console.log('top',topid)
         console.log(currentTopIndex)
         console.log(currentBottomIndex)
-        // console.log('bottom',currentBottomIndex)
+
         return (
             <>
             <TopBottomContext.Provider value={this.state}>
                 <div className="center">
                     <button className='mixClothes' onClick={this.mixClothes} type="button" class="btn btn-info">Mix-N-Match</button>
+                        
                         <AuthContext.Consumer>
                             {
                                 (state) => {
