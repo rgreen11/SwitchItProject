@@ -1,65 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../components/image/SwitchIt-icon-logo-tee-02.jpg';
-//import '../Container/Style/home.css';
-import AuthContext from '../contexts/auth';
-
-
+import Logo from '../components/image/SwitchIt-icon-logo-01.jpg';
+import Main from '../components/image/SwitchIt-icon-logo-tee-02.jpg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdbootstrap/css/mdb.min.css';
+import '../styles/opening.css';
 
 
 const Opening = (props) => {
   return (
+    <>
 
-    <AuthContext.Consumer>
-                
-                {(user)=>{
-                   console.log(user , "is user rn")
-                    if (user.user || user.user_id){
-                        return(
-                          <>
-                          <div className='tiledBackground'>
-                         
-                          <div>
-                            <div>
-                              <img src={Logo} alt="logo" className="rounded mx-auto d-block"
-                              style={{width: '500px', padding: '20px'}} /> 
-                            </div>
-                      
-                            <div style={{textAlign:'center', fontStyle: 'italic'}}>
-                              <h2>switch it info here</h2>
-                            </div>
-                            <div className="btn-wrapper" style={{display:'flex', justifyContent: 'center'}}>
-                            <Link to="/signup" className="left" style={{paddingRight: '10px', paddingTop: '20px'}}>
-                              <button class="btn btn-primary btn-lg btn-danger"  >
-                                Sign Up
-                              </button>
-                            </Link>
-                            <Link to="/login" className="right" style={{paddingLeft: '10px', paddingTop: '20px'}}>
-                              <button className="btn btn-primary btn-lg">
-                                Login
-                              </button>
-                            </Link>
-                          </div>
-                          </div>
-                          </div>
-                       
-                          </>
-                        )
-                      }
-                          else {
-                            return (
-                                !user ?
-                                <h5>You Are Not Logged In!</h5>
-                                :
-                                <h5> {user.user||user.user_id}</h5>
-                            )
-                      }
-                    }
-                    }
-    
-      </AuthContext.Consumer>
-           
-    )
+      <div className="wrapper justify-content-md-center">
+        <header className="page-header aqua-gradient">
+          <nav>
+            <img src={Logo} className="img-thumbnail float-right" style={{ width: '50px' }} alt="" />
+            <a className="cta-contact" href="#/login">Login</a>
+          </nav>
+        </header>
+        <main className="page-main justify-content-md-center">
+          <div className="transbox justify-content-md-center text-center ">
+            <div class="fade-in-o">
+              <img src={Main} className="img-fluid" />
+            </div>
+            <p>
+              Organize your closet virtually, get styled, & plan when to wear it without the mess
+            </p>
+            <a href="#/signup" className="text-white btn sunny-morning-gradient rounded-pill ">Sign Up Now!</a>
+          </div>
+        </main>
+        <footer className="page-footer aqua-gradient">
+          <small>© Copyright 2019. All rights reserved of Pursuit.</small>
+          <a className="fa fa-github cta-contact" href="https://github.com/rgreen11/SwitchItProject">Github</a>
+        </footer>
+      </div>
+
+    </>
+
+  )
 }
 
 
