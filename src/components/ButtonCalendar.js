@@ -4,14 +4,19 @@ import {Link} from 'react-router-dom';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Context from './carousel';
 import axios from 'axios';
+import Media from "react-media";
+import '../styles/ButtonCalender.css';
+import Calendar from 'react-calendar';
 
 
 class ModalNickname extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        displayCal: false,
         modal: false,
         nickName: '',
+        date: new Date(),
       };
   
     }
@@ -29,9 +34,42 @@ class ModalNickname extends React.Component {
         this.setState({nickName: e.target.value})
     }
 
+    handleSmallCal = ()=>{
+      if (this.state.displayCal === false){
+        this.setState({displayCal: true})
+      }
+      else {
+        this.setState({displayCal: false})
+      }
+  }
+
+
+  onChange = date => {
+    console.log(date)
+    console.log(this.state.nickName)
+    axios({
+      method: 'post',
+      url: 'http://localhost:8080/ootd',
+      data: {
+          clothes_id: '1',
+          stamp: date,
+          nickname: this.state.nickName
+      }
+    })
+    .then(data=>{
+
+        console.log('ootd saved')
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+    this.setState({ date })
+  }
+
+
+
     handleClick = (nickName)=>{
       const {currentTopIndex, currentBottomIndex, pictureTops, pictureBottoms} = this.props.state
-
       
       let idTop = pictureTops[currentTopIndex].id
       let idBottom = pictureBottoms[currentBottomIndex].id
@@ -75,14 +113,18 @@ class ModalNickname extends React.Component {
   }
     render() {
         // console.log(this.props.state)
-        let {nickName} = this.state
+        let {nickName, displayCal} = this.state;
+      console.log(displayCal)
       return (
-
+       
         <div>
-         
+          <Media query="(min-width: 800px)">
+         {matches =>
+         matches ? (
+           <>
             <Button color="success" onClick={this.toggle}>Add to Calender</Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-              <ModalHeader toggle={this.toggle}>Add a NickName</ModalHeader>
+              <ModalHeader toggle={this.toggle}>Add A Nickname</ModalHeader>
               <ModalBody>
               <input className='inputNickName' onChange={(e)=>{this.handleChange(e)}}></input>
               </ModalBody>
@@ -91,8 +133,35 @@ class ModalNickname extends React.Component {
               <Button color="secondary" onClick={this.toggle}>Cancel</Button>
               </ModalFooter>
             </Modal>
-        </div>
+            </>
+         ) : (
+           <div >
+          <Button color="success" onClick={this.toggle}>Add to Calender</Button>
+          <Modal isOpen={this.state.modal} toggle={this.toggle} className={`${this.props.className} `}>
+            <ModalHeader className={`${this.state.displayCal ? 'remove' : ''}`} toggle={this.toggle}>Add A Nickname</ModalHeader>
+            <ModalHeader className={`${this.state.displayCal ? '' : 'remove'}`} toggle={this.toggle}>Save Outfit</ModalHeader>
+            <ModalBody>
+            <input className={`${'inputNickName'+ this.state.displayCal ?'': 'remove' }`} onChange={(e)=>{this.handleChange(e)}}></input>
+            <div>
+              <Calendar className={`${displayCal ? 'react-calendar': 'remove'}`}
+                onChange={this.onChange}
+                value={this.state.date}
+              />
+            </div>
+            </ModalBody>
+            <ModalFooter>
+            <Button color="primary" onClick={_ => {this.handleSmallCal(displayCal)}} className={`${this.state.displayCal ? 'remove': ''  }`}>Save name</Button>
+            <Button color="primary" onClick={this.toggle} className={`${this.state.displayCal ?'': 'remove' }`}>Save Date</Button>
+            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+            </ModalFooter>
+          </Modal>
+          </div>
+          )
+         }
+            </Media>
 
+        </div>
+        
       );
     }
   }

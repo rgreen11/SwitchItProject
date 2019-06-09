@@ -9,3 +9,15 @@ input{
 .modal-body{
     width: 100%;
 }
+
+.remove{
+    display: none;
+}
+
+.react-calendar {
+    background: #69c8c9 !important; 
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: white !important;
+}
