@@ -15,7 +15,7 @@ export default class ootd extends React.Component {
     componentDidMount() {
         //top
         console.log('context: ', this.context)
-        axios.get(`http://localhost:8080/clothes/style/top`)
+        axios.get(`http://localhost:8080/ootd`)
 
             .then(response => response.data)
             .then(topsResponse => {
@@ -31,7 +31,10 @@ export default class ootd extends React.Component {
           if (user.user || user.user_id) {
             return(
                       <>
-                        
+                        <div>
+                            <img>
+                            </img>
+                        </div>
                       </>
             )
         }

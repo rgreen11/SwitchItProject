@@ -1,12 +1,14 @@
 import React from 'react'
 import CarouselClass from '../components/carousel'
-// import Calendar from '../components/Calendar';
+import Calendar from '../components/Calendar';
 import ButtonCalendar from '../components/ButtonCalendar';
 import Media from 'react-media';
 import {Link} from 'react-router-dom';
 import FilterEffect from '../components/filtereffect';
 import FilterBottomEffect from '../components/filterbottomeffect';
 import AuthContext from '../contexts/auth';
+import '../styles/Mix-N-Match.css';
+
 
 
 export default class mixNmatch extends React.Component {
@@ -33,9 +35,9 @@ export default class mixNmatch extends React.Component {
       <AuthContext.Provider value={this.state}>
       
   
-        <FilterEffect updateFilter={this.updateFilter}/>
-        <CarouselClass/>
-        <FilterBottomEffect updateBottomFilter={this.updateBottomFilter}/>
+        <FilterEffect updateFilter={this.updateFilter} className = 'filterTop'/>
+        <CarouselClass className='carousel'/>
+        <FilterBottomEffect updateBottomFilter={this.updateBottomFilter} className='filterBottom'/>
         {/* <Calendar/> */}
         {/* <ButtonCalendar /> */}
    

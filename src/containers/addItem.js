@@ -107,14 +107,14 @@ export default class AddItem extends Component {
     
 //function to post
 postPosted=(e)=>{
-    
     if(this.state.chosencategory==='' || this.state.chosencolor==='' || this.state.chosenseason==='' || this.state.chosenstyle===''){
         return alert('You must select from all fields')
     }
 
 else {
-    console.log('thisisstate',this.state.url)
+
 e.preventDefault();
+    console.log(this.state.fileUploadURL)
     axios({
      method: 'POST',
      url: `http://localhost:8080/`,
@@ -158,7 +158,7 @@ handleSlider=(isOpen)=>{
                 <Media query="(min-width: 800px)">
           {matches =>
             matches ? (
-                <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in"}`} >
+                <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in2"}`} >
                 <div className="sliderbox">
                     <form>
                         <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
@@ -203,7 +203,7 @@ handleSlider=(isOpen)=>{
                         </div>
 
                         <div className='containertext'>
-                            <h6 className="slidertext">Return</h6>
+                            <h6 className="slidertext">Done</h6>
                             <button className="rightarrow arrow-left" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
                         </div>
                     </form>
@@ -256,7 +256,7 @@ handleSlider=(isOpen)=>{
                         </div>
 
                         <div className='containertext'>
-                            <h6 className="slidertext">Return</h6>
+                            <h6 className="slidertext">Done</h6>
                             <button className="rightarrow arrow-left" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
                         </div>
                     </form>
@@ -289,11 +289,11 @@ handleSlider=(isOpen)=>{
                     </label>
                 </div>
 
-                <div className="button_holder">
-                    <button type="button" onClick={this.postPosted}  className="submit-button"><h1 className='button-text'>Submit</h1> </button>
+                <div className="button_holder text-center">
+                    <button type="button" onClick={this.postPosted}  className="text-white btn blue-gradient rounded-pill"><h1 className='button-text'>Submit</h1> </button>
                 </div>
                 <div className='containertext'>
-                    <h6 className="slidertext">Click</h6>
+                    <h6 className="slidertext">Filter</h6>
                 </div>
                 <button className="rightarrow arrow-right" onClick={()=>{this.handleSlider(this.state.isOpen)}}><i></i></button> 
                 {

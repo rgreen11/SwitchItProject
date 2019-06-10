@@ -42,7 +42,6 @@ submitButton=(e)=>{
 const allSelected=this.state
 
 
-
 // //SEASON
 let url=`http://localhost:8080/clothes/season/${this.state.chosentop}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`
 console.log('lala', url)
@@ -61,7 +60,6 @@ axios.get(url)
  
     return( 
        <>
-
                 <form>
                     <select id="inputState"  onChange={this.handleTops} className="form-control tab-color" defaultValue="CATEGORY">
                         <option value="CATEGORY" disabled>CATEGORY</option>  
@@ -98,8 +96,6 @@ axios.get(url)
                 </form>
 
                 <button type="button" onClick={this.submitButton} class="btn btn-info"> Submit</button>
-          
-        
     </>)
 
 }
