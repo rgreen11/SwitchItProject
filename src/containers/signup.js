@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from '../firebase';
 import AuthContext from '../contexts/auth';
 import { Redirect,Link } from 'react-router-dom';
-import Axios from 'axios';
+import axios from 'axios';
 import '../styles/signup.css';
 
 export default class Signup extends React.Component {
@@ -21,38 +21,38 @@ export default class Signup extends React.Component {
   handleChange = (e) => {
       console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
+  }  
 
-  }
-  componentDidUpdate = async()=> {
-    if(this.state.firebase_token){
-      const {firstname,lastname, email, username, password, firebase_token,avatar_url,} = this.state;
-      const url = `http://localhost:3001/user/`
-      const post = await Axios({
-        method:'post',
-        url:url,
-        data:{
-              firstname:firstname,
-              lastname:lastname,
-              email:email,
-              firebase_token:firebase_token,
-              avatar_url:avatar_url,
-              username:username,
-              password:password,
-          }})
-          console.log(post);
-    
-    }    
-        
-  }
-  
-
-       
   
   handleSubmit = async (e) => {
     e.preventDefault();
     const {email, password} = this.state;
     const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
     const {uid,photoUrl} = response.user;
+      this.props.history.push('/')
+      //-------------------------------
+      if(uid){
+        const {firstname,lastname, email, username} = this.state;
+        const url = `http://localhost:8080/user/createUser`;
+        axios({
+          method:'post',
+          url:url,
+          data:{
+                uid:uid,
+                firstname:firstname,
+                lastname:lastname,
+                email:email,
+                username:username,
+            }
+          })
+            .then(_=>{
+              console.log('posted to backend');
+            })
+            .catch((error)=>{
+              console.log(error)
+            })
+      }  
+      //-----------------------------------------
       this.setState({firebase_token:uid,avatar_url:photoUrl});
     }
     

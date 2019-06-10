@@ -57,7 +57,6 @@ export default class AddItem extends Component {
 
     saveImage = (url) => {
         const date = Date();
-    
         ImageService.saveImage(url, date);
       }
     
@@ -67,7 +66,9 @@ export default class AddItem extends Component {
         const newImage = root.child(firstFile.name);
         try {
             const snapshot = await newImage.put(firstFile);
+            console.log('snap', snapshot)
             const url = await snapshot.ref.getDownloadURL();
+            console.log('something',url)
             this.saveImage(url);
             this.setState({fileUploadURL:url})
           }
@@ -76,6 +77,23 @@ export default class AddItem extends Component {
           }
           
         }
+
+        // handleFileInput = async (e) => {
+        //     const firstFile = e.target.files[0];
+        //     const root = firebase.storage().ref()
+        //     const newImage = root.child(firstFile.name);
+        //     try {
+        //         const snapshot = await newImage.get(firstFile);
+        //         const url = await snapshot.ref.getDownloadURL();
+
+        //         this.saveImage(url);
+        //         this.setState({fileUploadURL:url})
+        //       }
+        //       catch(err) {
+        //         console.log(err);
+        //       }
+              
+        //     }
     
 //function to post
 postPosted=(e)=>{
@@ -86,16 +104,18 @@ postPosted=(e)=>{
 else {
 
 e.preventDefault();
-    console.log(this.state.fileUploadURL)
+    console.log('what is this:',this.state.fileUploadURL)
+    
+    console.log('this is the image',this.state.fileUploadURL)
     axios({
      method: 'POST',
-     url: `http://localhost:8080/`,
+     url: `http://localhost:8080/clothes/newpic`,
      data: {
          category: this.state.chosencategory,
          style: this.state.chosenstyle,
          color: this.state.chosencolor,
          season:this.state.chosenseason,
-         user_id:1,
+         user_id: '1',
          img_url: this.state.fileUploadURL
      }
  })
@@ -112,7 +132,7 @@ e.preventDefault();
     //--------------- toggle isOpen
 
 handleSlider=(isOpen)=>{
-    console.log('inside state:',isOpen)
+
         if(isOpen === true){
           this.setState({isOpen: false})
         } else{
@@ -121,7 +141,8 @@ handleSlider=(isOpen)=>{
       }
     
     render() {
-        let { categories, styles, isOpen } = this.state
+        let { categories, styles, isOpen,  } = this.state
+
         //-----------------------------------------------------------------------------------------------
         const selectionToggle = () =>{
             return(

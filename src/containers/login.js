@@ -22,6 +22,7 @@ export default class Login extends React.Component {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((response) => {
         console.log('Returns: ', response);
+        this.props.history.push('/')
       })
       .catch(err => {
         const { message } = err;
@@ -72,7 +73,7 @@ export default class Login extends React.Component {
         {
           (user) => {
             if (user.user) {
-              return <Redirect to='/' />
+              return <Redirect to='/'/>
             } else {
               return displayForm;
             }
