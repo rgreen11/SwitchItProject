@@ -33,11 +33,19 @@ export default class mixNmatch extends React.Component {
   render(){
     return (
       <AuthContext.Provider value={this.state}>
+
+      <div className='row height-450px'>
+      <div class='col col-2 '>  <FilterEffect updateFilter={this.updateFilter} className = 'filterTop'/></div>
+      <div class='col col-8 '><CarouselClass className='carousel'/> </div>
+      <div class='col col-2 '>  <FilterBottomEffect updateBottomFilter={this.updateBottomFilter} className='filterBottom'/></div>
       
-  
-        <FilterEffect updateFilter={this.updateFilter} className = 'filterTop'/>
-        <CarouselClass className='carousel'/>
-        <FilterBottomEffect updateBottomFilter={this.updateBottomFilter} className='filterBottom'/>
+      
+      </div>
+
+
+        {/* <FilterEffect updateFilter={this.updateFilter} className = 'filterTop'/> */}
+        {/* <CarouselClass className='carousel'/> */}
+        {/* <FilterBottomEffect updateBottomFilter={this.updateBottomFilter} className='filterBottom'/> */}
         {/* <Calendar/> */}
         {/* <ButtonCalendar /> */}
    
