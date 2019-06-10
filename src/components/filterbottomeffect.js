@@ -43,7 +43,7 @@ handleBottomSeason=(e)=>{
 submitBottomButton=(e)=>{
 //BOTTOM
 
-let url=`http://localhost:8080/clothes/season/${this.state.chosenbottom}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`
+let url=`http://localhost:8080/clothes/season?category=bottom&style=${this.state.chosenstyle}&color=${this.state.chosencolor}&season=${this.state.chosenseason}`
 console.log('boottom', url)
 axios.get(url)
   .then(res => {

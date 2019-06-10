@@ -44,7 +44,8 @@ const allSelected=this.state
 
 
 // //SEASON
-let url=`http://localhost:8080/clothes/season/${this.state.chosentop}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`
+
+let url=`http://localhost:8080/clothes/season?category=top&style=${this.state.chosenstyle}&color=${this.state.chosencolor}&season=${this.state.chosenseason}`
 console.log('lala', url)
 axios.get(url)
   .then(res => {
