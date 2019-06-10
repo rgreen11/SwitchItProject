@@ -35,9 +35,9 @@ class RoutesContainer extends React.Component {
       <Route path="/mix-N-match" exact component={MixNMatch} />
       <Route path="/calendar" exact strict component={BigCalender} /> 
       <Route path="/logout" exact component={Logout} />
-      <Route path="/opening" exact strict component={() => null} /> 
+      {/* <Route path="/opening" exact strict component={() => null} /> 
       <Route path="/signup" exact strict component={() => null} /> 
-      <Route path="/login" exact strict component={() => null} /> 
+      <Route path="/login" exact strict component={() => null} />  */}
     </Switch>
 
     return (

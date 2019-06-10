@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
 import {stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
+import '../styles/Mix-N-Match.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -60,7 +61,9 @@ axios.get(url)
  
     return( 
        <>
-                <form>
+            <div className='stuff'> 
+            <h2>TOPS</h2>
+                <form >
                     <select id="inputState"  onChange={this.handleTops} className="form-control tab-color" defaultValue="CATEGORY">
                         <option value="CATEGORY" disabled>CATEGORY</option>  
                             <option>top</option>  
@@ -94,8 +97,8 @@ axios.get(url)
                     </select>
 
                 </form>
-
                 <button type="button" onClick={this.submitButton} class="btn btn-info"> Submit</button>
+                </div>
     </>)
 
 }
