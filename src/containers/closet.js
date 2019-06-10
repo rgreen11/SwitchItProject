@@ -3,8 +3,10 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ItemsList from '../components/closetitems';
 import Axios from 'axios';
 import {Link} from 'react-router-dom';
+
 import Filter from '../components/closetfilter.js';
 import '../components/closetdisplay.css';
+
 
 class Closet extends React.Component{
     constructor(props){
