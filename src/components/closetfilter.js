@@ -4,10 +4,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 // import Closet from "../containers/closet" ;
 import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 import Axios from 'axios';
+import './closetfilter.css'
 
 
 
- class Items extends Component {
+ class Filter extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -58,8 +59,8 @@ import Axios from 'axios';
       
             return(
                 <>
-     
-                    <form>
+                    <div className='col-2'>
+                        <form>
                         <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
                             <option value="CATEGORY" disabled>CATEGORY</option>
 
@@ -103,9 +104,11 @@ import Axios from 'axios';
 
                     </form>
                 
+                    </div>
+                    
                 </>  
             )
           }
         }
         
-        export default Items;
+        export default Filter;

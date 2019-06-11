@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import firebase from '../firebase';
 import {stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
+import '../styles/Mix-N-Match.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import '../styles/filterBottom.css';
+
 
 
 export default class FilterBottomEffect extends Component{
@@ -42,7 +43,7 @@ handleBottomSeason=(e)=>{
 submitBottomButton=(e)=>{
 //BOTTOM
 
-let url=`http://localhost:8080/clothes/season/${this.state.chosenbottom}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`
+let url=`http://localhost:8080/clothes/season?category=bottom&style=${this.state.chosenstyle}&color=${this.state.chosencolor}&season=${this.state.chosenseason}`
 console.log('boottom', url)
 axios.get(url)
   .then(res => {
@@ -65,7 +66,8 @@ axios.get(url)
   
     return( 
        <>
-
+       <div className='dropdownmenu'> 
+             <h2>BOTTOMS</h2>
                 <form className ='filterBottom'>
                     <select id="inputState"  onChange={this.handleBottoms} className="form-control tab-color" defaultValue="CATEGORY">
                         <option value="CATEGORY" disabled>CATEGORY</option>  
@@ -102,7 +104,7 @@ axios.get(url)
                 </form>
 
                 <button type="button" onClick={this.submitBottomButton} class="btn btn-info"> Submit</button>
-          
+          </div>
         
     </>)
 
