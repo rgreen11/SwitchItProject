@@ -56,7 +56,8 @@ export default class Login extends React.Component {
         <br></br>
         <br></br>
 
-          <div className='buttons text-center mb-5'>
+        <div className='buttons text-center mb-5'>
+          
         <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>LOGIN</button>
         </div>
         <div className="title text-center">

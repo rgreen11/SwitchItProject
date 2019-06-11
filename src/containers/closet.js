@@ -3,11 +3,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ItemsList from '../components/closetitems';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import Items from '../components/closetfilter';
-import 'bootstrap/dist/css/bootstrap.css';
-import '../styles/handleEmptyCloset.css';
-import ReadUser from '../components/axiosCalls/backendCall';
-import firebase from '../firebase'
+import firebase from '../firebase';
+import Filter from '../components/closetfilter.js';
+import '../components/closetdisplay.css';
 
 
 class Closet extends React.Component{
@@ -56,29 +54,28 @@ componentWillUnmount(){
 }
 
     getClothingItems = (filteredItems) => {
-      console.log("what we want", filteredItems)
+      console.log("its working", filteredItems)
+      this.setState({img_url: filteredItems })
    }
 
 
    handleClick = ()=>{
      this.props.history.push('/Additem')
    }
-    // componentWillMount(){
-    //   const{id}=this.id;
-    //   axios.get(`http://localhost:8080/clothes`)
-    //   .then(response => response.data)
-    //   .then(username => {
-    //     this.setState({username})
-    //   })
-    // }
+    
+    
     render(){
      console.log("trying filter" , this.props.filterItem)
         const {img_url}=this.state;
         if(img_url.length) {
             return (
-              <>
-                <Items getClothingItems={this.getClothingItems}/>
-            <div className="container row col-md">
+            <>
+            {/* <Username getUsername={this.getUsername}/> */}
+            <p>username : victoria </p>
+            <div className = 'filter'>
+            <Filter getClothingItems={this.getClothingItems}/>
+            </div>
+            <div className="container row col-md ">
               {
                 img_url.map((e, i) => {
                   return (<ItemsList img={e.img_url} />)
@@ -98,7 +95,7 @@ componentWillUnmount(){
             )
             
            }
-          
+          //  <Route path="/additem" exact strict component={AddItem} />
           
     }
   }     

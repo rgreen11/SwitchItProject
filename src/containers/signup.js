@@ -30,29 +30,6 @@ export default class Signup extends React.Component {
     const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
     const {uid,photoUrl} = response.user;
       this.props.history.push('/')
-      //-------------------------------
-      if(uid){
-        const {firstname,lastname, email, username} = this.state;
-        const url = `http://localhost:8080/user/createUser`;
-        axios({
-          method:'post',
-          url:url,
-          data:{
-                uid:uid,
-                firstname:firstname,
-                lastname:lastname,
-                email:email,
-                username:username,
-            }
-          })
-            .then(_=>{
-              console.log('posted to backend');
-            })
-            .catch((error)=>{
-              console.log(error)
-            })
-      }  
-      //-----------------------------------------
       this.setState({firebase_token:uid,avatar_url:photoUrl});
     }
     
