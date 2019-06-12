@@ -3,8 +3,8 @@ import React from 'react';
 const ItemsList=(props)=>{
     return(
         <>
-           <div className='col-4'>
-            <img src={props.img} style={{width:'150px'}}  style={{height:'360px'}} alt="item"/>
+           <div className='col-3'>
+            <img src={props.img} style={{width:'250px'}}  style={{height:'200px'}} alt="item"/>
          </div>
         </>
     )
