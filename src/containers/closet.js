@@ -20,7 +20,7 @@ class Closet extends React.Component{
      componentDidMount() {
     const{img_url}=this.state
     const { id } = this.props.match.params; //
-    Axios.get(`http://localhost:8080/clothes`)
+    Axios.get(`http://localhost:7999/clothes`)
       .then(response => response.data)
       .then(pics => {
         this.setState({img_url:pics})

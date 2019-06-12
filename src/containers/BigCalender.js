@@ -32,7 +32,7 @@ componentDidMount(){
     
     axios({
         method: 'get',
-        url: 'http://localhost:8080/clothes/readAll',
+        url: 'http://localhost:7999/clothes/readAll',
     }).then((data)=>{
         // console.log('SQL:', data.data)
         let events = [...this.state.events] 
@@ -82,7 +82,7 @@ onEventDrop=({ event, start, end }) =>{
 // console.log('here', events.clothes_id, stamp, events.nickname)
     axios({
         method: 'put',
-        url: 'http://localhost:8080/clothes/update',
+        url: 'http://localhost:7999/clothes/update',
         data: {
             clothes_id: id,
             stamp: end,

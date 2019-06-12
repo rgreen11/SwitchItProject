@@ -13,7 +13,7 @@ class App extends Component {
   };
   componentDidUpdate = async () => {
     if (this.state.user.user_id === null && this.state.user.user) {
-      const url = `http://localhost:3001/user/username/${
+      const url = `http://localhost:7999/user/username/${
         this.state.user.user.username
       }`;
       const { data } = await axios.get(url);
