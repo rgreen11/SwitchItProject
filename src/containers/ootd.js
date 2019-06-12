@@ -8,20 +8,33 @@ export default class ootd extends React.Component {
     constructor(props){
         super(props)
         this.state={
-
+          outfits:[],
         }
       }  
     //--------Axios
     componentDidMount() {
         //top
         console.log('context: ', this.context)
-        axios.get(`http://localhost:7999/clothes`)
-            .then(console.log)
+        axios.get(`https://switchit1234.herokuapp.com/clothes`)
+            .then((outfits)=>{
+              this.setState(outfits)
+            })
         };
   render() {
+    return (<>
+      {
+        this.state.outfits.map((outfit)=>{
+          console.log(outfit)
+            // return <div>hi</div>
+        })
+      }
+   </>)
+  }
+}
 
-    return (
-      <h1>Hi</h1>
+
+
+
   //     <AuthContext.Consumer>
   //       {(user)=>{
   //         console.log(user , "is user rn")
@@ -44,6 +57,3 @@ export default class ootd extends React.Component {
   // }
   // }
   //     </AuthContext.Consumer>
-    )
-    }
-  };
