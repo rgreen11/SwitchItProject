@@ -92,8 +92,9 @@ axios.get(url)
                         <option value="SEASON" disabled>SEASON</option>
                         {
                             clothingSeason.seasons.map((season, i) => {
+
                                 return <option key={i}>{season}</option>
-                            })
+                            }) 
                         }
                     </select>
 

@@ -51,6 +51,9 @@ axios.get(url)
     this.props.updateBottomFilter(data);
     // this.setState({bottomaye:data})
   })
+  .catch((error)=>{
+      console.log(error)
+  })
 }
 
 
