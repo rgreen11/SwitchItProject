@@ -15,7 +15,7 @@ export default class ootd extends React.Component {
     componentDidMount() {
         //top
         console.log('context: ', this.context)
-        axios.get(`http://localhost:8080/ootd`)
+        axios.get(`http://localhost:8080/clothes/read`)
 
             .then(response => response.data)
             .then(topsResponse => {
