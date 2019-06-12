@@ -1,0 +1,14 @@
+#imageOutfit {
+    background-color: white;
+}
+
+.carousel.carousel-slider .control-arrow:hover {
+    background:#69c8c9!important;
+}
+
+.carousel .control-arrow, .carousel.carousel-slider .control-arrow {
+    top: 20px;
+    background: 0 0;
+    border: 0;
+    font-size: 32px;
+}

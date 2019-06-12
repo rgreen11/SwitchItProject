@@ -25,6 +25,18 @@
     margin-left: 13%;
 }
 
+.background-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 2;
+    min-height: 200px;
+    background: white
+    url(https://www.organizersdirect.com/wp-content/uploads/2018/12/shutterstock_1027213198.jpg) no-repeat 
+      center;
+    color: white;
+  }
+
 .tab-color {
     background-color: #69c8c9;
     margin-top: 20px;

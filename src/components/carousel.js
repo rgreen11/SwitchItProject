@@ -3,6 +3,7 @@ import axios from 'axios';
 import ButtonCalendar from './ButtonCalendar';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '../styles/hidemix.css';
+import '../styles/Carousel.css';
 import { Carousel } from 'react-responsive-carousel';
 import { auth } from 'firebase';
 import AuthContext from '../contexts/auth';
@@ -29,21 +30,21 @@ export default class CarouselClass extends Component {
     componentDidMount() {
         //top
         console.log('context: ', this.context)
-        axios.get(`http://localhost:8080/clothes/style/top`)
+        axios.get(`https://switchit1234.herokuapp.com/clothes/style/top`)
 
             .then(response => response.data)
             .then(topsResponse => {
                 this.setState({ pictureTops: topsResponse })
             })
         //bottom
-        axios.get(`http://localhost:8080/clothes/style/bottom`)
+        axios.get(`https://switchit1234.herokuapp.com/clothes/style/bottom`)
 
             .then(response => response.data)
             .then(bottomsResponse => {
                 this.setState({ pictureBottoms: bottomsResponse })
             })
     }
-
+    
     //-----Mix-Match Function
     //------tops
 mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pictureBottoms) => {
@@ -71,16 +72,15 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
 
     render() {
         const { pictureTops, pictureBottoms, currentTopIndex, currentBottomIndex, topid } = this.state
-        // const state = this.state
-        // console.log('top',topid)
         console.log(currentTopIndex)
         console.log(currentBottomIndex)
-        // console.log('bottom',currentBottomIndex)
+
         return (
             <>
             <TopBottomContext.Provider value={this.state}>
                 <div className="center">
                     <button className='mixClothes' onClick={this.mixClothes} type="button" class="btn btn-info">Mix-N-Match</button>
+                        
                         <AuthContext.Consumer>
                             {
                                 (state) => {

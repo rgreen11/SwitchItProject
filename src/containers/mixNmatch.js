@@ -7,6 +7,8 @@ import {Link} from 'react-router-dom';
 import FilterEffect from '../components/filtereffect';
 import FilterBottomEffect from '../components/filterbottomeffect';
 import AuthContext from '../contexts/auth';
+import '../styles/Mix-N-Match.css';
+
 
 
 export default class mixNmatch extends React.Component {
@@ -31,13 +33,17 @@ export default class mixNmatch extends React.Component {
   render(){
     return (
       <AuthContext.Provider value={this.state}>
+
+      <div className='row height-450px'>
+      <div class='col col-2 '>  <FilterEffect updateFilter={this.updateFilter} className = 'filterTop'/></div>
+      <div class='col col-8 '><CarouselClass className='carousel'/> </div>
+      <div class='col col-2 '>  <FilterBottomEffect updateBottomFilter={this.updateBottomFilter} className='filterBottom'/></div>
       
-  
-        <FilterEffect updateFilter={this.updateFilter}/>
-        <CarouselClass/>
-        <FilterBottomEffect updateBottomFilter={this.updateBottomFilter}/>
-        {/* <Calendar/> */}
-        {/* <ButtonCalendar /> */}
+      
+      </div>
+
+
+     
    
       
       </AuthContext.Provider>

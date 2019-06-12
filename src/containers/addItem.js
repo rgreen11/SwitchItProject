@@ -79,14 +79,14 @@ export default class AddItem extends Component {
     
 //function to post
 postPosted=(e)=>{
-    
     if(this.state.chosencategory==='' || this.state.chosencolor==='' || this.state.chosenseason==='' || this.state.chosenstyle===''){
         return alert('You must select from all fields')
     }
 
 else {
-    console.log('thisisstate',this.state.url)
+
 e.preventDefault();
+    console.log(this.state.fileUploadURL)
     axios({
      method: 'POST',
      url: `http://localhost:8080/`,
@@ -126,10 +126,12 @@ handleSlider=(isOpen)=>{
         const selectionToggle = () =>{
             return(
                 <>
+                 
+                <Media query="( min-width: 800px)">
                 
-                <Media query="(min-width: 800px)">
           {matches =>
             matches ? (
+           
                 <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in2"}`} >
                 <div className="sliderbox">
                     <form>
@@ -181,6 +183,7 @@ handleSlider=(isOpen)=>{
                     </form>
                 </div> 
             </div>
+            
         
             ) : (
                 <Animated animationIn="fadeInLeftBig" animationOut="fadeOutLeftBig" animationInDuration={1000} animationOutDuration={1000} isVisible={isOpen} className={"slider category-position-left fade-inShow"}>
@@ -233,10 +236,12 @@ handleSlider=(isOpen)=>{
                         </div>
                     </form>
                 </div> 
+                
                 </Animated>
             )
           }
         </Media>
+        
         </>
             )
         }
@@ -287,6 +292,7 @@ handleSlider=(isOpen)=>{
                 }
 
             </AuthContext.Consumer>
+            
             </>
         );
     }
