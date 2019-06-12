@@ -29,14 +29,14 @@ export default class CarouselClass extends Component {
     componentDidMount() {
         //top
         console.log('context: ', this.context)
-        axios.get(`http://localhost:7999/clothes/style/top`)
+        axios.get(`https://switchit1234.herokuapp.com/clothes/style/top`)
 
             .then(response => response.data)
             .then(topsResponse => {
                 this.setState({ pictureTops: topsResponse })
             })
         //bottom
-        axios.get(`http://localhost:7999/clothes/style/bottom`)
+        axios.get(`https://switchit1234.herokuapp.com/clothes/style/bottom`)
 
             .then(response => response.data)
             .then(bottomsResponse => {

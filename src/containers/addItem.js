@@ -59,7 +59,6 @@ export default class AddItem extends Component {
 
     saveImage = (url) => {
         const date = Date();
-    
         ImageService.saveImage(url, date);
       }
     
@@ -69,9 +68,11 @@ export default class AddItem extends Component {
         const newImage = root.child(firstFile.name);
         try {
             const snapshot = await newImage.put(firstFile);
+            console.log('snap', snapshot)
             const url = await snapshot.ref.getDownloadURL();
-            this.saveImage(url);
+            console.log('something',url)
             this.setState({fileUploadURL:url})
+            
           }
           catch(err) {
             console.log(err);
@@ -79,31 +80,22 @@ export default class AddItem extends Component {
           
         }
 
-        // handlePreview = (e) => {
-        //     if (!e.target.files[0]) {
-        //         return <></>
+        // handleFileInput = async (e) => {
+        //     const firstFile = e.target.files[0];
+        //     const root = firebase.storage().ref()
+        //     const newImage = root.child(firstFile.name);
+        //     try {
+        //         const snapshot = await newImage.get(firstFile);
+        //         const url = await snapshot.ref.getDownloadURL();
+
+        //         this.saveImage(url);
+        //         this.setState({fileUploadURL:url})
+        //       }
+        //       catch(err) {
+        //         console.log(err);
+        //       }
+              
         //     }
-        //     this.setState({
-        //         preview: URL.createObjectURL(e.target.files[0]),
-        //         image: e.target.files[0]
-        //     })
-        // }
-        ImagePreview = () => {
-            if (this.state.preview === null) {
-                return (
-                <>
-                    <img alt='preview' className='imgBox img-fluid' src='https://imgplaceholder.com/420x320/cccccc/757575/fa-file-photo-o'></img>
-    
-                </>
-                )
-            }
-            else {
-                return (<>
-                    <img alt='preview' className='imgBox img-fluid' src={this.state.preview}></img>
-                </>)
-            }
-    
-        }
     
 //function to post
 postPosted=(e)=>{
@@ -114,16 +106,18 @@ postPosted=(e)=>{
 else {
 
 e.preventDefault();
-    console.log(this.state.fileUploadURL)
+    console.log('what is this:',this.state.fileUploadURL)
+    
+    console.log('this is the image',this.state.fileUploadURL)
     axios({
      method: 'POST',
-     url: `http://localhost:8080/`,
+     url: `https://switchit1234.herokuapp.com/clothes/newpic`,
      data: {
          category: this.state.chosencategory,
          style: this.state.chosenstyle,
          color: this.state.chosencolor,
          season:this.state.chosenseason,
-         user_id:1,
+         user_id: '1',
          img_url: this.state.fileUploadURL
      }
  })
@@ -140,7 +134,7 @@ e.preventDefault();
     //--------------- toggle isOpen
 
 handleSlider=(isOpen)=>{
-    console.log('inside state:',isOpen)
+
         if(isOpen === true){
           this.setState({isOpen: false})
         } else{
@@ -149,7 +143,8 @@ handleSlider=(isOpen)=>{
       }
     
     render() {
-        let { categories, styles, isOpen } = this.state
+        let { categories, styles, isOpen,  } = this.state
+
         //-----------------------------------------------------------------------------------------------
         const selectionToggle = () =>{
             return(

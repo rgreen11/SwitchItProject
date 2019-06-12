@@ -21,30 +21,29 @@ export default class ootd extends React.Component {
   render() {
 
     return (
-      <AuthContext.Consumer>
-        {(user)=>{
-          console.log(user , "is user rn")
-          if (user.user || user.user_id) {
-            return(
-                      <>
-                        <div>
-                            <img>
-                            </img>
-                        </div>
-                      </>
-            )
-        }
-  else {
-          return (
-              !user ?
-              <h5>You Are Not Logged In!</h5>
-              :
-              <h5> {user.user || user.user_id}</h5>
-          )
-      }
-  }
-  }
-      </AuthContext.Consumer>
+      <h1>Hi</h1>
+  //     <AuthContext.Consumer>
+  //       {(user)=>{
+  //         console.log(user , "is user rn")
+  //         if (user.user || user.user_id) {
+  //           return(
+  //                     <>
+  //                       <CarouselClass />
+  //                       <Calendar/>
+  //                     </>
+  //           )
+  //       }
+  // else {
+  //         return (
+  //             !user ?
+  //             <h5>You Are Not Logged In!</h5>
+  //             :
+  //             <h5> {user.user || user.user_id}</h5>
+  //         )
+  //     }
+  // }
+  // }
+  //     </AuthContext.Consumer>
     )
     }
   };

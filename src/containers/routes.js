@@ -8,8 +8,7 @@ import AddItem from './addItem';
 // import Filter from './components/filterslider';
 // import Calendar from './containers/Calendar';
 import MixNMatch from './mixNmatch';
-import BigCalender from './BigCalender';
-// /*Practice CONSUMER */import Practice from './containers/BigCalender';
+import BigCalendar from './BigCalendar';
 import Signup from "./signup";
 import Login from "./login";
 import Error404 from "../components/error404";
@@ -39,7 +38,7 @@ componentDidMount(){
       <Route path="/additem" exact strict component={AddItem} /> 
       <Route path="/mix-N-match" exact strict component={MixNMatch} />
       <Route path="/ootd" exact strict component={Ootd} />
-      <Route path="/calendar" exact strict component={BigCalender} /> 
+      <Route path="/calendar" exact strict component={BigCalendar} /> 
       <Route path="/logout" exact  strict component={Logout} />
       <Route path="/opening" exact strict component={() => null} /> 
       <Route path="/signup" exact strict component={() => null} /> 
@@ -49,7 +48,11 @@ componentDidMount(){
     return (
       <>
         {this.context.user ? <Route path="/" component={Navbar} /> : <div></div>}
+<<<<<<< HEAD
         { this.context.user ? loggedInRoutes : loggedOutRoutes }
+=======
+        {this.context.user ? loggedInRoutes : loggedOutRoutes}
+>>>>>>> master
       </>
     )
   }
