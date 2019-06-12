@@ -35,9 +35,9 @@ export default class mixNmatch extends React.Component {
       <AuthContext.Provider value={this.state}>
 
       <div className='row height-450px'>
-      <div class='col col-2 '>  <FilterEffect updateFilter={this.updateFilter} className = 'filterTop'/></div>
-      <div class='col col-8 '><CarouselClass className='carousel'/> </div>
-      <div class='col col-2 '>  <FilterBottomEffect updateBottomFilter={this.updateBottomFilter} className='filterBottom'/></div>
+      <div className='col col-2 '>  <FilterEffect updateFilter={this.updateFilter} className = 'filterTop'/></div>
+      <div className='col col-8 '><CarouselClass className='carousel'/> </div>
+      <div className='col col-2 '>  <FilterBottomEffect updateBottomFilter={this.updateBottomFilter} className='filterBottom'/></div>
       
       
       </div>
