@@ -45,7 +45,7 @@ const allSelected=this.state
 
 // //SEASON
 
-let url=`http://localhost:8080/clothes/season?category=top&style=${this.state.chosenstyle}&color=${this.state.chosencolor}&season=${this.state.chosenseason}`
+let url=`https://switchit1234.herokuapp.com/clothes/season?category=top&style=${this.state.chosenstyle}&color=${this.state.chosencolor}&season=${this.state.chosenseason}`
 console.log('lala', url)
 axios.get(url)
   .then(res => {
