@@ -20,7 +20,9 @@ export default class Signup extends React.Component {
 
   handleChange = (e) => {
       console.log(e.target.value);
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value },()=>{
+      localStorage.setItem('name', this.state.firstname)
+    });
   }  
 
   

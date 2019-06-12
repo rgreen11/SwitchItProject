@@ -69,8 +69,8 @@ export default class AddItem extends Component {
             console.log('snap', snapshot)
             const url = await snapshot.ref.getDownloadURL();
             console.log('something',url)
-            this.saveImage(url);
             this.setState({fileUploadURL:url})
+            
           }
           catch(err) {
             console.log(err);
@@ -109,7 +109,7 @@ e.preventDefault();
     console.log('this is the image',this.state.fileUploadURL)
     axios({
      method: 'POST',
-     url: `http://localhost:8080/clothes/newpic`,
+     url: `https://switchit1234.herokuapp.com/clothes/newpic`,
      data: {
          category: this.state.chosencategory,
          style: this.state.chosenstyle,

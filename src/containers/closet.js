@@ -16,42 +16,38 @@ class Closet extends React.Component{
         img_url:[],
         user: null,
         uid: null,
+        name: '',
         }  
     }
 
      componentDidMount() {
-      this.unsubscribe = firebase.auth().onAuthStateChanged(user=>{
-        // ReadUser(user.email)
-        console.log(user.email)
-         axios.get('http://localhost:8080/user/read',{
-            params:{
-            email: "lukas@pursuit.org"
-            }
+    // this.unsubscribe = firebase.auth().onAuthStateChanged(user=>{
+
+        // console.log(user.n)
+        //  axios.get('http://localhost:8080/user/read',{
+        //     params:{
+        //     email: "lukas@pursuit.org"
+        //     }
+        //   })
+        //  .then((response)=>{
+        //    const rootObj = response.data
+        //    console.log("Log",response)
+        //    if(rootObj){
+        //      // this.setState({uid: uid})
+        //    }
+        //  })
+        //  .catch((error)=>{
+        //      console.log(error)
+        //  })
+    //  })
+    let name = localStorage.getItem('name')
+        axios.get(`https://switchit1234.herokuapp.com/clothes`)
+          .then(response => response.data)
+          .then(pics => {
+            this.setState({img_url:pics, name: name})
           })
-         .then((response)=>{
-           const rootObj = response.data
-           console.log("Log",response)
-           if(rootObj){
-             // this.setState({uid: uid})
-           }
-         })
-         .catch((error)=>{
-             console.log(error)
-         })
-     })
-     
+    }
 
-    axios.get(`http://localhost:8080/clothes`)
-      .then(response => response.data)
-      .then(pics => {
-        this.setState({img_url:pics})
-      })
-}
-
-
-componentWillUnmount(){
-  this.unsubscribe()
-}
 
     getClothingItems = (filteredItems) => {
       console.log("its working", filteredItems)
@@ -71,7 +67,7 @@ componentWillUnmount(){
             return (
             <>
             {/* <Username getUsername={this.getUsername}/> */}
-            <p>username : victoria </p>
+            <p>Welcome {this.state.name} </p>
             <div className = 'filter'>
             <Filter getClothingItems={this.getClothingItems}/>
             </div>
