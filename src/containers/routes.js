@@ -48,11 +48,7 @@ componentDidMount(){
     return (
       <>
         {this.context.user ? <Route path="/" component={Navbar} /> : <div></div>}
-<<<<<<< HEAD
-        { this.context.user ? loggedInRoutes : loggedOutRoutes }
-=======
         {this.context.user ? loggedInRoutes : loggedOutRoutes}
->>>>>>> master
       </>
     )
   }
