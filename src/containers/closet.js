@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import ItemsList from '../components/closetitems';
-import Axios from 'axios';
+import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Filter from '../components/closetfilter.js';
 import '../components/closetdisplay.css';
@@ -12,32 +12,51 @@ class Closet extends React.Component{
         this.state={
         id:[],
         img_url:[],
-        user: null
+        user: null,
+        uid: null,
+        name: '',
         }  
     }
+
      componentDidMount() {
-    const{img_url}=this.state
-    const { id } = this.props.match.params; //
-    Axios.get(`http://localhost:8080/clothes`)
-      .then(response => response.data)
-      .then(pics => {
-        this.setState({img_url:pics})
-      })
-}
+    // this.unsubscribe = firebase.auth().onAuthStateChanged(user=>{
+
+        // console.log(user.n)
+        //  axios.get('http://localhost:8080/user/read',{
+        //     params:{
+        //     email: "lukas@pursuit.org"
+        //     }
+        //   })
+        //  .then((response)=>{
+        //    const rootObj = response.data
+        //    console.log("Log",response)
+        //    if(rootObj){
+        //      // this.setState({uid: uid})
+        //    }
+        //  })
+        //  .catch((error)=>{
+        //      console.log(error)
+        //  })
+    //  })
+    let name = localStorage.getItem('name')
+        axios.get(`https://switchit1234.herokuapp.com/clothes`)
+          .then(response => response.data)
+          .then(pics => {
+            this.setState({img_url:pics, name: name})
+          })
+    }
+
 
     getClothingItems = (filteredItems) => {
       console.log("its working", filteredItems)
       this.setState({img_url: filteredItems })
    }
 
-    // getUsername = (username) => {
-    //   const{id}=this.id;
-    //   Axios.get(`http://localhost:8080/username`)
-    //   .then(response => response.data)
-    //   .then(username => {
-    //     this.setState({username : 'Welcome back to your closet', username })
-    //   })
-    // }
+
+   handleClick = ()=>{
+     this.props.history.push('/Additem')
+   }
+    
     
     render(){
      console.log("trying filter" , this.props.filterItem)
@@ -63,7 +82,9 @@ class Closet extends React.Component{
           else {
             return (
             <>
-              <Link to ="additem.js">UPLOAD IMAGES</Link>
+            <div className='positionButton'>
+              <button onClick={this.handleClick} type="button" className='btn btn-primary handleButton'>UPLOAD IMAGES</button>
+            </div>
             </>
             )
             

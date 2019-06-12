@@ -49,7 +49,7 @@ class ModalNickname extends React.Component {
     console.log(this.state.nickName)
     axios({
       method: 'post',
-      url: 'http://localhost:8080/ootd',
+      url: 'https://switchit1234.herokuapp.com/clothes/ootd',
       data: {
           clothes_id: '1',
           stamp: date,
@@ -79,7 +79,7 @@ class ModalNickname extends React.Component {
 
       axios({
         method: 'post',
-        url: 'http://localhost:8080/ootd',
+        url: 'https://switchit1234.herokuapp.com/ootd',
         data: {
             clothes_id: idTop,
             nickname: nickName,
@@ -96,7 +96,7 @@ class ModalNickname extends React.Component {
 
       axios({
         method: 'post',
-        url: 'http://localhost:8080/ootd',
+        url: 'https://switchit1234.herokuapp.com/ootd',
         data: {
             clothes_id: idBottom,
             nickname: nickName,

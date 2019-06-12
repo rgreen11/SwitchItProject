@@ -8,17 +8,21 @@ import AddItem from './addItem';
 // import Filter from './components/filterslider';
 // import Calendar from './containers/Calendar';
 import MixNMatch from './mixNmatch';
-import BigCalender from './BigCalender';
-// /*Practice CONSUMER */import Practice from './containers/BigCalender';
+import BigCalendar from './BigCalendar';
 import Signup from "./signup";
 import Login from "./login";
 import Error404 from "../components/error404";
 import Logout from "./logout";
+import Ootd from '../containers/ootd';
 
 
 class RoutesContainer extends React.Component {
 
   static contextType = AuthContext;
+  
+componentDidMount(){
+    console.log(this.props.history)
+  }
 
   render() {
     console.log('App Context', this.context)
@@ -26,24 +30,25 @@ class RoutesContainer extends React.Component {
       <Route path="/opening" exact component={Opening} /> 
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
-      <Route component={Error404} />
+      <Route exact component={Error404} />
     </Switch>;
 
     const loggedInRoutes = <Switch>
-      <Route path="/" exact component={Closet} /> 
-      <Route path="/additem" exact component={AddItem} /> 
-      <Route path="/mix-N-match" exact component={MixNMatch} />
-      <Route path="/calendar" exact strict component={BigCalender} /> 
-      <Route path="/logout" exact component={Logout} />
-      {/* <Route path="/opening" exact strict component={() => null} /> 
+      <Route path="/" exact strict component={Closet} /> 
+      <Route path="/additem" exact strict component={AddItem} /> 
+      <Route path="/mix-N-match" exact strict component={MixNMatch} />
+      <Route path="/ootd" exact strict component={Ootd} />
+      <Route path="/calendar" exact strict component={BigCalendar} /> 
+      <Route path="/logout" exact  strict component={Logout} />
+      <Route path="/opening" exact strict component={() => null} /> 
       <Route path="/signup" exact strict component={() => null} /> 
-      <Route path="/login" exact strict component={() => null} />  */}
+      <Route path="/login" exact strict component={() => null} /> 
     </Switch>
 
     return (
       <>
-        <Route path="/" component={Navbar} />
-        { this.context.user ? loggedInRoutes : loggedOutRoutes }
+        {this.context.user ? <Route path="/" component={Navbar} /> : <div></div>}
+        {this.context.user ? loggedInRoutes : loggedOutRoutes}
       </>
     )
   }
