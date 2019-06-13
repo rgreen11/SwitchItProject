@@ -3,6 +3,7 @@ import CarouselClass from '../components/carousel'
 import Calendar from '../components/Calendar';
 import AuthContext from '../contexts/auth';
 import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default class ootd extends React.Component {    
     constructor(props){
@@ -16,7 +17,7 @@ export default class ootd extends React.Component {
       let nickname = localStorage.getItem('nickName')
         //top
         console.log('context: ', nickname)
-        axios.get(`https://switchit1234.herokuapp.com/read`,{
+        axios.get(`https://switchit1234.herokuapp.com/clothes/read`,{
           params:{
             nickname:nickname
           }
@@ -29,13 +30,23 @@ export default class ootd extends React.Component {
               console.log(err)
             })
         };
+
   render() {
-    console.log('here', this.state)
-    return (<>
-      
-   </>)
+    console.log('here', this.state.outfits)
+    
+    return (
+      <>
+      <div className=" row" >
+        <div className = "col col-4"></div>
+        <div className = "col col-4"><img className="card-img-top" src= "https://switchit1234.herokuapp.com/clothes/read" alt="Card image cap"/></div>
+        <div className = "col col-4"></div>
+              </div>
+        
+      </>
+    )
   }
 }
+
 
 
 
