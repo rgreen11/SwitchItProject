@@ -3,7 +3,7 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 15% 15% 15% 15% 15% 15% 15% 15%;
-    grid-template-columns: 15% 15% 15% 15% 15% 15% 15% 15%;
+    grid-template-columns: 10% 15% 15% 15% 15% 15% 15% 15%;
     grid-template-areas:
         "header header header header . . . ."
         ". upload-box upload-box upload-box  category-position-left category-position-left category-position-left ."
