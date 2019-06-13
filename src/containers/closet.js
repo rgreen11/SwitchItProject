@@ -21,25 +21,7 @@ class Closet extends React.Component{
     }
 
      componentDidMount() {
-    // this.unsubscribe = firebase.auth().onAuthStateChanged(user=>{
-
-        // console.log(user.n)
-        //  axios.get('http://localhost:8080/user/read',{
-        //     params:{
-        //     email: "lukas@pursuit.org"
-        //     }
-        //   })
-        //  .then((response)=>{
-        //    const rootObj = response.data
-        //    console.log("Log",response)
-        //    if(rootObj){
-        //      // this.setState({uid: uid})
-        //    }
-        //  })
-        //  .catch((error)=>{
-        //      console.log(error)
-        //  })
-    //  })
+    
     let name = localStorage.getItem('name')
         axios.get(`https://switchit1234.herokuapp.com/clothes`)
           .then(response => response.data)
@@ -96,3 +78,23 @@ class Closet extends React.Component{
     }
   }     
 export default Closet;
+
+// this.unsubscribe = firebase.auth().onAuthStateChanged(user=>{
+
+        // console.log(user.n)
+        //  axios.get('http://localhost:8080/user/read',{
+        //     params:{
+        //     email: "lukas@pursuit.org"
+        //     }
+        //   })
+        //  .then((response)=>{
+        //    const rootObj = response.data
+        //    console.log("Log",response)
+        //    if(rootObj){
+        //      // this.setState({uid: uid})
+        //    }
+        //  })
+        //  .catch((error)=>{
+        //      console.log(error)
+        //  })
+    //  })
