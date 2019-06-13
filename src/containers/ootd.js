@@ -13,21 +13,26 @@ export default class ootd extends React.Component {
       }  
     //--------Axios
     componentDidMount() {
+      let nickname = localStorage.getItem('nickName')
         //top
-        console.log('context: ', this.context)
-        axios.get(`https://switchit1234.herokuapp.com/clothes`)
+        console.log('context: ', nickname)
+        axios.get(`https://switchit1234.herokuapp.com/read`,{
+          params:{
+            nickname:nickname
+          }
+        })
             .then((outfits)=>{
-              this.setState(outfits)
+              console.log('something',outfits)
+              this.setState({outfits:outfits.data})
+            })
+            .catch((err)=>{
+              console.log(err)
             })
         };
   render() {
+    console.log('here', this.state)
     return (<>
-      {
-        this.state.outfits.map((outfit)=>{
-          console.log(outfit)
-            // return <div>hi</div>
-        })
-      }
+      
    </>)
   }
 }
