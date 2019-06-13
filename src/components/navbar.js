@@ -61,7 +61,7 @@ const Navbar = () => {
             return (
                 <>
                   <nav className="navbar navbar-expand-lg navbar-light aqua-gradient">
-                  <Link to="/opening">
+                  <Link to="/">
                     <img src={Logo} className="img-thumbnail float-right" style={{ width: '75px' }} alt="" />
                   </Link>
                   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
