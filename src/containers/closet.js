@@ -21,6 +21,7 @@ class Closet extends React.Component {
     };
   }
 
+<<<<<<< HEAD
   componentDidMount() {
     // this.unsubscribe = firebase.auth().onAuthStateChanged(user=>{
 
@@ -49,6 +50,17 @@ class Closet extends React.Component {
         this.setState({ img_url: pics, name: name });
       });
   }
+=======
+     componentDidMount() {
+    
+    let name = localStorage.getItem('name')
+        axios.get(`https://switchit1234.herokuapp.com/clothes`)
+          .then(response => response.data)
+          .then(pics => {
+            this.setState({img_url:pics, name: name})
+          })
+    }
+>>>>>>> master
 
   getClothingItems = filteredItems => {
     console.log("its working", filteredItems);

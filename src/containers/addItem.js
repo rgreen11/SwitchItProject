@@ -141,7 +141,7 @@ handleSlider=(isOpen)=>{
       }
     
     render() {
-        let { categories, styles, isOpen,  } = this.state
+        let {fileUploadURL, categories, styles, isOpen,  } = this.state
 
         //-----------------------------------------------------------------------------------------------
         const selectionToggle = () =>{
@@ -152,6 +152,7 @@ handleSlider=(isOpen)=>{
           {matches =>
             matches ? (
                 <div className={`slider category-position-left ${+ isOpen ? "fade-inShow": "fade-in2"}`} >
+                
                 <div className="sliderbox">
                     <form>
                         <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
@@ -244,7 +245,7 @@ handleSlider=(isOpen)=>{
                             }
                         </select>
 
-                        <div className="form-group upload-button-category">
+                        <div className="form-group upload-button-category" >
                             <button type="button " onClick={this.postPosted}  className="button">Upload</button>
                         </div>
 
@@ -273,12 +274,14 @@ handleSlider=(isOpen)=>{
                         return(
                             <>
                                 <div className={isOpen ?  "shadow": "noshadow" }></div>
+                
             <div className='bigbox'>
                 <div className ="upload-box">
                     <label className ="upload-button">
-                    <h1 className='text'>Select</h1> 
-                    <h1 className='text'>Image</h1>
-                        <input type="file" onChange={this.handleFileInput} className='hidden_input_file' capture="camera"/>
+                    <h1 className={fileUploadURL ? 'remove':'text'}>Select</h1> 
+                    <h1 className={fileUploadURL ? 'remove':'text'}>Image</h1>
+                        <img className={ fileUploadURL ? 'actualImage': 'remove'} src = {fileUploadURL} alt={1} />
+                        <input type="file" onChange={this.handleFileInput} className={fileUploadURL ? 'remove': 'hidden_input_file'} capture="camera"/>
                     </label>
                 </div>
 
@@ -304,7 +307,7 @@ handleSlider=(isOpen)=>{
                             <h5> {user.user || user.user_id}</h5>
                         )
                     }
-                }
+                    }
                 }
 
             </AuthContext.Consumer>
