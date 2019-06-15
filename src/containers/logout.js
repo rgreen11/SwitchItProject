@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from '../firebase';
+import Opening from '../containers/opening';
 
 export default class Logout extends React.Component {
 
