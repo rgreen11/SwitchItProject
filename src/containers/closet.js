@@ -44,10 +44,14 @@ class Closet extends React.Component {
     console.log("trying filter", this.props.filterItem);
     console.log(this.context);
     const { img_url, name } = this.state;
+
+    
     if (img_url.length) {
       return (
         <>
-          <h1>Welcome {name}</h1>
+          <div className='topB'>
+          <h1>{name}'s Closet</h1>
+          </div>
 
           <div className="container">
             <div className="row">
@@ -70,7 +74,7 @@ class Closet extends React.Component {
             <button
               onClick={this.handleClick}
               type="button"
-              className="btn btn-primary handleButton"
+              className="btn btn-info sunny-morning-gradient"
             >
               UPLOAD IMAGES
             </button>

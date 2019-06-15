@@ -30,7 +30,7 @@ const Opening = (props) => {
           </div>
         </main>
         <footer className="page-footer aqua-gradient">
-          <small>© Copyright 2019. All rights reserved of Pursuit.</small>
+          <small>© Copyright 2019.</small>
           <a className="fa fa-github cta-contact" href="https://github.com/rgreen11/SwitchItProject">Github</a>
         </footer>
       </div>

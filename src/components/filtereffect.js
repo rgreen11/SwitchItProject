@@ -62,13 +62,16 @@ axios.get(url)
  
     return( 
        <>
-            <div className='stuff'> 
+  
+                 <div className='stuff'>
+                 <div className="headerBottom">
             <h2>TOPS</h2>
+            </div>
                 <form >
-                    <select id="inputState"  onChange={this.handleTops} className="form-control tab-color" defaultValue="CATEGORY">
+                    {/* <select id="inputState"  onChange={this.handleTops} className="form-control tab-color" defaultValue="CATEGORY">
                         <option value="CATEGORY" disabled>CATEGORY</option>  
                             <option>top</option>  
-                    </select>
+                    </select> */}
 
                     <select id="inputState"  onChange={this.handleTopStyle} className="form-control tab-color"  defaultValue="STYLE">
                         <option value="STYLE" disabled>STYLE</option>
@@ -98,7 +101,9 @@ axios.get(url)
                     </select>
 
                 </form>
-                <button type="button" onClick={this.submitButton} class="btn btn-info"> Submit</button>
+                <div className='topB'>
+                <button type="button" onClick={this.submitButton} class="btn btn-info sunny-morning-gradient center"> Submit</button>
+                </div>
                 </div>
     </>)
 

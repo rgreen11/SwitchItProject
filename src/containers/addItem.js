@@ -27,6 +27,8 @@ export default class AddItem extends Component {
             isOpen: false,
             user: null,
             id: null,
+            preview: null,
+            image: null,
         }
     }
 
@@ -285,8 +287,8 @@ handleSlider=(isOpen)=>{
                     </label>
                 </div>
 
-                <div className="button_holder text-center">
-                    <button type="button" onClick={this.postPosted}  className="text-white btn blue-gradient rounded-pill"><h1 className='button-text'>Submit</h1> </button>
+                <div className="button_holder">
+                    <button type="button" onClick={this.postPosted}  className="btn btn-info sunny-morning-gradient"><h3 className='button-text'>Submit</h3> </button>
                 </div>
                 <div className='containertext'>
                     <h6 className="slidertext">Filter</h6>

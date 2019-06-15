@@ -4,7 +4,7 @@ import firebase from '../firebase';
 import {stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
 import '../styles/Mix-N-Match.css';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import '../styles/filterBottom.css';
 
 
 export default class FilterBottomEffect extends Component{
@@ -67,12 +67,14 @@ axios.get(url)
     return( 
        <>
        <div className='dropdownmenu'> 
+       <div className="headerBottom">
              <h2>BOTTOMS</h2>
+             </div>
                 <form className ='filterBottom'>
-                    <select id="inputState"  onChange={this.handleBottoms} className="form-control tab-color" defaultValue="CATEGORY">
+                    {/* <select id="inputState"  onChange={this.handleBottoms} className="form-control tab-color" defaultValue="CATEGORY">
                         <option value="CATEGORY" disabled>CATEGORY</option>  
                             <option>bottom</option>  
-                    </select>
+                    </select> */}
 
                     <select id="inputState"  onChange={this.handleBottomStyle} className="form-control tab-color"  defaultValue="STYLE">
                         <option value="STYLE" disabled>STYLE</option>
@@ -102,8 +104,9 @@ axios.get(url)
                     </select>
 
                 </form>
-
-                <button type="button" onClick={this.submitBottomButton} class="btn btn-info"> Submit</button>
+                <div className='topB'>
+                <button type="button" onClick={this.submitBottomButton} className="btn btn-info sunny-morning-gradient"> Submit</button>
+                </div>
           </div>
         
     </>)
