@@ -53,19 +53,19 @@ export default class Signup extends React.Component {
       {displayError}
       <form style={{maxWidth:'500px', margin:'0 auto'}}>
         <div className="form-group">
-          <input type="text" className="form-control" placeholder="FIRST NAME" value={firstname} name="firstname" onChange={this.handleChange} />
+          <input type="text" className="form-controll" placeholder="FIRST NAME" value={firstname} name="firstname" onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <input type="text" className="form-control" placeholder="LAST NAME" value={lastname} name="lastname" onChange={this.handleChange} />
+          <input type="text" className="form-controll" placeholder="LAST NAME" value={lastname} name="lastname" onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <input type="text" className="form-control" placeholder="USERNAME" value={username} name="username" onChange={this.handleChange} />
+          <input type="text" className="form-controll" placeholder="USERNAME" value={username} name="username" onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="ENTER EMAIL" name="email" value={email} onChange={this.handleChange} />
+          <input type="email" className="form-controll" aria-describedby="emailHelp" placeholder="ENTER EMAIL" name="email" value={email} onChange={this.handleChange} />
         </div>
         <div className="form-group">
-          <input type="password" className="form-control" placeholder="PASSWORD" value={password} name="password" onChange={this.handleChange} />
+          <input type="password" className="form-controll" placeholder="PASSWORD" value={password} name="password" onChange={this.handleChange} />
         </div>
         <div className='buttons text-center mb-5'>
         <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>CREATE CLOSET</button>
