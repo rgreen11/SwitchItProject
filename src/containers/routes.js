@@ -30,7 +30,6 @@ componentDidMount(){
       <Route path="/opening" exact component={Opening} /> 
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
-      <Route exact component={Error404} />
     </Switch>;
 
     const loggedInRoutes = <Switch>
@@ -43,6 +42,7 @@ componentDidMount(){
       <Route path="/opening" exact strict component={() => null} /> 
       <Route path="/signup" exact strict component={() => null} /> 
       <Route path="/login" exact strict component={() => null} /> 
+      <Route exact component={Error404} />
     </Switch>
 
     return (
