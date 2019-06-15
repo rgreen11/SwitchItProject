@@ -81,7 +81,8 @@ class ModalNickname extends React.Component {
         method: 'post',
         url: 'https://switchit1234.herokuapp.com/ootd',
         data: {
-            clothes_id: idTop,
+            top_id: idTop,
+            bottom_id: idBottom,
             nickname: nickName,
             stamp: '',
         }
@@ -94,21 +95,21 @@ class ModalNickname extends React.Component {
       })
 
 
-      axios({
-        method: 'post',
-        url: 'https://switchit1234.herokuapp.com/ootd',
-        data: {
-            clothes_id: idBottom,
-            nickname: nickName,
-            stamp: '',
-        }
-      })
-      .then(data=>{
-          console.log('ootd saved')
-      })
-      .catch(error=>{
-          console.log(error)
-      })
+      // axios({
+      //   method: 'post',
+      //   url: 'https://switchit1234.herokuapp.com/ootd',
+      //   data: {
+      //       clothes_id: idBottom,
+      //       nickname: nickName,
+      //       stamp: '',
+      //   }
+      // })
+      // .then(data=>{
+      //     console.log('ootd saved')
+      // })
+      // .catch(error=>{
+      //     console.log(error)
+      // })
 
   }
     render() {

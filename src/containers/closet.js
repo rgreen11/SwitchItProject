@@ -52,7 +52,6 @@ class Closet extends React.Component {
           <div className='topB'>
           <h1>{name}'s Closet</h1>
           </div>
-
           <div className="container">
             <div className="row">
               {/* <div className="col-4"> */}

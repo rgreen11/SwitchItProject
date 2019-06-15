@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'mdbootstrap/css/mdb.min.css';
 import '../styles/Navbar.css';
 import AuthContext from "../contexts/auth";
+import Opening from '../containers/opening'
 
 const Navbar = () => {
   return (

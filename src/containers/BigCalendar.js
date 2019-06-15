@@ -25,6 +25,24 @@
 
 }
 
+getUnique = (arr, comp) => {
+    const newArr = [];
+    arr.map((e, i) => {
+        return e[comp]
+    })
+        .map((e, i, arrOfTitles) => {
+            return arrOfTitles.indexOf(e) === i
+        })
+
+        .filter((e, i) => {
+            if (e === true) {
+                newArr.push(arr[i])
+            }
+            return newArr
+        })
+    return newArr
+}
+
 componentDidMount(){
     const top = localStorage.getItem('top');
     const bottom = localStorage.getItem('bottom');
@@ -32,11 +50,13 @@ componentDidMount(){
     
     axios({
         method: 'get',
-        url: 'https://switchit1234.herokuapp.com/clothes/readAll',
+        url: 'https://switchit1234.herokuapp.com/clothes/readTopAll',
     }).then((data)=>{
-        console.log('data:', data.data)
-        let events = [...this.state.events] 
-        data.data.map((e)=>{
+        console.log('data:', data)
+        let events = [...this.state.events]
+        let test = data.data 
+
+        test.map((e,i)=>{
             const event = {
                 start: '',
                 end: '',
@@ -55,16 +75,22 @@ componentDidMount(){
                 event.start = new Date(e.stamp)
                 event.end = new Date(e.stamp)
             }
+            
             events = events.concat(event)
 
         })
-       
+        
+
         this.setState({topid: top, bottomId: bottom, nickName: nickName, events: events})
     })
     .catch((error)=>{
         console.log(error)
     })
 }
+
+
+
+
 
 
 onEventDrop=({ event, start, end }) =>{
@@ -84,7 +110,7 @@ onEventDrop=({ event, start, end }) =>{
         method: 'put',
         url: 'https://switchit1234.herokuapp.com/clothes/update',
         data: {
-            clothes_id: id,
+            top_id: id,
             stamp: end,
             nickname: title
         }
