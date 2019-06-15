@@ -20,9 +20,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background:linear-gradient(#69c8c9, #f6c557);
-    width: 75%;
-    margin-left: 13%;
+    background:transparent;
+    background-size:contain;
+    width: 50%;
+    margin-left: 12%;
+
+}
+
+.bigbox {
+    background-image: url("https://library.kissclipart.com/20180929/ukw/kissclipart-empty-open-wardrobe-clipart-armoires-wardrobes-c-7524a2b0cf356df2.png");
+    background-repeat: no-repeat;
+    background-size:contain;
+    border-top:3px;
 }
 
 .tab-color {
@@ -41,24 +50,21 @@
     bottom: 100px;
     font-size: 72px;
     font-family: Roboto;
-    color: white;
+    color: lightgrey;
 }
 
 .button_holder {
     grid-area: submitbutton;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    padding-left: 250px;
+
 }
-
-
 
 
 .selections {
     display: none;
 }
-
-
 
 .slidertext {
     opacity: 0;
