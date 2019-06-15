@@ -42,7 +42,6 @@ export default class mixNmatch extends React.Component {
       
       </div>
 
-
         {/* <FilterEffect updateFilter={this.updateFilter} className = 'filterTop'/> */}
         {/* <CarouselClass className='carousel'/> */}
         {/* <FilterBottomEffect updateBottomFilter={this.updateBottomFilter} className='filterBottom'/> */}

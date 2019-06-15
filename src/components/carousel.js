@@ -3,6 +3,7 @@ import axios from 'axios';
 import ButtonCalendar from './ButtonCalendar';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '../styles/hidemix.css';
+import '../styles/Carousel.css';
 import { Carousel } from 'react-responsive-carousel';
 import { auth } from 'firebase';
 import AuthContext from '../contexts/auth';
@@ -43,7 +44,7 @@ export default class CarouselClass extends Component {
                 this.setState({ pictureBottoms: bottomsResponse })
             })
     }
-
+    
     //-----Mix-Match Function
     //------tops
 mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pictureBottoms) => {
@@ -78,8 +79,9 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
             <>
             <TopBottomContext.Provider value={this.state}>
                 <div className="center">
-                    <button className='mixClothes' onClick={this.mixClothes} type="button" class="btn btn-info">Mix-N-Match</button>
-                        
+                    <div className="mixB">
+                    <button className='mixClothes' onClick={this.mixClothes} type="button" className="btn btn-infos ">Mix-N-Match</button>
+                    </div>
                         <AuthContext.Consumer>
                             {
                                 (state) => {
@@ -132,8 +134,11 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
                                     }
                                 }
                         </AuthContext.Consumer>
-                        <ButtonCalendar state={this.state} />
+
                     </div>
+                    <div className = 'mixB'>
+                        <ButtonCalendar state={this.state} />
+                        </div>
                 </TopBottomContext.Provider>
             </>
         );
