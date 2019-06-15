@@ -49,7 +49,7 @@ class ModalNickname extends React.Component {
     console.log(this.state.nickName)
     axios({
       method: 'post',
-      url: 'http://localhost:8080/ootd',
+      url: 'https://switchit1234.herokuapp.com/clothes/ootd',
       data: {
           clothes_id: '1',
           stamp: date,
@@ -79,7 +79,7 @@ class ModalNickname extends React.Component {
 
       axios({
         method: 'post',
-        url: 'http://localhost:8080/ootd',
+        url: 'https://switchit1234.herokuapp.com/ootd',
         data: {
             clothes_id: idTop,
             nickname: nickName,
@@ -96,7 +96,7 @@ class ModalNickname extends React.Component {
 
       axios({
         method: 'post',
-        url: 'http://localhost:8080/ootd',
+        url: 'https://switchit1234.herokuapp.com/ootd',
         data: {
             clothes_id: idBottom,
             nickname: nickName,
@@ -122,7 +122,7 @@ class ModalNickname extends React.Component {
          {matches =>
          matches ? (
            <>
-            <Button color="success" onClick={this.toggle}>Add to Calender</Button>
+            <Button color="success " onClick={this.toggle}>Add to Calendar</Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <ModalHeader toggle={this.toggle}>Add A Nickname</ModalHeader>
               <ModalBody>
@@ -136,7 +136,8 @@ class ModalNickname extends React.Component {
             </>
          ) : (
            <div >
-          <Button color="success" onClick={this.toggle}>Add to Calender</Button>
+             
+          <Button color="success " onClick={this.toggle}>Add to Calendar</Button>
           <Modal isOpen={this.state.modal} toggle={this.toggle} className={`${this.props.className} `}>
             <ModalHeader className={`${this.state.displayCal ? 'remove' : ''}`} toggle={this.toggle}>Add A Nickname</ModalHeader>
             <ModalHeader className={`${this.state.displayCal ? '' : 'remove'}`} toggle={this.toggle}>Save Outfit</ModalHeader>

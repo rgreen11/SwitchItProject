@@ -20,22 +20,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background:linear-gradient(#69c8c9, #f6c557);
-    width: 75%;
-    margin-left: 13%;
+    background:grey;
+    width: 50%;
+    margin-left: 3%;
+    margin-right: 10%;
 }
 
-.background-image {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex-grow: 2;
-    min-height: 200px;
-    background: white
-    url(https://www.organizersdirect.com/wp-content/uploads/2018/12/shutterstock_1027213198.jpg) no-repeat 
-      center;
-    color: white;
-  }
+.bigbox {
+    background-image: url("https://library.kissclipart.com/20180929/ukw/kissclipart-empty-open-wardrobe-clipart-armoires-wardrobes-c-7524a2b0cf356df2.png");
+    background-repeat: no-repeat;
+    background-size: 800px 600px;
+    border-top:3px;
+}
 
 .tab-color {
     background-color: #69c8c9;

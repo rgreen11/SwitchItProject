@@ -12,3 +12,25 @@
     border: 0;
     font-size: 32px;
 }
+
+.btn-success {
+    position:absolute;
+    top:0;
+    right:0;
+    
+}
+
+
+.btn-infos {
+    background-color: purple !important;
+    
+    
+}
+
+.btn {
+    color: white;
+    text-align: center;
+    
+}
+
+

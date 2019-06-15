@@ -79,8 +79,9 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
             <>
             <TopBottomContext.Provider value={this.state}>
                 <div className="center">
-                    <button className='mixClothes' onClick={this.mixClothes} type="button" class="btn btn-info">Mix-N-Match</button>
-                        
+                    <div className="mixB">
+                    <button className='mixClothes' onClick={this.mixClothes} type="button" className="btn btn-infos ">Mix-N-Match</button>
+                    </div>
                         <AuthContext.Consumer>
                             {
                                 (state) => {
@@ -133,8 +134,11 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
                                     }
                                 }
                         </AuthContext.Consumer>
-                        <ButtonCalendar state={this.state} />
+
                     </div>
+                    <div className = 'mixB'>
+                        <ButtonCalendar state={this.state} />
+                        </div>
                 </TopBottomContext.Provider>
             </>
         );
