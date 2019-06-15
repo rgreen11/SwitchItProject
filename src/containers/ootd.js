@@ -55,16 +55,16 @@ export default class Ootd extends Component {
             <div className = "row">
             <div className = "col col-4"></div>
             <div className ='col col-4'>
-              <div className = "Time">
+              <div className = "Time container">
                 <h3>06/15/2019</h3>
               </div>
-              <div className = "Nickname">
+              <div className = "Nickname container">
                 <h4>Bbq Outfit</h4>
               </div>
-              <div className = "TopImage">
+              <div className = "TopImage container">
                 <img src = "https://images-na.ssl-images-amazon.com/images/I/913D3hkEyRL._UX385_.jpg" alt = ""/>
               </div>
-              <div className = "BottomImage">
+              <div className = "BottomImage container">
               <img src = "https://cdn.shopify.com/s/files/1/1800/4357/products/DF102-ROY-F_400x400.jpg?v=1552703456" alt = ""/>
               </div>
               </div>
