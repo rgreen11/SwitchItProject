@@ -123,9 +123,14 @@ onEventDrop=({ event, start, end }) =>{
           console.log(error)
       })
 
+
     this.setState({
       events: nextEvents, stamp: time
     })
+}
+
+handleClick=()=>{
+    this.props.history.push('/ootd')
 }
 
 
@@ -149,6 +154,7 @@ render() {
                 onEventDrop={this.onEventDrop}
                 resizable
                 selectable
+                onClick={this.handleClick}
             />
         </div>
     );

@@ -30,6 +30,7 @@ componentDidMount(){
       <Route path="/opening" exact component={Opening} /> 
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
+      <Route path="/logout" exact  strict component={Logout} />
     </Switch>;
 
     const loggedInRoutes = <Switch>
@@ -38,7 +39,7 @@ componentDidMount(){
       <Route path="/mix-N-match" exact strict component={MixNMatch} />
       <Route path="/ootd" exact strict component={Ootd} />
       <Route path="/calendar" exact strict component={BigCalendar} /> 
-      <Route path="/logout" exact  strict component={Logout} />
+      
       <Route path="/opening" exact strict component={() => null} /> 
       <Route path="/signup" exact strict component={() => null} /> 
       <Route path="/login" exact strict component={() => null} /> 
