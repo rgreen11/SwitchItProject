@@ -49,13 +49,9 @@ class Closet extends React.Component {
     if (img_url.length) {
       return (
         <>
-<<<<<<< HEAD
-          <h1>Welcome, {this.context.user.email}</h1>
-=======
           <div className='topB'>
           <h1>{name}'s Closet</h1>
           </div>
->>>>>>> master
 
           <div className="container">
             <div className="row">
