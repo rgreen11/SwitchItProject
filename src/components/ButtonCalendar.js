@@ -123,7 +123,7 @@ class ModalNickname extends React.Component {
          {matches =>
          matches ? (
            <>
-            <Button color="success" onClick={this.toggle}>Add to Calender</Button>
+            <Button color="success " onClick={this.toggle}>Add to Calendar</Button>
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
               <ModalHeader toggle={this.toggle}>Add A Nickname</ModalHeader>
               <ModalBody>
@@ -137,7 +137,8 @@ class ModalNickname extends React.Component {
             </>
          ) : (
            <div >
-          <Button color="success" onClick={this.toggle}>Add to Calender</Button>
+             
+          <Button color="success " onClick={this.toggle}>Add to Calendar</Button>
           <Modal isOpen={this.state.modal} toggle={this.toggle} className={`${this.props.className} `}>
             <ModalHeader className={`${this.state.displayCal ? 'remove' : ''}`} toggle={this.toggle}>Add A Nickname</ModalHeader>
             <ModalHeader className={`${this.state.displayCal ? '' : 'remove'}`} toggle={this.toggle}>Save Outfit</ModalHeader>

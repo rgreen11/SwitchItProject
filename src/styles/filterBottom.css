@@ -2,3 +2,18 @@
 .filterBottom{
     float: right;
 } */
+
+.headerBottom{
+    text-align: center;
+    padding-top: 20%;
+    color: rgb(92, 92, 92);
+}
+
+.topB {
+    text-align: center;
+
+}
+
+.form-control {
+    color: white;
+}
