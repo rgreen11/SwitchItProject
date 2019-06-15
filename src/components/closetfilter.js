@@ -99,7 +99,7 @@ import './closetfilter.css'
                         </select>
 
                         <div className="button-to-filter">
-                            <button type="submit"  onClick ={this.onClickSubmitButton} className="button">Submit</button>
+                            <button type="submit"  onClick ={this.onClickSubmitButton} className="btn btn-info sunny-morning-gradient">Submit</button>
                         </div>
 
                     </form>
