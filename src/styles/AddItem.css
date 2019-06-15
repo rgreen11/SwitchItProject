@@ -3,7 +3,7 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 15% 15% 15% 15% 15% 15% 15% 15%;
-    grid-template-columns: 15% 15% 15% 15% 15% 15% 15% 15%;
+    grid-template-columns: 10% 15% 15% 15% 15% 15% 15% 15%;
     grid-template-areas:
         "header header header header . . . ."
         ". upload-box upload-box upload-box  category-position-left category-position-left category-position-left ."
@@ -20,16 +20,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background:grey;
+    background:transparent;
+    background-size:contain;
     width: 50%;
-    margin-left: 3%;
-    margin-right: 10%;
+    margin-left: 12%;
+
 }
 
 .bigbox {
     background-image: url("https://library.kissclipart.com/20180929/ukw/kissclipart-empty-open-wardrobe-clipart-armoires-wardrobes-c-7524a2b0cf356df2.png");
     background-repeat: no-repeat;
-    background-size: 800px 600px;
+    background-size:contain;
     border-top:3px;
 }
 
@@ -49,14 +50,15 @@
     bottom: 100px;
     font-size: 72px;
     font-family: Roboto;
-    color: white;
+    color: lightgrey;
 }
 
 .button_holder {
     grid-area: submitbutton;
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    padding-left: 250px;
+
 }
 
 
@@ -292,3 +294,8 @@ select {
     }
 
 }
+
+.remove{
+    display: none;
+}
+

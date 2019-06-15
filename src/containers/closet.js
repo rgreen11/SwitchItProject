@@ -1,45 +1,28 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import ItemsList from '../components/closetitems';
-import axios from 'axios';
-import {Link} from 'react-router-dom';
-import firebase from '../firebase';
-import Filter from '../components/closetfilter.js';
-import '../components/closetdisplay.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import ItemsList from "../components/closetitems";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import Filter from "../components/closetfilter.js";
+import "../components/closetdisplay.css";
+import AuthContext from "../contexts/auth";
 
+class Closet extends React.Component {
+  static contextType = AuthContext;
 
-class Closet extends React.Component{
-    constructor(props){
-        super(props);
-        this.state={
-        id:[],
-        img_url:[],
-        user: null,
-        uid: null,
-        name: '',
-        }  
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: [],
+      img_url: [],
+      user: null,
+      uid: null,
+      name: ""
+    };
+  }
 
      componentDidMount() {
-    // this.unsubscribe = firebase.auth().onAuthStateChanged(user=>{
-
-        // console.log(user.n)
-        //  axios.get('http://localhost:8080/user/read',{
-        //     params:{
-        //     email: "lukas@pursuit.org"
-        //     }
-        //   })
-        //  .then((response)=>{
-        //    const rootObj = response.data
-        //    console.log("Log",response)
-        //    if(rootObj){
-        //      // this.setState({uid: uid})
-        //    }
-        //  })
-        //  .catch((error)=>{
-        //      console.log(error)
-        //  })
-    //  })
+    
     let name = localStorage.getItem('name')
         axios.get(`https://switchit1234.herokuapp.com/clothes`)
           .then(response => response.data)
@@ -48,51 +31,61 @@ class Closet extends React.Component{
           })
     }
 
+  getClothingItems = filteredItems => {
+    console.log("its working", filteredItems);
+    this.setState({ img_url: filteredItems });
+  };
 
-    getClothingItems = (filteredItems) => {
-      console.log("its working", filteredItems)
-      this.setState({img_url: filteredItems })
-   }
+  handleClick = () => {
+    this.props.history.push("/Additem");
+  };
 
+  render() {
+    console.log("trying filter", this.props.filterItem);
+    console.log(this.context);
+    const { img_url, name } = this.state;
 
-   handleClick = ()=>{
-     this.props.history.push('/Additem')
-   }
     
-    
-    render(){
-     console.log("trying filter" , this.props.filterItem)
-        const {img_url}=this.state;
-        if(img_url.length) {
-            return (
-            <>
-            {/* <Username getUsername={this.getUsername}/> */}
-            <p>Welcome {this.state.name} </p>
-            <div className = 'filter'>
-            <Filter getClothingItems={this.getClothingItems}/>
+    if (img_url.length) {
+      return (
+        <>
+          <div className='topB'>
+          <h1>{name}'s Closet</h1>
+          </div>
+
+          <div className="container">
+            <div className="row">
+              {/* <div className="col-4"> */}
+                <Filter getClothingItems={this.getClothingItems} />
+              {/* </div> */}
+              <div className="col-10" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+                {img_url.map((e, i) => {
+                  return <ItemsList img={e.img_url} />;
+                })}
+              </div>
             </div>
-            <div className="container row col-md ">
-              {
-                img_url.map((e, i) => {
-                  return (<ItemsList img={e.img_url} />)
-                })
-              }
-            </div>
-            </>
-            )
-          }
-          else {
-            return (
-            <>
-            <div className='positionButton'>
-              <button onClick={this.handleClick} type="button" className='btn btn-primary handleButton'>UPLOAD IMAGES</button>
-            </div>
-            </>
-            )
-            
-           }
-          //  <Route path="/additem" exact strict component={AddItem} />
-          
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <div className="positionButton">
+            <button
+              onClick={this.handleClick}
+              type="button"
+              className="btn btn-info sunny-morning-gradient"
+            >
+              UPLOAD IMAGES
+            </button>
+          </div>
+        </>
+      );
     }
-  }     
+    //  <Route path="/additem" exact strict component={AddItem} />
+  }
+}
 export default Closet;
+
+// <div class='col col-4 pink'></div>
+//       <div class='col col-8 black'></div>
