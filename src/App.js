@@ -11,21 +11,7 @@ class App extends Component {
   state = {
     user: { user: null, user_id: null }
   };
-  // componentDidUpdate = async () => {
-  //   if (this.state.user.user_id === null && this.state.user.user) {
-  //     const url = `http://localhost:3001/user/username/${
-  //       this.state.user.user.username
-  //     }`;
-  //     const { data } = await axios.get(url);
-  //     console.log(data);
-  //     const obj = {};
-  //     obj.user = this.state.user.user;
-  //     obj.user_id = data.data.id;
-  //     this.setState({ user: obj }, () => {
-  //       console.log(this.state);
-  //     });
-  //   }
-  // };
+ 
   componentDidMount = async () => {
     this.unsubscribe = firebase.auth().onAuthStateChanged(async user => {
       if (user) {

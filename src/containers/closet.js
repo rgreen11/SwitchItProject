@@ -43,11 +43,11 @@ class Closet extends React.Component {
   render() {
     console.log("trying filter", this.props.filterItem);
     console.log(this.context);
-    const { img_url } = this.state;
+    const { img_url, name } = this.state;
     if (img_url.length) {
       return (
         <>
-          <h1>Welcome {this.context.user.email}</h1>
+          <h1>Welcome {name}</h1>
 
           <div className="container">
             <div className="row">
