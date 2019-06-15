@@ -1,75 +1,87 @@
-import React from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import '../styles/hidemix.css';
+import { Carousel } from 'react-responsive-carousel';
+import { auth } from 'firebase';
+import AuthContext from '../contexts/auth';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import CarouselClass from '../components/carousel'
 import Calendar from '../components/Calendar';
-import AuthContext from '../contexts/auth';
-import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import Context from '../contexts/TopBottom'
 
-export default class ootd extends React.Component {    
-    constructor(props){
+const OotdContext = React.createContext()
+
+export default class Ootd extends Component {
+    // static contextType = FilterContext;
+
+    constructor(props) {
         super(props)
-        this.state={
-          outfits:[],
+        this.state = {
+            
+            nickname: [],
         }
-      }  
+    }
+
     //--------Axios
     componentDidMount() {
-      let nickname = localStorage.getItem('nickName')
-        //top
+        //ootd
+        let nickname = localStorage.getItem('nickName')
         console.log('context: ', nickname)
-        axios.get(`https://switchit1234.herokuapp.com/clothes/read`,{
-          params:{
-            nickname:nickname
-          }
-        })
-            .then((outfits)=>{
-              console.log('something',outfits)
-              this.setState({outfits:outfits.data})
-            })
-            .catch((err)=>{
-              console.log(err)
-            })
-        };
-
-  render() {
-    console.log('here', this.state.outfits)
-    
-    return (
-      <>
-      <div className=" row" >
-        <div className = "col col-4"></div>
-        <div className = "col col-4"><img className="card-img-top" src= "https://switchit1234.herokuapp.com/clothes/read" alt="Card image cap"/></div>
-        <div className = "col col-4"></div>
-              </div>
         
-      </>
-    )
+        axios.get(`https://switchit1234.herokuapp.com/clothes/read`)
+          .then(response => response.data)
+          .then(outfits => {
+            console.log('something',outfits)
+            this.setState({outfits: outfits.data})
+          })
+          .catch((err)=>{
+            console.log(err)
+          })
+        }
+    
+
+    render() {
+        const { nickname} = this.state
+
+        return (
+            <>
+            <OotdContext.Provider value={this.state}>
+                <div className="center">                        
+                        <AuthContext.Consumer>
+                            {
+                                (state) => {
+                                    const outfits = state.filteredoutfits.length ? state.filteredoutfits : outfits;
+                                        return (
+                                        <>
+                                            <div className="outfit">
+                                                <Carousel showArrows={true}
+                                                    showThumbs={false}
+                                                    width={"500px"}
+                                                    className="carousel"
+                                                    selectedItem={nickname || 0}
+                                                    onChange={this.outfit}>
+                                                    {
+                                                        outfits.map((e, i) => {
+                                                            return (
+                                                                <>
+                                                                    <div id='nickname'>
+                                                                        <img key={i} src={e.img_url} alt='' className='outfits' />
+                                                                    </div>
+                                                                </>)
+                                                        })
+                                                    }
+                                                </Carousel>
+                                            </div>
+                                </>
+                                        )
+                                    }
+          
+                                }
+                        </AuthContext.Consumer>
+                    </div>
+                </OotdContext.Provider>
+            </>
+        );
+    }
   }
-}
-
-
-
-
-
-  //     <AuthContext.Consumer>
-  //       {(user)=>{
-  //         console.log(user , "is user rn")
-  //         if (user.user || user.user_id) {
-  //           return(
-  //                     <>
-  //                       <CarouselClass />
-  //                       <Calendar/>
-  //                     </>
-  //           )
-  //       }
-  // else {
-  //         return (
-  //             !user ?
-  //             <h5>You Are Not Logged In!</h5>
-  //             :
-  //             <h5> {user.user || user.user_id}</h5>
-  //         )
-  //     }
-  // }
-  // }
-  //     </AuthContext.Consumer>
