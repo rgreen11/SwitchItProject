@@ -41,7 +41,7 @@ import './closetfilter.css'
         this.setState({ chosenseason: e.target.value })
     }
     onClickSubmitButton = (e)=>{
-      let url=`https://switchit1234.herokuapp.com/clothes/season/${this.state.chosencategory}/${this.state.chosenstyle}/${this.state.chosencolor}/${this.state.chosenseason}`
+        let url=`https://switchit1234.herokuapp.com/clothes/season?category=top&style=${this.state.chosenstyle}&color=${this.state.chosencolor}&season=${this.state.chosenseason}`
         console.log('testing', url)
         axios.get(url)
           .then(res => {
