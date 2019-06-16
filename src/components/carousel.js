@@ -52,7 +52,9 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
     const randomTopIndex = Math.floor(Math.random() * pictureTops.length);
     const randomBottomIndex = Math.floor(Math.random() * pictureBottoms.length);
     const top = pictureTops[randomTopIndex].id
-    const bottom = pictureTops[randomTopIndex].id
+    const bottom = pictureBottoms[randomBottomIndex].id
+    console.log('top:',top)
+    console.log('bottom:', bottom)
     this.setState({
         currentTopIndex: randomTopIndex,
         currentBottomIndex: randomBottomIndex,
@@ -134,7 +136,6 @@ mixClothes = (e, pictureTops=this.state.pictureTops,pictureBottoms=this.state.pi
                                     }
                                 }
                         </AuthContext.Consumer>
-
                     </div>
                     <div className = 'mixB'>
                         <ButtonCalendar state={this.state} />
