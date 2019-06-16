@@ -50,7 +50,7 @@ class Closet extends React.Component {
       return (
         <>
           <div className='topB'>
-          <h1>{name}'s Closet</h1>
+          <h1>Rich's Closet</h1>
           </div>
           <div className="container">
             <div className="row">
