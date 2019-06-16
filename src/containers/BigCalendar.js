@@ -2,9 +2,7 @@
  import moment from 'moment';
  import axios from 'axios';
  import BigCalendar from 'react-big-calendar';
-
  import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-
  import "react-big-calendar/lib/addons/dragAndDrop/styles.css";
  import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -87,10 +85,6 @@ componentDidMount(){
         console.log(error)
     })
 }
-
-
-
-
 
 
 onEventDrop=({ event, start, end }) =>{

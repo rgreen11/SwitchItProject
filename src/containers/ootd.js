@@ -5,23 +5,23 @@ import '../styles/hidemix.css';
 import { Carousel } from 'react-responsive-carousel';
 import { auth } from 'firebase';
 import AuthContext from '../contexts/auth';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import CarouselClass from '../components/carousel'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import CarouselClass from '../components/carousel';
 import Calendar from '../components/Calendar';
-import '../styles/ootd.css'
+import '../styles/ootd.css';
 // import Context from '../contexts/TopBottom'
-
-const OotdContext = React.createContext()
+// const OotdContext = React.createContext()
 
 export default class Ootd extends Component {
     // static contextType = FilterContext;
-
     constructor(props) {
         super(props)
         this.state = {
           top:[],
           bottom: [],
-          nickname: [],
+          nickName: '',
+          topImg:'',
+          bottomImg:''
         }
     }
 
@@ -29,7 +29,10 @@ export default class Ootd extends Component {
     componentDidMount() {
         //ootd
         let nickname = localStorage.getItem('nickName')
-        console.log('context: ', nickname)
+
+      const topImg = localStorage.getItem('topImg');
+      const bottomImg = localStorage.getItem('bottomImg');
+        console.log('name: ', nickname)
         
         axios.get(`https://switchit1234.herokuapp.com/clothes/read`,{
           params:{
@@ -39,7 +42,7 @@ export default class Ootd extends Component {
           .then(response => response.data)
           .then(outfits => {
             console.log('something',outfits)
-            this.setState({outfits: outfits.data})
+            this.setState({outfits: outfits.data, nickName: nickname, topImg:topImg, bottomImg: bottomImg})
           })
           .catch((err)=>{
             console.log(err)
@@ -48,67 +51,29 @@ export default class Ootd extends Component {
     
 
     render() {
-        const { nickname} = this.state
-
+        const { nickName, topImg, bottomImg} = this.state
         return (
             <>
             <div className = "row">
             <div className = "col col-4"></div>
             <div className ='col col-4'>
               <div className = "Time container">
-                <h3>06/15/2019</h3>
+                {/* <h3>{06/15/2019}</h3> */}
               </div>
               <div className = "Nickname container">
-                <h4>Bbq Outfit</h4>
+                <h4>{nickName}</h4>
               </div>
               <div className = "TopImage container">
-                <img src = "https://images-na.ssl-images-amazon.com/images/I/913D3hkEyRL._UX385_.jpg" alt = ""/>
+                <img src = {topImg} alt = ""/>
               </div>
               <div className = "BottomImage container">
-              <img src = "https://cdn.shopify.com/s/files/1/1800/4357/products/DF102-ROY-F_400x400.jpg?v=1552703456" alt = ""/>
+              <img src = {bottomImg} alt = ""/>
               </div>
               </div>
               <div className = "col col-4"></div>
               </div>
-
-            
             </>
         );
     }
   }
 
-  {/* <OotdContext.Provider value={this.state}>
-                <div className="center">                        
-                        <AuthContext.Consumer>
-                            {
-                                (state) => {
-                                    const outfits = state.filteredoutfits.length ? state.filteredoutfits : outfits;
-                                        return (
-                                        <>
-                                            <div className="outfit">
-                                                <Carousel showArrows={true}
-                                                    showThumbs={false}
-                                                    width={"500px"}
-                                                    className="carousel"
-                                                    selectedItem={nickname || 0}
-                                                    onChange={this.outfit}>
-                                                    {
-                                                        outfits.map((e, i) => {
-                                                            return (
-                                                                <>
-                                                                    <div id='nickname'>
-                                                                        <img key={i} src={e.img_url} alt='' className='outfits' />
-                                                                    </div>
-                                                                </>)
-                                                        })
-                                                    }
-                                                </Carousel>
-                                            </div>
-                                </>
-                                        )
-                                    }
-          
-                                }
-                        </AuthContext.Consumer>
-                    </div>
-                </OotdContext.Provider> */}
