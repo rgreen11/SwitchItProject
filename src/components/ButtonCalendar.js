@@ -22,7 +22,7 @@ class ModalNickname extends React.Component {
     }
 
 
-  
+
     toggle=()=> {
       this.setState(prevState => ({
         modal: !prevState.modal
@@ -57,7 +57,6 @@ class ModalNickname extends React.Component {
       }
     })
     .then(data=>{
-
         console.log('ootd saved')
     })
     .catch(error=>{
@@ -73,9 +72,9 @@ class ModalNickname extends React.Component {
       
       let idTop = pictureTops[currentTopIndex].id
       let idBottom = pictureBottoms[currentBottomIndex].id
-
-
       localStorage.setItem('nickName', nickName)
+      localStorage.setItem('topImg',pictureTops[currentTopIndex].img_url)
+      localStorage.setItem('bottomImg',pictureBottoms[currentBottomIndex].img_url)
 
       axios({
         method: 'post',
