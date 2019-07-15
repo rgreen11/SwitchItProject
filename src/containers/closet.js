@@ -25,7 +25,7 @@ class Closet extends React.Component {
     
     let name = localStorage.getItem('name')
         axios.get(`https://switchit1234.herokuapp.com/clothes`)
-          .then(response => response.data)
+          .then(response => response)
           .then(pics => {
             this.setState({img_url:pics, name: name})
           })
@@ -44,12 +44,13 @@ class Closet extends React.Component {
     console.log("trying filter", this.props.filterItem);
     console.log(this.context);
     const { img_url, name } = this.state;
-
-    
+    let date = new Date();
+    // console.log('ok:',img_url.data)
     if (img_url.length) {
       return (
         <>
           <div className='topB'>
+            <h2> {date}</h2>
           <h1>Rich's Closet</h1>
           </div>
           <div className="container">
@@ -58,7 +59,7 @@ class Closet extends React.Component {
                 <Filter getClothingItems={this.getClothingItems} />
               {/* </div> */}
               <div className="col-10" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-                {img_url.map((e, i) => {
+                {img_url.data.map((e, i) => {
                   return <ItemsList img={e.img_url} />;
                 })}
               </div>

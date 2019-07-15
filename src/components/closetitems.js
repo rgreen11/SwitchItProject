@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ItemsList=(props)=>{
+    console.log('imgs:',props)
     return(
         <>
            {/* <div className=''> */}
