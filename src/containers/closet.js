@@ -17,7 +17,7 @@ class Closet extends React.Component {
       img_url: [],
       user: null,
       uid: null,
-      name: ""
+      name: [],
     };
   }
 
@@ -27,7 +27,7 @@ class Closet extends React.Component {
         axios.get(`https://switchit1234.herokuapp.com/clothes`)
           .then(response => response)
           .then(pics => {
-            this.setState({img_url:pics, name: name})
+            this.setState({img_url:pics.data, name: name})
           })
     }
 
@@ -41,51 +41,46 @@ class Closet extends React.Component {
   };
 
   render() {
-    console.log("trying filter", this.props.filterItem);
-    console.log(this.context);
-    const { img_url, name } = this.state;
+
+    let { img_url, name } = this.state;
     let date = new Date();
-    // console.log('ok:',img_url.data)
-    if (img_url.length) {
+    console.log('img:', img_url)
+    if (img_url.data) {
       return (
         <>
-          <div className='topB'>
-            <h2> {date}</h2>
-          <h1>Rich's Closet</h1>
-          </div>
-          <div className="container">
-            <div className="row">
-              {/* <div className="col-4"> */}
-                <Filter getClothingItems={this.getClothingItems} />
-              {/* </div> */}
-              <div className="col-10" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-                {img_url.data.map((e, i) => {
-                  return <ItemsList img={e.img_url} />;
-                })}
-              </div>
-            </div>
-          </div>
-        </>
+        <div className="positionButton">
+          <button
+            onClick={this.handleClick}
+            type="button"
+            className="btn btn-info sunny-morning-gradient"
+          >
+            UPLOAD IMAGES
+          </button>
+        </div>
+      </>
       );
     } else {
       return (
         <>
-          <div className="positionButton">
-            <button
-              onClick={this.handleClick}
-              type="button"
-              className="btn btn-info sunny-morning-gradient"
-            >
-              UPLOAD IMAGES
-            </button>
+        <div className='topB'>
+          {/* <h2> {date}</h2> */}
+        <h1>Rich's Closet</h1>
+        </div>
+        <div className="container">
+          <div className="row">
+            {/* <div className="col-4"> */}
+              <Filter getClothingItems={this.getClothingItems} />
+            {/* </div> */}
+            <div className="col-10" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+                 <ItemsList img_url={img_url} />
+            </div>
           </div>
-        </>
+        </div>
+      </>
+       
       );
     }
     //  <Route path="/additem" exact strict component={AddItem} />
   }
 }
 export default Closet;
-
-// <div class='col col-4 pink'></div>
-//       <div class='col col-8 black'></div>
