@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import firebase from '../firebase';
 import Logo from '../components/image/SwitchIt-icon-logo-01.jpg';
 import Main from '../components/image/SwitchIt-icon-logo-tee-02.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,13 +9,15 @@ import '../styles/opening.css';
 
 
 const Opening = (props) => {
+
   return (
     <>
 
       <div className="wrapper justify-content-md-center">
         <header className="page-header aqua-gradient">
           <nav>
-            <img src={Logo} className="img-thumbnail float-right" style={{ width: '50px' }} alt="" />
+            <img src={Logo} className="img-thumbnail float-right" style={{ width: '50px' }} alt="Login" />
+            <Link to="/closet" className="cta-contact">Demo Login</Link>
             <a className="cta-contact" href="#/login">Login</a>
           </nav>
         </header>

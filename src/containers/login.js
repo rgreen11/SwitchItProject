@@ -22,7 +22,7 @@ export default class Login extends React.Component {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((response) => {
         console.log('Returns: ', response);
-        this.props.history.push('/')
+        this.props.history.push('/closet')
       })
       .catch(err => {
         const { message } = err;

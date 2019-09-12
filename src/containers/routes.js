@@ -21,20 +21,19 @@ class RoutesContainer extends React.Component {
   static contextType = AuthContext;
   
 componentDidMount(){
-    console.log(this.props.history)
+  
   }
 
   render() {
-    console.log('App Context', this.context)
     const loggedOutRoutes = <Switch>
-      <Route path="/opening" exact component={Opening} /> 
+      <Route path="/" exact component={Opening} /> 
       <Route path="/signup" exact component={Signup} />
       <Route path="/login" exact component={Login} />
       <Route path="/logout" exact  strict component={Logout} />
     </Switch>;
 
     const loggedInRoutes = <Switch>
-      <Route path="/" exact strict component={Closet} /> 
+      <Route path="/closet" exact strict component={Closet} /> 
       <Route path="/additem" exact strict component={AddItem} /> 
       <Route path="/mix-N-match" exact strict component={MixNMatch} />
       <Route path="/ootd" exact strict component={Ootd} />

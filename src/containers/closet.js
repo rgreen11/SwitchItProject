@@ -43,12 +43,14 @@ class Closet extends React.Component {
   render() {
 
     let { img_url, name } = this.state;
+    console.log(name)
     let date = new Date();
     console.log('img:', img_url)
     if (img_url.data) {
       return (
         <>
         <div className="positionButton">
+        <h1>Rich's Closet</h1>
           <button
             onClick={this.handleClick}
             type="button"

@@ -31,7 +31,7 @@ export default class Signup extends React.Component {
     const {email, password} = this.state;
     const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
     const {uid,photoUrl} = response.user;
-      this.props.history.push('/')
+      this.props.history.push('/closet')
       this.setState({firebase_token:uid,avatar_url:photoUrl});
     }
     
