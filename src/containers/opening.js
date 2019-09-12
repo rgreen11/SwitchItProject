@@ -10,6 +10,19 @@ import '../styles/opening.css';
 
 const Opening = (props) => {
 
+  const handleClickForLogin =(e)=>{
+    e.preventDefault();
+    firebase.auth().signInWithEmailAndPassword('rich@rich.rich', 'password')
+    .then(() => {
+      props.history.push('/closet')
+    })
+    .catch(err => {
+      const { message } = err;
+      console.log(message)
+    })
+  }
+
+
   return (
     <>
 
@@ -17,7 +30,7 @@ const Opening = (props) => {
         <header className="page-header aqua-gradient">
           <nav>
             <img src={Logo} className="img-thumbnail float-right" style={{ width: '50px' }} alt="Login" />
-            <Link to="/closet" className="cta-contact">Demo Login</Link>
+            <a className="cta-contact" onClick={handleClickForLogin}>Demo Login</a>
             <a className="cta-contact" href="#/login">Login</a>
           </nav>
         </header>
