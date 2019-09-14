@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
-// import Closet from "../containers/closet" ;
-import {clothingCategory,stylesByCategory,clothingColor,clothingSeason} from '../containers/api'
+import { clothingCategory, stylesByCategory, clothingColor, clothingSeason } from '../containers/api'
 import Axios from 'axios';
 import './closetfilter.css'
 
 
 
- class Filter extends Component {
+class Filter extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -17,16 +16,16 @@ import './closetfilter.css'
             chosencolor: '',
             chosenseason: '',
             styles: [],
-        
+
         }
     }
 
     handleCategory = (e) => {
-      this.setState({
-          chosencategory: e.target.value,
-          styles: stylesByCategory[e.target.value]
-        })  
-}
+        this.setState({
+            chosencategory: e.target.value,
+            styles: stylesByCategory[e.target.value]
+        })
+    }
 
     handleStyle = (e) => {
         this.setState({ chosenstyle: e.target.value })
@@ -40,27 +39,21 @@ import './closetfilter.css'
     handleSeason = (e) => {
         this.setState({ chosenseason: e.target.value })
     }
-    onClickSubmitButton = (e)=>{
-        let url=`https://switchit1234.herokuapp.com/clothes/season?category=top&style=${this.state.chosenstyle}&color=${this.state.chosencolor}&season=${this.state.chosenseason}`
-        console.log('testing', url)
+    onClickSubmitButton = (e) => {
+        let url = `https://switchit1234.herokuapp.com/clothes/season?category=top&style=${this.state.chosenstyle}&color=${this.state.chosencolor}&season=${this.state.chosenseason}`
         axios.get(url)
-          .then(res => {
-            console.log('data' ,res.data);
-            console.log('function from parent', this.props.getClothingItems(res.data))
-          })
+            .then(res => {
+                console.log('data', res.data);
+                console.log('function from parent', this.props.getClothingItems(res.data))
+            })
     }
-    
+
     render() {
-      let {styles} = this.state
-      console.log('category',this.state.chosencategory)
-      console.log('style',this.state.chosenstyle)
-      console.log('color',this.state.chosencolor)
-      console.log('season',this.state.chosenseason)
-      
-            return(
-                <>
-                    <div className='col-2'>
-                        <form>
+        let { styles } = this.state
+        return (
+            <>
+                <div className='col-2'>
+                    <form>
                         <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
                             <option value="CATEGORY" disabled>CATEGORY</option>
 
@@ -71,10 +64,11 @@ import './closetfilter.css'
                             }
                         </select>
 
-                        <select id="inputState"  className="form-control tab-color" onChange={this.handleStyle} defaultValue="STYLE">
+                        <select id="inputState" className="form-control tab-color" onChange={this.handleStyle} defaultValue="STYLE">
                             <option value="STYLE" disabled>STYLE</option>
                             {
                                 styles.map((style, i) => {
+
                                     return <option key={i}>{style}</option>
                                 })
                             }
@@ -99,16 +93,14 @@ import './closetfilter.css'
                         </select>
 
                         <div className="button-to-filter">
-                            <button type="submit"  onClick ={this.onClickSubmitButton} className="btn btn-info sunny-morning-gradient">Submit</button>
+                            <button type="submit" onClick={this.onClickSubmitButton} className="btn btn-info sunny-morning-gradient">Submit</button>
                         </div>
-
                     </form>
-                
-                    </div>
-                    
-                </>  
-            )
-          }
-        }
-        
-        export default Filter;
+
+                </div>
+            </>
+        )
+    }
+}
+
+export default Filter;

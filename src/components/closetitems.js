@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
+import Item from "./Item";
+import "../styles/itemList.css";
 
-const ItemsList=(props)=>{
-    console.log('img:',props.img_url)
-    if(!props.img_url) return <h1>Loading</h1>
-    return(
-        <>
-        { props.img_url.map((e,i)=>{
-            return <img src={e.img_url} style={{ height:'195px' }} alt={i}/>
-        })
-        } 
-        </>
-    )
-}
+const ItemsList = props => {
+  if (!props.img_url) return <h1>Loading</h1>;
+  return (
+    <div className="itemList">
+      {props.img_url.map((e, i) => {
+        return <Item src={e.img_url} alt={i} />;
+      })}
+    </div>
+  );
+};
 export default ItemsList;

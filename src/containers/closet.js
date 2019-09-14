@@ -17,22 +17,21 @@ class Closet extends React.Component {
       img_url: [],
       user: null,
       uid: null,
-      name: [],
+      name: []
     };
   }
 
-     componentDidMount() {
-    
-    let name = localStorage.getItem('name')
-        axios.get(`https://switchit1234.herokuapp.com/clothes`)
-          .then(response => response)
-          .then(pics => {
-            this.setState({img_url:pics.data, name: name})
-          })
-    }
+  componentDidMount() {
+    let name = localStorage.getItem("name");
+    axios
+      .get(`https://switchit1234.herokuapp.com/clothes`)
+      .then(response => response)
+      .then(pics => {
+        this.setState({ img_url: pics.data, name: name });
+      });
+  }
 
   getClothingItems = filteredItems => {
-    console.log("its working", filteredItems);
     this.setState({ img_url: filteredItems });
   };
 
@@ -41,48 +40,43 @@ class Closet extends React.Component {
   };
 
   render() {
-
     let { img_url, name } = this.state;
-    console.log(name)
+
     let date = new Date();
-    console.log('img:', img_url)
+
     if (img_url.data) {
       return (
         <>
-        <div className="positionButton">
-        <h1>Rich's Closet</h1>
-          <button
-            onClick={this.handleClick}
-            type="button"
-            className="btn btn-info sunny-morning-gradient"
-          >
-            UPLOAD IMAGES
-          </button>
-        </div>
-      </>
+          <div className="positionButton">
+            <h1>{name}'s Closet</h1>
+            <button
+              onClick={this.handleClick}
+              type="button"
+              className="btn btn-info sunny-morning-gradient"
+            >
+              UPLOAD IMAGES
+            </button>
+          </div>
+        </>
       );
     } else {
       return (
         <>
-        <div className='topB'>
-          {/* <h2> {date}</h2> */}
-        <h1>Rich's Closet</h1>
-        </div>
-        <div className="container">
-          <div className="row">
-            {/* <div className="col-4"> */}
+          <div className="topB">
+            <h1>{name}'s Closet</h1>
+          </div>
+          <div className="container">
+            <div className="row">
               <Filter getClothingItems={this.getClothingItems} />
-            {/* </div> */}
-            <div className="col-10" style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
-                 <ItemsList img_url={img_url} />
+
+              <div className="col-10">
+                <ItemsList img_url={img_url} />
+              </div>
             </div>
           </div>
-        </div>
-      </>
-       
+        </>
       );
     }
-    //  <Route path="/additem" exact strict component={AddItem} />
   }
 }
 export default Closet;
