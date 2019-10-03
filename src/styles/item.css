@@ -1,0 +1,8 @@
+.item {
+  flex: "1 1 0";
+}
+
+.item img {
+  width: 300px;
+  height: auto;
+}

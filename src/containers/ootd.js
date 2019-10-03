@@ -61,7 +61,7 @@ export default class Ootd extends Component {
                 {/* <h3>{06/15/2019}</h3> */}
               </div>
               <div className = "Nickname container">
-                <h4>{nickName}</h4>
+                <h4>{nickName} </h4>
               </div>
               <div className = "TopImage container">
                 <img src = {topImg} alt = ""/>
