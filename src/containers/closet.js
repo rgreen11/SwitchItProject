@@ -42,6 +42,7 @@ class Closet extends React.Component {
   render() {
     let { img_url, name } = this.state;
 
+
     let date = new Date();
 
     if (img_url.data) {
