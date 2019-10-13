@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
-import { clothingCategory, stylesByCategory, clothingColor, clothingSeason } from '../containers/api'
-import Axios from 'axios';
-import './closetfilter.css'
-
+import { clothingCategory, stylesByCategory, clothingColor, clothingSeason } from '../containers/api';
+import './closetfilter.css';
+import FilterAllCategory from './filterCategory/filterAllCategory';
 
 
 class Filter extends Component {
@@ -16,10 +15,8 @@ class Filter extends Component {
             chosencolor: '',
             chosenseason: '',
             styles: [],
-
         }
     }
-
     handleCategory = (e) => {
         this.setState({
             chosencategory: e.target.value,
@@ -29,7 +26,6 @@ class Filter extends Component {
 
     handleStyle = (e) => {
         this.setState({ chosenstyle: e.target.value })
-
     }
 
     handleColor = (e) => {
@@ -39,12 +35,16 @@ class Filter extends Component {
     handleSeason = (e) => {
         this.setState({ chosenseason: e.target.value })
     }
-    onClickSubmitButton = (e) => {
+    // RICH IF USER CLICKS SUBMIT THEY SHOULD NOT BE ABLE TO CHANGE THE CLOSET
+    // MAKE SURE IF THE USER CLICKS A CATEGORY MAKE SURE THERE IS A CALL TO THE CATEGORY API
+    onClickSubmitButton = () => {
+        if (!this.state.chosencategory) return alert("Select a Category")
         let url = `https://switchit1234.herokuapp.com/clothes/season?category=top&style=${this.state.chosenstyle}&color=${this.state.chosencolor}&season=${this.state.chosenseason}`
         axios.get(url)
             .then(res => {
-                console.log('data', res.data);
-                console.log('function from parent', this.props.getClothingItems(res.data))
+                this.props.getClothingItems(res.data)
+            }).catch((error) => {
+                alert("Must enter a valid input")
             })
     }
 
@@ -54,49 +54,11 @@ class Filter extends Component {
             <>
                 <div className='col-2'>
                     <form>
-                        <select id="inputState" onChange={this.handleCategory} className="form-control tab-color" defaultValue="CATEGORY">
-                            <option value="CATEGORY" disabled>CATEGORY</option>
-
-                            {
-                                clothingCategory.map((category, i) => {
-                                    return <option key={i}>{category}</option>
-                                })
-                            }
-                        </select>
-
-                        <select id="inputState" className="form-control tab-color" onChange={this.handleStyle} defaultValue="STYLE">
-                            <option value="STYLE" disabled>STYLE</option>
-                            {
-                                styles.map((style, i) => {
-
-                                    return <option key={i}>{style}</option>
-                                })
-                            }
-                        </select>
-
-                        <select id="inputState" onChange={this.handleColor} className="form-control tab-color" defaultValue="COLOR">
-                            <option value="COLOR" disabled>COLOR</option>
-                            {
-                                clothingColor.colors.map((color, i) => {
-                                    return <option key={i}>{color}</option>
-                                })
-                            }
-                        </select>
-
-                        <select id="inputState" onChange={this.handleSeason} className="form-control tab-color" defaultValue="SEASON">
-                            <option value="SEASON" disabled>SEASON</option>
-                            {
-                                clothingSeason.seasons.map((season, i) => {
-                                    return <option key={i}>{season}</option>
-                                })
-                            }
-                        </select>
-
+                        <FilterAllCategory handleCategory={this.handleCategory} handleColor={this.handleColor} handleSeason={this.handleSeason} handleStyle={this.handleStyle} styles={styles} />
                         <div className="button-to-filter">
                             <button type="submit" onClick={this.onClickSubmitButton} className="btn btn-info sunny-morning-gradient">Submit</button>
                         </div>
                     </form>
-
                 </div>
             </>
         )

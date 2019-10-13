@@ -14,6 +14,7 @@ import {
 import { Animated } from "react-animated-css";
 import Media from "react-media";
 import AuthContext from "../contexts/auth";
+// import FilterAllCategory from "../"
 
 export default class AddItem extends Component {
   constructor(props) {
@@ -96,13 +97,10 @@ export default class AddItem extends Component {
           img_url: this.state.fileUploadURL
         }
       })
-        .then(function(res) {
-
-        })
         .then(() => alert("Picture was added successfully"))
 
-        .catch(function(error) {
-
+        .catch(function (error) {
+          console.log(error)
         });
     }
   };
@@ -130,7 +128,7 @@ export default class AddItem extends Component {
                 <div
                   className={`slider category-position-left ${
                     +isOpen ? "fade-inShow" : "fade-in2"
-                  }`}
+                    }`}
                 >
                   <div className="sliderbox">
                     <form>
@@ -216,98 +214,98 @@ export default class AddItem extends Component {
                   </div>
                 </div>
               ) : (
-                <Animated
-                  animationIn="fadeInLeftBig"
-                  animationOut="fadeOutLeftBig"
-                  animationInDuration={1000}
-                  animationOutDuration={1000}
-                  isVisible={isOpen}
-                  className={"slider category-position-left fade-inShow"}
-                >
-                  <div className="sliderbox">
-                    <form>
-                      <select
-                        id="inputState"
-                        onChange={this.handleCategory}
-                        className="form-control tab-color"
-                        defaultValue="CATEGORY"
-                      >
-                        <option value="CATEGORY" disabled>
-                          CATEGORY
-                        </option>
-
-                        {categories.map((category, i) => {
-                          return <option key={i}>{category}</option>;
-                        })}
-                      </select>
-
-                      <select
-                        id="inputState"
-                        className="form-control tab-color"
-                        onChange={this.handleStyle}
-                        defaultValue="STYLE"
-                      >
-                        <option value="STYLE" disabled>
-                          STYLE
-                        </option>
-                        {styles.map((style, i) => {
-                          return <option key={i}>{style}</option>;
-                        })}
-                      </select>
-
-                      <select
-                        id="inputState"
-                        onChange={this.handleColor}
-                        className="form-control tab-color"
-                        defaultValue="COLOR"
-                      >
-                        <option value="COLOR" disabled>
-                          COLOR
-                        </option>
-                        {clothingColor.colors.map((color, i) => {
-                          return <option key={i}>{color}</option>;
-                        })}
-                      </select>
-
-                      <select
-                        id="inputState"
-                        onChange={this.handleSeason}
-                        className="form-control tab-color"
-                        defaultValue="SEASON"
-                      >
-                        <option value="SEASON" disabled>
-                          SEASON
-                        </option>
-                        {clothingSeason.seasons.map((season, i) => {
-                          return <option key={i}>{season}</option>;
-                        })}
-                      </select>
-
-                      <div className="form-group upload-button-category">
-                        <button
-                          type="button "
-                          onClick={this.postPosted}
-                          className="button"
+                  <Animated
+                    animationIn="fadeInLeftBig"
+                    animationOut="fadeOutLeftBig"
+                    animationInDuration={1000}
+                    animationOutDuration={1000}
+                    isVisible={isOpen}
+                    className={"slider category-position-left fade-inShow"}
+                  >
+                    <div className="sliderbox">
+                      <form>
+                        <select
+                          id="inputState"
+                          onChange={this.handleCategory}
+                          className="form-control tab-color"
+                          defaultValue="CATEGORY"
                         >
-                          Upload
-                        </button>
-                      </div>
+                          <option value="CATEGORY" disabled>
+                            CATEGORY
+                        </option>
 
-                      <div className="containertext">
-                        <h6 className="slidertext">Done</h6>
-                        <button
-                          className="rightarrow arrow-left"
-                          onClick={() => {
-                            this.handleSlider(this.state.isOpen);
-                          }}
+                          {categories.map((category, i) => {
+                            return <option key={i}>{category}</option>;
+                          })}
+                        </select>
+
+                        <select
+                          id="inputState"
+                          className="form-control tab-color"
+                          onChange={this.handleStyle}
+                          defaultValue="STYLE"
                         >
-                          <i></i>
+                          <option value="STYLE" disabled>
+                            STYLE
+                        </option>
+                          {styles.map((style, i) => {
+                            return <option key={i}>{style}</option>;
+                          })}
+                        </select>
+
+                        <select
+                          id="inputState"
+                          onChange={this.handleColor}
+                          className="form-control tab-color"
+                          defaultValue="COLOR"
+                        >
+                          <option value="COLOR" disabled>
+                            COLOR
+                        </option>
+                          {clothingColor.colors.map((color, i) => {
+                            return <option key={i}>{color}</option>;
+                          })}
+                        </select>
+
+                        <select
+                          id="inputState"
+                          onChange={this.handleSeason}
+                          className="form-control tab-color"
+                          defaultValue="SEASON"
+                        >
+                          <option value="SEASON" disabled>
+                            SEASON
+                        </option>
+                          {clothingSeason.seasons.map((season, i) => {
+                            return <option key={i}>{season}</option>;
+                          })}
+                        </select>
+
+                        <div className="form-group upload-button-category">
+                          <button
+                            type="button "
+                            onClick={this.postPosted}
+                            className="button"
+                          >
+                            Upload
                         </button>
-                      </div>
-                    </form>
-                  </div>
-                </Animated>
-              )
+                        </div>
+
+                        <div className="containertext">
+                          <h6 className="slidertext">Done</h6>
+                          <button
+                            className="rightarrow arrow-left"
+                            onClick={() => {
+                              this.handleSlider(this.state.isOpen);
+                            }}
+                          >
+                            <i></i>
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </Animated>
+                )
             }
           </Media>
         </>
@@ -377,8 +375,8 @@ export default class AddItem extends Component {
               return !user ? (
                 <h5>You Are Not Logged In!</h5>
               ) : (
-                <h5> {user.user || user.user_id}</h5>
-              );
+                  <h5> {user.user || user.user_id}</h5>
+                );
             }
           }}
         </AuthContext.Consumer>
