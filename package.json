@@ -12,7 +12,7 @@
     "jslib-html5-camera-photo": "^3.0.2-beta.0",
     "mdbootstrap": "^4.8.2",
     "mdbreact": "^4.15.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-animated-css": "^1.2.1",
     "react-big-calendar": "^0.21.0",
