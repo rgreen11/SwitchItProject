@@ -25,7 +25,7 @@
     "react-media": "^1.9.2",
     "react-responsive-carousel": "^3.1.49",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.1",
+    "react-scripts": "5.0.1",
     "reactstrap": "^8.0.0",
     "startbootstrap-coming-soon": "^5.0.5",
     "tail.datetime": "^0.4.12"
